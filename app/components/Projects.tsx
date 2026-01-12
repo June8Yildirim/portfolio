@@ -1,4 +1,7 @@
 import { useScrollAnimation } from "~/useScrollAnimation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 
 export default function ProjectsMain({
   index,
@@ -11,7 +14,42 @@ export default function ProjectsMain({
   mounted: boolean;
   setMounted: (isOn: boolean) => void;
 }) {
-  const sectionRef = useScrollAnimation({ index, length, mounted });
+  // const sectionRef = useScrollAnimation({ index, length, mounted });
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current || mounted) return;
+
+    const section = sectionRef.current;
+    const componentWidth = section.offsetWidth / 2;
+    const browserWidth = window.innerWidth;
+    console.log(browserWidth);
+    console.log(componentWidth);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        section,
+        {
+          opacity: 0,
+          x: -100, // Start off-screen left (component width)
+        },
+        {
+          opacity: 1,
+          x: browserWidth - componentWidth, // End at normal position
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 25%",
+            end: "top 25%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    }, section);
+
+    return () => ctx.revert();
+  }, [mounted]);
   return (
     <div
       key={index}

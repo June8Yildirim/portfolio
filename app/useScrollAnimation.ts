@@ -59,7 +59,7 @@ export const useScrollAnimation = ({
             },
             {
               opacity: 1,
-              x: 200,
+              x: window.innerWidth - 700,
               // rotateY: 0,
               duration: 1,
               ease: "power2.out",
