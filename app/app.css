@@ -1,15 +1,137 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary: "#4a5568";
+  --color-secondary: "#6b758b";
+  --color-link: "#8b9fb5";
+  --color-shadow: "#a6c2d8";
+  --color-border: "#cde3f2";
+  --color-tertiary: "#e7f4f6";
+  --color-text: "#f1f8f9";
 }
 
+/* 1. Reset and Layout */
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  color: "#fff";
+
+  /* Applying a stacked dual-gradient in Dark Mode */
+  @apply dark:bg-[linear-gradient(190deg,var(--color-neutral-800),var(--color-neutral-950))] dark:text-white;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+  @apply absolute top-1/2 left-1/2 translate-x-1/2 translate-y-1/2;
+}
+
+@utility text-gradient {
+  background: linear-gradient(to bottom, "#fff", "#898989");
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility radial-gradient {
+  background: radial-gradient(
+    circle at center,
+    #434343 0%,
+    #fdf 50%,
+    transparent 100%
+  );
+}
+
+@utility masked-img {
+  mask-image: url("/images/dev_avatar.jpg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 50%;
+}
+
+@layer components {
+  .main {
+    @apply w-full overflow-x-hidden relative min-h-screen;
+  }
+
+  nav {
+    @apply fixed z-50 w-full;
+
+    div {
+      @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 container;
+    }
+
+    p {
+      @apply text-3xl -mb-2;
+    }
+
+    a {
+      @apply cursor-pointer text-nowrap md:text-base text-sm;
+    }
+    ul {
+      @apply flex-center lg:gap-12 gap-7;
+    }
+  }
+  .noisy {
+    @apply absolute inset-0 size-full;
+    background-image: url("/images/avatar_dev.png");
+    background-size: cover; /* Ensures image fills the area */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1; /* Places it BEHIND the H1 */
+    pointer-events: none; /* Ensures you can still click things through it */
+  }
+
+  .id {
+    @apply text-8xl text-sky-700;
+  }
+  #hero {
+    @apply relative z-10 min-h-dvh w-full border border-transparent;
+
+    h1 {
+      @apply md:mt-32 mt-40 text-8xl md:text-[20vw] text-sky-700 leading-none text-center;
+    }
+
+    .left-leave {
+      @apply absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto -bottom-20 md:w-fit w-1/3;
+    }
+    .right-leave {
+      @apply absolute right-0 md:bottom-0 xl:top-0 2xl:top-12 top-1/2 md:w-fit w-24;
+    }
+
+    .body {
+      @apply container mx-auto absolute left-1/2 translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh];
+    }
+  }
+}
+
+/* 2. Global Typography Rules */
+@layer base {
+  p {
+    @apply text-pretty dark:text-text;
+  }
+
+  /* Ensuring links also follow the indigo theme */
+  a {
+    @apply text-indigo-600 dark:text-indigo-400 hover:underline;
   }
 }

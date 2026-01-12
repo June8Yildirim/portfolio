@@ -10,6 +10,9 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+// import gsap from "gsap";
+// gsap.registerPlugin(ScrollTrigger, SplitText);
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -33,6 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <div id="portal-id" />
         {children}
         <ScrollRestoration />
         <Scripts />
