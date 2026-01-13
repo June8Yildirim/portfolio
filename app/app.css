@@ -32,8 +32,12 @@ body {
   }
 }
 
+@utility flex-distance {
+  @apply flex justify-between items-center;
+}
+
 @utility flex-center {
-  @apply flex justify-center items-center;
+  @apply w-screen flex flex-row justify-center items-center;
 }
 
 @utility col-center {
