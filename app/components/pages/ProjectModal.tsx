@@ -11,23 +11,23 @@ export default function ProjectDetailModal({
   projectId: string | null;
 }) {
   return (
-    <div className="radial-gradient flex gap-6 w-full">
+    <div className="radial-gradient flex gap-6 w-full min-w-0">
       <div
-        className={`bg-slate-900 rounded-lg shadow-2xl max-h-[85vh] overflow-auto shrink-0 ${projectId ? "w-1/3" : "w-full max-w-2xl"}`}
+        className={`bg-slate-900 rounded-lg shadow-2xl max-h-[85vh] overflow-auto shrink-0 ${projectId ? "w-1/3 min-w-0" : "w-full max-w-2xl"}`}
       >
         <Projects setOpenDetail={setProjectId} />
       </div>
 
       {/* Detail Modal - slides in from right */}
       {projectId && (
-        <div className="radial-gradient rounded-lg shadow-2xl max-h-[85vh] overflow-auto relative w-2/3 animate-slide-in">
+        <div className="radial-gradient rounded-lg shadow-2xl max-h-[85vh] overflow-auto relative w-2/3 min-w-0 animate-slide-in">
           <button
             onClick={() => setProjectId("")}
             className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-full transition-colors"
           >
             ×
           </button>
-          <div className="p-8 w-[125]">
+          <div className="p-8 w-full">
             <h2 className="text-3xl font-bold mb-4">Project Details</h2>
             <div className="space-y-8">
               <div>
@@ -44,7 +44,7 @@ export default function ProjectDetailModal({
                   {project?.app_identity["tagline"]}
                 </p>
               </div>
-              <div className="radial-gradient shadow-2xl p-4 rounded">
+              <div className="radial-gradient shadow-2xl p-4 rounded-2xl">
                 <h4 className="font-semibold mb-2">Features:</h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&
@@ -60,7 +60,7 @@ export default function ProjectDetailModal({
                 </ul>
               </div>
               {project && (
-                <div className="radial-gradient shadow-2xl p-4 rounded">
+                <div className="radial-gradient shadow-2xl p-4 rounded-2xl">
                   <p className="ml-5 text-sm text-gray-500">
                     - {project.core_purpose["mission"]}
                   </p>
@@ -77,7 +77,7 @@ export default function ProjectDetailModal({
                   ))}
                 </div>
               )}
-              <div className="radial-gradient shadow-2xl p-4 rounded">
+              <div className="radial-gradient shadow-2xl p-4  rounded-2xl">
                 <h4 className="font-semibold mb-2">Features:</h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&

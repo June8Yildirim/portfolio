@@ -32,7 +32,7 @@ const Projects = ({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 bg-slate-800">
       {projects.map((project, index) => (
         <div
           key={index}

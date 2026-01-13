@@ -1,9 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  type PropsWithChildren,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
+interface ModalProps {
+  title: string;
+  isOpen: boolean;
+  onClose: () => void;
+  className: string;
+}
 // Modal Component
 export default function Modal({
   title,
@@ -11,10 +22,15 @@ export default function Modal({
   onClose,
   children,
   className = "",
-}) {
+}: PropsWithChildren<ModalProps>) {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef(null);
-
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if the user clicked the backdrop, not the modal content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
   useEffect(() => {
     if (isOpen && modalRef.current) {
       // Animate in from left
@@ -45,17 +61,18 @@ export default function Modal({
 
   return (
     <div
-      className={` fixed inset-0 radial-gradient w-full backdrop-blur-sm flex items-center justify-start z-50 p-4 overflow-y-auto ${className}`}
+      onClick={handleOverlayClick}
+      className={`fixed inset-0 radial-gradient w-full backdrop-blur-sm flex items-center justify-start z-50 p-4 overflow-y-auto ${className}`}
     >
       <div
         ref={modalRef}
-        className="hide-scrollbar bg-slate-800 rounded-lg p-8 max-w-8xl w-full my-8 max-h-[90vh] overflow-y-auto ml-12"
+        className="hide-scrollbar bg-slate-800 rounded-lg p-8 max-w-[90rem] w-full my-8 max-h-[90vh] overflow-y-auto ml-12"
       >
         <div className="flex justify-between items-center mb-6 sticky top-0 bg-transparent pb-4 border-b border-slate-700">
           <p className="text-2xl font-bold text-white">{title}</p>
           <button
             onClick={handleClose}
-            className="bg-slate-600 text-white px-4 py-2 rounded-lg hover:bg-slate-950 transition-colors"
+            className="bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-950 transition-colors"
           >
             X
           </button>
