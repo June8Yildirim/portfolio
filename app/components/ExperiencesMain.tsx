@@ -60,16 +60,16 @@ export default function ExperiencesMain({
             technologies.",
           </p>
           <div className="flex gap-4">
-            <button
-              className={`text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`}
-            >
-              Explore More
-            </button>
+            {/* <button */}
+            {/*   className={`text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`} */}
+            {/* > */}
+            {/*   Explore More */}
+            {/* </button> */}
             <button
               className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
               onClick={() => setMounted(!mounted)}
             >
-              Details
+              Explore More
             </button>
           </div>
           <div className="mt-8 text-sm text-gray-500">

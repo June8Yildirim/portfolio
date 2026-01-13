@@ -11,7 +11,7 @@ export default function ProjectDetailModal({
   projectId: string | null;
 }) {
   return (
-    <div className="flex gap-6 w-full">
+    <div className="radial-gradient flex gap-6 w-full">
       <div
         className={`bg-slate-900 rounded-lg shadow-2xl max-h-[85vh] overflow-auto shrink-0 ${projectId ? "w-1/3" : "w-full max-w-2xl"}`}
       >
@@ -20,16 +20,16 @@ export default function ProjectDetailModal({
 
       {/* Detail Modal - slides in from right */}
       {projectId && (
-        <div className="bg-white rounded-lg shadow-2xl max-h-[85vh] overflow-auto relative w-2/3 animate-slide-in">
+        <div className="radial-gradient rounded-lg shadow-2xl max-h-[85vh] overflow-auto relative w-2/3 animate-slide-in">
           <button
             onClick={() => setProjectId("")}
             className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-full transition-colors"
           >
             ×
           </button>
-          <div className="p-8 w-[500px]">
+          <div className="p-8 w-[125]">
             <h2 className="text-3xl font-bold mb-4">Project Details</h2>
-            <div className="space-y-4">
+            <div className="space-y-8">
               <div>
                 <h3 className="text-xl font-semibold mb-2">
                   Project ID: {projectId}
@@ -44,7 +44,7 @@ export default function ProjectDetailModal({
                   {project?.app_identity["tagline"]}
                 </p>
               </div>
-              <div className="bg-gray-50 p-4 rounded">
+              <div className="radial-gradient shadow-2xl p-4 rounded">
                 <h4 className="font-semibold mb-2">Features:</h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&
@@ -60,7 +60,7 @@ export default function ProjectDetailModal({
                 </ul>
               </div>
               {project && (
-                <div className="bg-gray-50 p-4 rounded">
+                <div className="radial-gradient shadow-2xl p-4 rounded">
                   <p className="ml-5 text-sm text-gray-500">
                     - {project.core_purpose["mission"]}
                   </p>
@@ -77,7 +77,7 @@ export default function ProjectDetailModal({
                   ))}
                 </div>
               )}
-              <div className="bg-gray-50 p-4 rounded">
+              <div className="radial-gradient shadow-2xl p-4 rounded">
                 <h4 className="font-semibold mb-2">Features:</h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&
@@ -94,15 +94,16 @@ export default function ProjectDetailModal({
               <span className="ml-5 text-sm text-gray-500">
                 {project?.summary}
               </span>
-              <div className="bg-gray-50 p-4 rounded">
+
+              <div className="radial-gradient  flex-col justify-items-start items-start flex shadow-2xl p-4 gap-2 rounded">
                 <h4 className="font-semibold mb-2">Technologies:</h4>
-                {project?.app_identity.platforms.map((platform) => (
-                  <div className="flex flex-wrap gap-2">
+                <div className="flex-wrap flex  gap-2 rounded">
+                  {project?.app_identity.platforms.map((platform) => (
                     <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                       {platform.toString()}
                     </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
               <div className="pt-4">
                 <a
@@ -111,7 +112,7 @@ export default function ProjectDetailModal({
                       ? project.app_identity?.url
                       : ""
                   }
-                  className={`${project?.app_identity.url} ? "text-blue-600: "text-gray-500" hover:underline`}
+                  className={`${project?.app_identity.url} ? text-sky-100: "text-gray-500" hover:underline`}
                 >
                   View Live Demo →
                 </a>

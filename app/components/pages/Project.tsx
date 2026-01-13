@@ -71,7 +71,7 @@ const Projects = ({
                     key={achIndex}
                     className="text-gray-400 flex items-start gap-3"
                   >
-                    <span className="text-green-400 mt-1 shrink-0">✓</span>
+                    <span className="text-green-400 mt-1 -shrink-0">✓</span>
                     <span>{achievement}</span>
                   </li>
                 ))}

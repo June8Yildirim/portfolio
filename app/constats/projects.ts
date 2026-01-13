@@ -88,6 +88,7 @@ export const projects = [
       "Developed a high-visibility productivity suite by integrating WidgetKit for 'at-a-glance' home screen tracking and a custom Local Notification system that proactively alerts users to upcoming deadlines.",
       "Secured sensitive student data by implementing a local authentication system using Keychain Services for token storage and CryptoKit for salted password hashing.",
     ],
+    gradient: "from-teal-600 to-emerald-600",
   },
   {
     id: "4",
@@ -108,6 +109,7 @@ export const projects = [
       "Implemented an advanced visual analytics dashboard using the Swift Charts framework, providing users with heatmaps, trend lines, and completion rate statistics across weekly, monthly, and yearly intervals.",
       "Leveraged SwiftData and CloudKit to build a modern, reactive persistence layer that automates data synchronization while maintaining a zero-latency, offline-first user experience.",
     ],
+    gradient: "from-fuchsia-600 to-violet-600",
   },
   {
     id: "5",
@@ -122,6 +124,7 @@ export const projects = [
       "FCM",
       "Node.js",
     ],
+    gradient: "from-cyan-600 to-slate-600",
     achievements: [
       "Architected a real-time session management ecosystem for iOS, Android, and Web, utilizing Firebase Firestore listeners and TanStack Query to achieve near-instant UI updates (under 200ms).",
       "Engineered an automated notification engine using Expo Notifications and Firebase Cloud Messaging, delivering critical session reminders 15 minutes prior to start times.",
