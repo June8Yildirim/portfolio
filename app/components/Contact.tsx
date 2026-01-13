@@ -15,6 +15,9 @@ export default function ContactMain({
 }) {
   const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
   const boxRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+  const email = "yildirim.cuneyt.it@gmail.com";
+  const subject = "Inguiry about the your app";
+  const body = "Hi Cuneyt,";
 
   useGSAP(
     () => {
@@ -59,11 +62,12 @@ export default function ContactMain({
             something amazing together.
           </p>
           <div className="flex gap-4">
-            <button
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
               className={`text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`}
             >
-              Explore More
-            </button>
+              Send Email
+            </a>
             <button
               className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
               onClick={() => setMounted(!mounted)}

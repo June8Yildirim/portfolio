@@ -11,6 +11,8 @@ import ExperiencesMain from "./Experiences";
 import SkillsMain from "./Skills";
 import AboutMain from "./AboutMe";
 import ContactMain from "./Contact";
+import { projectDetail } from "~/constats/projects";
+import type { ProjectDetail } from "~/types/ProjectDetails";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,10 +20,16 @@ export default function Portfolio() {
   const containerRef = useRef(null);
   const [mounted, setMounted] = useState(false);
   const [projectId, setProjectId] = useState<string | null>(null);
+  const [project, setProject] = useState<ProjectDetail | null>(null);
   //TODO: add to modal next to each  othher. When opendd the
   //details moodal if user clicks detauil button open new projectg next ot parenal modal.
   // TODO: you may think to merge component merge into one AboutMe and ContactMe,
   //
+
+  useEffect(() => {
+    const proj = projectDetail.find((pro) => pro.id === projectId);
+    setProject(proj);
+  }, [projectId]);
   return (
     <div ref={containerRef} className="main" id="hero">
       <div className="noisy -z-10" />
@@ -55,35 +63,84 @@ export default function Portfolio() {
                         Project ID: {projectId}
                       </h3>
                       <p className="text-gray-700 mb-4">
-                        This is a detailed view of the selected project. You can
-                        add more information here like:
+                        {project?.app_identity["name"]}
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        {project?.app_identity["developer"]}
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        {project?.app_identity["tagline"]}
                       </p>
                     </div>
                     <div className="bg-gray-50 p-4 rounded">
                       <h4 className="font-semibold mb-2">Features:</h4>
                       <ul className="list-disc list-inside space-y-1 text-gray-700">
-                        <li>User authentication</li>
-                        <li>Real-time updates</li>
-                        <li>Responsive design</li>
-                        <li>API integration</li>
+                        {project &&
+                          project.key_features.map((feature, index) => (
+                            <li key={index}>
+                              <strong>{feature?.title}</strong>
+                              <p className="ml-5">{feature?.description}</p>
+                              <span className="ml-5 text-sm text-gray-500">
+                                Automation: {feature?.automation_level}
+                              </span>
+                            </li>
+                          ))}
                       </ul>
                     </div>
+                    {project && (
+                      <div className="bg-gray-50 p-4 rounded">
+                        <p className="ml-5 text-sm text-gray-500">
+                          - {project.core_purpose["mission"]}
+                        </p>
+                        <p className="ml-5 text-sm text-gray-500">
+                          - {project.core_purpose["positioning"]}
+                        </p>
+                        {project.core_purpose["problem_solved"].map((solve) => (
+                          <p
+                            className="ml-5 text-sm text-gray-500"
+                            key={solve.toString()}
+                          >
+                            - {solve?.toString()}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                    <div className="bg-gray-50 p-4 rounded">
+                      <h4 className="font-semibold mb-2">Features:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-gray-700">
+                        {project &&
+                          project.target_audience.map((feature, index) => (
+                            <li key={index}>
+                              <strong>{feature?.persona}</strong>
+                              <span className="ml-5 text-sm text-gray-500">
+                                {feature?.use_case}
+                              </span>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                    <span className="ml-5 text-sm text-gray-500">
+                      {project?.summary}
+                    </span>
                     <div className="bg-gray-50 p-4 rounded">
                       <h4 className="font-semibold mb-2">Technologies:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                          React
-                        </span>
-                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
-                          Node.js
-                        </span>
-                        <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
-                          MongoDB
-                        </span>
-                      </div>
+                      {project?.app_identity.platforms.map((platform) => (
+                        <div className="flex flex-wrap gap-2">
+                          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                            {platform.toString()}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                     <div className="pt-4">
-                      <a href="#" className="text-blue-600 hover:underline">
+                      <a
+                        href={
+                          project && project.app_identity.url
+                            ? project.app_identity?.url
+                            : ""
+                        }
+                        className={`${project?.app_identity.url} ? "text-blue-600: "text-gray-500" hover:underline`}
+                      >
                         View Live Demo →
                       </a>
                     </div>
