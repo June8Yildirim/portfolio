@@ -1,3 +1,6 @@
+import { useEffect, useRef, type RefObject } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 import { useScrollAnimation } from "~/useScrollAnimation";
 
 export default function ExperiencesMain({
@@ -11,14 +14,61 @@ export default function ExperiencesMain({
   mounted: boolean;
   setMounted: (isOn: boolean) => void;
 }) {
-  const sectionRef = useScrollAnimation({ index, length, mounted });
+  const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+  const boxRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+
+  useGSAP(
+    () => {
+      gsap.from(boxRef.current, {
+        x: "80vh", // Start off-screen to the right
+        y: "40vh",
+        opacity: 0,
+        duration: 2.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current, // Element that starts the animation
+          start: "top 50%", // When the top of the container hits 80% of the viewport
+          end: "top 2%", // When the top of the container hits 30% of the viewport
+          scrub: true, // Smoothly links animation progress to scroll distance
+          markers: false, // Set to true to debug start/end points
+        },
+      });
+    },
+    { scope: sectionRef },
+  );
+  // useEffect(() => {
+  //   if (!sectionRef.current || mounted) return;
+  //
+  //   const section = sectionRef.current;
+  //
+  //   gsap.from(section, {
+  //     x: "-10vw",
+  //     // scale: 0.5,
+  //     // });
+  //     // gsap.to(section, {
+  //     //   x: "80vw",
+  //     //   y: "-40vh",
+  //     scale: 1.05,
+  //     rotateZ: 1,
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       start: "bottom top",
+  //       end: "top bottom",
+  //       scrub: 1,
+  //       invalidateOnRefresh: true,
+  //     },
+  //   });
+  // }, []);
   return (
     <div
       key={index}
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-start p-2 relative"
     >
-      <div className={` rounded-3xl p-1 shadow-2xl max-w-2xl w-full mr-12`}>
+      <div
+        ref={boxRef}
+        className={` rounded-3xl p-1 shadow-2xl max-w-3xl w-full mr-12`}
+      >
         <div className="bg-transparent rounded-3xl p-12 h-full border-2 shadow-2xl shadow-amber-100">
           <div className="text-8xl mb-6">👋</div>
           <h2 className={`text-6xl font-bold text-white mb-4  bg-clip-text`}>

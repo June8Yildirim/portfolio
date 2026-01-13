@@ -1,4 +1,6 @@
 import { useScrollAnimation } from "~/useScrollAnimation";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function ContactMain({
   index,
@@ -11,7 +13,27 @@ export default function ContactMain({
   mounted: boolean;
   setMounted: (isOn: boolean) => void;
 }) {
-  const sectionRef = useScrollAnimation({ index, length, mounted });
+  const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+
+  useEffect(() => {
+    if (!sectionRef.current || mounted) return;
+
+    const section = sectionRef.current;
+
+    gsap.to(section, {
+      x: "80vw",
+      y: "-40vh",
+      scale: 1.05,
+      rotateZ: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }, []);
   return (
     <div
       key={index}

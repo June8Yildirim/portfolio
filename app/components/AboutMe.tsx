@@ -1,4 +1,6 @@
 import { useScrollAnimation } from "~/useScrollAnimation";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function AboutMain({
   index,
@@ -11,14 +13,34 @@ export default function AboutMain({
   mounted: boolean;
   setMounted: (isOn: boolean) => void;
 }) {
-  const sectionRef = useScrollAnimation({ index, length, mounted });
+  const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+
+  useEffect(() => {
+    if (!sectionRef.current || mounted) return;
+
+    const section = sectionRef.current;
+
+    gsap.to(section, {
+      x: "80vw",
+      y: "-40vh",
+      scale: 1.05,
+      rotateZ: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }, []);
   return (
     <div
       key={index}
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-start p-2 relative"
     >
-      <div className={` rounded-3xl p-1 shadow-2xl max-w-2xl w-full mr-12`}>
+      <div className={"rounded-3xl p-1 shadow-2xl max-w-2xl w-full"}>
         <div className="bg-transparent rounded-3xl p-12 h-full border-2 shadow-2xl shadow-amber-100">
           <div className="text-8xl mb-6">📧</div>
           <h2 className={`text-6xl font-bold text-white mb-4  bg-clip-text`}>
