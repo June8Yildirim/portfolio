@@ -19,7 +19,7 @@ export const useScrollAnimation = ({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || mounted) return;
+    if (!sectionRef.current) return;
 
     const section = sectionRef.current;
     const ctx = gsap.context(() => {
@@ -44,6 +44,7 @@ export const useScrollAnimation = ({
                 start: "top 80%",
                 end: "top 20%",
                 toggleActions: "play none none reverse",
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -69,6 +70,7 @@ export const useScrollAnimation = ({
                 end: "top 25%",
                 toggleActions: "play none none reverse",
                 scrub: 1,
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -93,6 +95,7 @@ export const useScrollAnimation = ({
                 start: "top 70%",
                 end: "top 30%",
                 toggleActions: "play none none reverse",
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -117,6 +120,7 @@ export const useScrollAnimation = ({
                 start: "top 75%",
                 end: "top 25%",
                 toggleActions: "play none none reverse",
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -142,6 +146,7 @@ export const useScrollAnimation = ({
                 end: "top 30%",
                 toggleActions: "play none none reverse",
                 scrub: 0.5,
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -166,6 +171,7 @@ export const useScrollAnimation = ({
                 start: "top 80%",
                 end: "top 20%",
                 toggleActions: "play none none reverse",
+                invalidateOnRefresh: true,
               },
             },
           );
@@ -176,7 +182,11 @@ export const useScrollAnimation = ({
       }
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // Refresh ScrollTrigger after cleanup to ensure proper recalculation
+      ScrollTrigger.refresh();
+    };
   }, [index, mounted]);
 
   return sectionRef;

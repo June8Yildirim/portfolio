@@ -19,29 +19,48 @@ export default function AboutMain({
 
   useGSAP(
     () => {
-      const t2 = new SplitText(".t2", { type: "words" });
-      const t3 = new SplitText(".t5", { type: "lines" });
-      t2.chars.forEach((ch) => ch.classList.add("text-gradient"));
-      t3.chars.forEach((ch) => ch.classList.add("text-gradient"));
+      if (!sectionRef.current) return;
 
-      gsap.from(t2.chars, {
-        opacity: 0,
-        yPercent: 100,
-        duration: 1.4,
-        ease: "expo.out",
-        stagger: 0.05,
-        delay: 0.4,
-      });
-      gsap.from(t3.lines, {
-        yPercent: 100,
-        opacity: 0,
-        duration: 1.8,
-        ease: "expo.out",
-        stagger: 0.07,
-        delay: 1,
-      });
+      const t2Elements = sectionRef.current.querySelectorAll(".t2");
+      const t3Elements = sectionRef.current.querySelectorAll(".t3");
+      
+      if (t2Elements.length === 0 && t3Elements.length === 0) return;
+
+      try {
+        // Scope SplitText to the section
+        const t2 = new SplitText(t2Elements, { type: "words" });
+        const t3 = new SplitText(t3Elements, { type: "lines" });
+        
+        if (t2.chars && t2.chars.length > 0) {
+          t2.chars.forEach((ch) => ch.classList.add("text-gradient"));
+
+          gsap.from(t2.chars, {
+            opacity: 0,
+            yPercent: 100,
+            duration: 1.4,
+            ease: "expo.out",
+            stagger: 0.05,
+            delay: 0.4,
+          });
+        }
+        
+        if (t3.lines && t3.lines.length > 0) {
+          t3.lines.forEach((ch) => ch.classList.add("text-gradient"));
+
+          gsap.from(t3.lines, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 1.8,
+            ease: "expo.out",
+            stagger: 0.07,
+            delay: 1,
+          });
+        }
+      } catch (error) {
+        console.warn("SplitText error:", error);
+      }
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [mounted] },
   );
   return (
     <div

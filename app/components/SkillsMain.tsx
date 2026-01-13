@@ -19,6 +19,8 @@ export default function SkillsMain({
 
   useGSAP(
     () => {
+      if (!boxRef.current || !sectionRef.current) return;
+
       gsap.from(boxRef.current, {
         x: "80vh", // Start off-screen to the right
         y: "40vh",
@@ -31,10 +33,11 @@ export default function SkillsMain({
           end: "top 2%", // When the top of the container hits 30% of the viewport
           scrub: true, // Smoothly links animation progress to scroll distance
           markers: false, // Set to true to debug start/end points
+          invalidateOnRefresh: true, // Recalculate on refresh
         },
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [mounted] },
   );
 
   return (

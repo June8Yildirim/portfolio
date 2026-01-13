@@ -33,6 +33,33 @@ export default function Portfolio() {
     const proj = projectDetail.find((pro) => pro.id === projectId);
     proj && setProject(proj);
   }, [projectId]);
+
+  // Refresh ScrollTrigger when modals open/close or layout changes
+  useEffect(() => {
+    const refreshScrollTrigger = () => {
+      ScrollTrigger.refresh();
+    };
+
+    // Refresh after modals state changes
+    const timeoutId = setTimeout(refreshScrollTrigger, 100);
+
+    // Refresh on window resize
+    window.addEventListener("resize", refreshScrollTrigger);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", refreshScrollTrigger);
+    };
+  }, [projectMounted, experienceMounted, skillsMounted]);
+
+  // Initial ScrollTrigger refresh after component mounts
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
   return (
     <div ref={containerRef} className="main" id="hero">
       <div className="noisy -z-10" />
