@@ -1,8 +1,9 @@
+import { useEffect, useRef, type RefObject } from "react";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useScrollAnimation } from "~/useScrollAnimation";
 
-export default function ContactMain({
+export default function ExperiencesMain({
   index,
   length,
   mounted,
@@ -15,9 +16,6 @@ export default function ContactMain({
 }) {
   const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
   const boxRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
-  const email = "yildirim.cuneyt.it@gmail.com";
-  const subject = "Inguiry about the your app";
-  const body = "Hi Cuneyt,";
 
   useGSAP(
     () => {
@@ -38,7 +36,6 @@ export default function ContactMain({
     },
     { scope: sectionRef },
   );
-
   return (
     <div
       key={index}
@@ -47,30 +44,30 @@ export default function ContactMain({
     >
       <div
         ref={boxRef}
-        className={`rounded-3xl p-1 shadow-2xl max-w-2xl w-full mr-12`}
+        className={` rounded-3xl p-1 shadow-2xl max-w-3xl w-full mr-12`}
       >
         <div className="bg-transparent rounded-3xl p-12 h-full border-2 shadow-2xl shadow-amber-100">
-          <div className="text-8xl mb-6">📧</div>
+          <div className="text-8xl mb-6">👋</div>
           <h2 className={`text-6xl font-bold text-white mb-4  bg-clip-text`}>
-            Contact
+            Experiences
           </h2>
-          <h3 className="text-3xl text-gray-300 mb-8 font-light">
-            Let's Connect
-          </h3>
+          <h3 className="text-3xl text-gray-300 mb-8 font-light">Background</h3>
           <p className="text-xl text-gray-300 leading-relaxed mb-10">
-            Ready to bring your ideas to life. Get in touch and let's create
-            something amazing together.
+            "Crafting beautiful digital experiences with modern web
+            technologies.",
           </p>
           <div className="flex gap-4">
-            <a
-              href={`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
+            <button
               className={`text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`}
             >
-              Send Email
-            </a>
+              Explore More
+            </button>
             <button
               className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
-              onClick={() => setMounted(!mounted)}
+              onClick={() => {
+                console.log("fasdfasd");
+                setMounted(!mounted);
+              }}
             >
               Details
             </button>

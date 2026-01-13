@@ -1,21 +1,21 @@
-import { useScrollAnimation } from "~/useScrollAnimation";
-import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-export default function AboutMain({
+export default function ContactMain({
   index,
   length,
   mounted,
-  setMounted,
 }: {
   length: number;
   index: number;
   mounted: boolean;
-  setMounted: (isOn: boolean) => void;
 }) {
   const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
   const boxRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
+  const email = "yildirim.cuneyt.it@gmail.com";
+  const subject = "Inguiry about the your app";
+  const body = "Hi Cuneyt,";
 
   useGSAP(
     () => {
@@ -36,6 +36,7 @@ export default function AboutMain({
     },
     { scope: sectionRef },
   );
+
   return (
     <div
       key={index}
@@ -44,32 +45,27 @@ export default function AboutMain({
     >
       <div
         ref={boxRef}
-        className={"rounded-3xl p-1 shadow-2xl max-w-2xl w-full"}
+        className={`rounded-3xl p-1 shadow-2xl max-w-2xl w-full mr-12`}
       >
         <div className="bg-transparent rounded-3xl p-12 h-full border-2 shadow-2xl shadow-amber-100">
           <div className="text-8xl mb-6">📧</div>
           <h2 className={`text-6xl font-bold text-white mb-4  bg-clip-text`}>
-            About
+            Contact
           </h2>
           <h3 className="text-3xl text-gray-300 mb-8 font-light">
-            Cuneyt Yildirim
+            Let's Connect
           </h3>
           <p className="text-xl text-gray-300 leading-relaxed mb-10">
-            I blend design and code to build responsive, user-friendly
-            applications that make an impact.
+            Ready to bring your ideas to life. Get in touch and let's create
+            something amazing together.
           </p>
           <div className="flex gap-4">
-            <button
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
               className={`text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`}
             >
-              Explore More
-            </button>
-            <button
-              className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
-              onClick={() => setMounted(!mounted)}
-            >
-              Details
-            </button>
+              Send Email
+            </a>
           </div>
           <div className="mt-8 text-sm text-gray-500">
             Section {index + 1} of {length}
