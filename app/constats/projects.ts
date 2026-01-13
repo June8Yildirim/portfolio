@@ -1,5 +1,6 @@
 export const projects = [
   {
+    id: "0",
     title: "SaveEasy",
     company: "Turina Technologies",
     technologies: [
@@ -20,6 +21,7 @@ export const projects = [
     gradient: "from-emerald-600 to-teal-600",
   },
   {
+    id: "1",
     title: "VDrivers",
     company: "Turina Technologies",
     technologies: [
@@ -55,6 +57,7 @@ export const projects = [
       "JWT",
       "Git",
     ],
+    id: "2",
     achievements: [
       "Optimized delivery logistics by implementing a 'Shortest Path' algorithm, resulting in a 15% improvement in delivery time estimates and a 10% reduction in total fuel/distance costs.",
       "Developed a responsive, mobile-first UI using Tailwind CSS, ensuring consistent branding and high performance across web and mobile platforms.",

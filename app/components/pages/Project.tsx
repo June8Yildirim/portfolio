@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "~/constats/projects";
 
-const Projects = () => {
+const Projects = ({
+  setOpenDetail,
+}: {
+  setOpenDetail: (id: string) => void;
+}) => {
   const projectsRef = useRef([]);
 
   useEffect(() => {
@@ -68,10 +71,16 @@ const Projects = () => {
                     key={achIndex}
                     className="text-gray-400 flex items-start gap-3"
                   >
-                    <span className="text-green-400 mt-1 flex-shrink-0">✓</span>
+                    <span className="text-green-400 mt-1 shrink-0">✓</span>
                     <span>{achievement}</span>
                   </li>
                 ))}
+                <button
+                  className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
+                  onClick={() => setOpenDetail(project.id)}
+                >
+                  Details
+                </button>
               </ul>
             </div>
           </div>

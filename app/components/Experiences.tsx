@@ -36,29 +36,6 @@ export default function ExperiencesMain({
     },
     { scope: sectionRef },
   );
-  // useEffect(() => {
-  //   if (!sectionRef.current || mounted) return;
-  //
-  //   const section = sectionRef.current;
-  //
-  //   gsap.from(section, {
-  //     x: "-10vw",
-  //     // scale: 0.5,
-  //     // });
-  //     // gsap.to(section, {
-  //     //   x: "80vw",
-  //     //   y: "-40vh",
-  //     scale: 1.05,
-  //     rotateZ: 1,
-  //     scrollTrigger: {
-  //       trigger: section,
-  //       start: "bottom top",
-  //       end: "top bottom",
-  //       scrub: 1,
-  //       invalidateOnRefresh: true,
-  //     },
-  //   });
-  // }, []);
   return (
     <div
       key={index}

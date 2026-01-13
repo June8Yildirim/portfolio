@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // Modal Component
-export default function Modal({ isOpen, onClose, children, className = "" }) {
+export default function DetailsModal({ isOpen, onClose, children }) {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef(null);
 
@@ -38,12 +38,10 @@ export default function Modal({ isOpen, onClose, children, className = "" }) {
   if (!isOpen && !isClosing) return null;
 
   return (
-    <div
-      className={`fixed inset-0 radial-gradient w-full backdrop-blur-sm flex items-center justify-start z-50 p-4 overflow-y-auto ${className}`}
-    >
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-start z-50 p-4 overflow-y-auto">
       <div
         ref={modalRef}
-        className="bg-slate-800 rounded-lg p-8 max-w-8xl w-full my-8 max-h-[90vh] overflow-y-auto ml-12"
+        className="bg-slate-800 rounded-lg p-8 max-w-4xl w-full my-8 max-h-[90vh] overflow-y-auto ml-12"
       >
         <div className="flex justify-between items-center mb-6 sticky top-0 bg-transparent pb-4 border-b border-slate-700">
           <p className="text-2xl font-bold text-white">Project Details</p>
@@ -54,7 +52,7 @@ export default function Modal({ isOpen, onClose, children, className = "" }) {
             X
           </button>
         </div>
-        <div className="flex-distance">{children}</div>
+        <div className="text-gray-300">{children}</div>
       </div>
     </div>
   );
