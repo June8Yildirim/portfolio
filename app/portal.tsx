@@ -66,13 +66,13 @@ export default function Modal({
     >
       <div
         ref={modalRef}
-        className="hide-scrollbar bg-slate-800 rounded-lg p-8 max-w-[90rem] w-full my-8 max-h-[90vh] overflow-y-auto ml-12"
+        className="hide-scrollbar bg-slate-800 rounded-lg p-4 md:p-8 max-w-[90rem] w-full my-4 md:my-8 max-h-[90vh] overflow-y-auto md:ml-12"
       >
-        <div className="flex justify-between items-center mb-6 sticky top-0 bg-transparent pb-4 border-b border-slate-700">
-          <p className="text-2xl font-bold text-white">{title}</p>
+        <div className="flex justify-between items-center mb-4 md:mb-6 sticky top-0 bg-transparent pb-4 border-b border-slate-700">
+          <p className="text-xl md:text-2xl font-bold text-white">{title}</p>
           <button
             onClick={handleClose}
-            className="bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-950 transition-colors"
+            className="bg-slate-700 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg hover:bg-slate-950 transition-colors text-sm md:text-base"
           >
             X
           </button>

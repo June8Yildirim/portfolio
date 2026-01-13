@@ -66,21 +66,21 @@ export default function AboutMain({
     <div
       key={index}
       ref={sectionRef}
-      className="h-screen w-full flex items-center justify-start p-2 relative"
+      className="min-h-screen w-full flex items-center justify-center md:justify-start p-2 md:p-4 relative"
     >
       <div
         ref={boxRef}
-        className={"rounded-3xl p-1 shadow-2xl max-w-2xl w-full"}
+        className={"rounded-3xl p-1 shadow-2xl max-w-2xl w-full mx-2"}
       >
-        <div className="bg-transparent rounded-3xl p-12 h-full border-2 shadow-2xl shadow-amber-100">
-          <div className="text-8xl mb-6">📧</div>
-          <h2 className={`text-6xl font-bold text-white mb-4  bg-clip-text`}>
+        <div className="bg-transparent rounded-3xl p-4 md:p-8 lg:p-12 h-full border-2 shadow-2xl shadow-amber-100">
+          <div className="text-5xl md:text-6xl lg:text-8xl mb-4 md:mb-6">📧</div>
+          <h2 className={`text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 md:mb-4  bg-clip-text`}>
             About Me
           </h2>
-          <h3 className="text-3xl text-gray-300 mb-8 font-light">
+          <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 md:mb-6 lg:mb-8 font-light">
             Cuneyt Yildirim
           </h3>
-          <p className="text-xl text-gray-300 leading-relaxed mb-10">
+          <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed mb-6 md:mb-8 lg:mb-10">
             Fullstack JavaScript/Java Developer skilled in building responsive
             web and mobile applications. Frontend expertise in React Native and
             SwiftUI for cross-platform development. Backend proficiency with
