@@ -64,10 +64,7 @@ export default function ExperiencesMain({
             </button>
             <button
               className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
-              onClick={() => {
-                console.log("fasdfasd");
-                setMounted(!mounted);
-              }}
+              onClick={() => setMounted(!mounted)}
             >
               Details
             </button>

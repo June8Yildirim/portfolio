@@ -13,7 +13,7 @@ import ContactMain from "./ContactMain";
 import { projectDetail } from "~/constats/projects";
 import type { ProjectDetail } from "~/types/ProjectDetails";
 import ProjectDetailModal from "./pages/ProjectModal";
-import ExperienceModal from "./pages/ExperienceModal";
+import ExperienceSection from "./pages/ExperienceModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +41,7 @@ export default function Portfolio() {
           isOpen={projectMounted}
           onClose={() => setProjectMounted(false)}
           className="justify-start"
+          title={"Project Details"}
         >
           <ProjectDetailModal
             project={project}
@@ -51,11 +52,12 @@ export default function Portfolio() {
       )}
       {experienceMounted && (
         <Modal
+          title={"Experience Details"}
           isOpen={experienceMounted}
           onClose={() => setExperiencesMounted(false)}
           className="justify-start"
         >
-          {experienceMounted && <ExperienceModal />}
+          {experienceMounted && <ExperienceSection />}
         </Modal>
       )}
 
@@ -78,18 +80,12 @@ export default function Portfolio() {
         mounted={skillsMounted}
         setMounted={setSkillsMounted}
       />
-      <div className="flex flex-row gap-8 px-4 w-screen">
-        <AboutMain
-          index={4}
-          length={sections.length}
-          mounted={projectMounted}
-        />
-        <ContactMain
-          index={5}
-          length={sections.length}
-          mounted={projectMounted}
-        />
-      </div>
+      <AboutMain index={4} length={sections.length} mounted={projectMounted} />
+      <ContactMain
+        index={5}
+        length={sections.length}
+        mounted={projectMounted}
+      />
     </div>
   );
 }
