@@ -4,8 +4,8 @@ import Portfolio from "~/components/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Cuneyt Yildirim" },
+    { name: "description", content: "Welcome to Onboard!" },
   ];
 }
 
