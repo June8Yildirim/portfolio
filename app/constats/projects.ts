@@ -20,6 +20,12 @@ export const projects = [
       "Implemented robust data security by securing connection strings through environment variables and applying Row-Level Security (RLS) to ensure users can only access their own financial records.",
       "Apple and Google Play Store.",
     ],
+    mainImage: "/images/SaveEasyMain.png",
+    images: [
+      "/images/SaveEasyMain.png",
+      "/images/SaveEasyExp.png",
+      "/images/SaveEasyAuth.png",
+    ],
     gradient: "from-emerald-600 to-teal-600",
   },
   {
@@ -47,27 +53,6 @@ export const projects = [
     gradient: "from-blue-600 to-cyan-600",
   },
   {
-    title: "Restaurant Project",
-    company: "Saadat Development",
-    technologies: [
-      "TypeScript",
-      "ReactJs",
-      "NextJs",
-      "TailwindCSS",
-      "NextAuthJs",
-      "LeafletJS",
-      "JWT",
-      "Git",
-    ],
-    id: "2",
-    achievements: [
-      "Optimized delivery logistics by implementing a 'Shortest Path' algorithm, resulting in a 15% improvement in delivery time estimates and a 10% reduction in total fuel/distance costs.",
-      "Developed a responsive, mobile-first UI using Tailwind CSS, ensuring consistent branding and high performance across web and mobile platforms.",
-      "Designed a scalable NoSQL schema with MongoDB and Mongoose, managing complex data relations between recipes, user geolocation data, and order history. Implemented secure authentication flows integrating NextAuth.js and JWT.",
-    ],
-    gradient: "from-purple-600 to-pink-600",
-  },
-  {
     id: "3",
     title: "Assignment Organizer",
     company: "Cuneyt Yildirim",
@@ -89,6 +74,12 @@ export const projects = [
       "Secured sensitive student data by implementing a local authentication system using Keychain Services for token storage and CryptoKit for salted password hashing.",
     ],
     gradient: "from-teal-600 to-emerald-600",
+    mainImage: "/images/mainScreen.png",
+    images: [
+      "/images/AssignmentScreen.png",
+      "/images/AssignmentScreen2.png",
+      "/images/AssignmentSchedule.png",
+    ],
   },
   {
     id: "4",
@@ -110,6 +101,13 @@ export const projects = [
       "Leveraged SwiftData and CloudKit to build a modern, reactive persistence layer that automates data synchronization while maintaining a zero-latency, offline-first user experience.",
     ],
     gradient: "from-fuchsia-600 to-violet-600",
+    mainImage: "/images/HabitMain.png",
+    images: [
+      "/images/HabitMain.png",
+      "/images/HabitMood.png",
+      "/images/HabitReport.png",
+      "/images/HabitPomodoro.png",
+    ],
   },
   {
     id: "5",
@@ -131,6 +129,50 @@ export const projects = [
       "Developed a secure, server-side student onboarding workflow using Firebase Cloud Functions and the Admin SDK, allowing instructors to manage student credentials without local authentication conflicts.",
       "Implemented a dual-workflow request system (Enrollment & Timeslots) with role-based access control, ensuring distinct, secure experiences for both instructors and students.",
     ],
+    images: [
+      "/images/TutorMain.png",
+      "/images/TutorWeekschedule.png",
+      "/images/TutorThemes.png",
+      "/images/TutorSess.png",
+      "/images/TutorInst.png",
+      "/images/TutordetailSession.png",
+      "/images/TutorProfile.png",
+    ],
+  },
+  {
+    title: "Restaurant Project",
+    company: "Saadat Development",
+    technologies: [
+      "TypeScript",
+      "ReactJs",
+      "NextJs",
+      "TailwindCSS",
+      "NextAuthJs",
+      "LeafletJS",
+      "JWT",
+      "Git",
+    ],
+    id: "2",
+    achievements: [
+      "Optimized delivery logistics by implementing a 'Shortest Path' algorithm, resulting in a 15% improvement in delivery time estimates and a 10% reduction in total fuel/distance costs.",
+      "Developed a responsive, mobile-first UI using Tailwind CSS, ensuring consistent branding and high performance across web and mobile platforms.",
+      "Designed a scalable NoSQL schema with MongoDB and Mongoose, managing complex data relations between recipes, user geolocation data, and order history. Implemented secure authentication flows integrating NextAuth.js and JWT.",
+    ],
+    gradient: "from-purple-600 to-pink-600",
+    mainImage: "/images/restaurant.gif",
+  },
+  {
+    title: "Camping Project",
+    company: "",
+    technologies: ["JavaScript", "ReactJs", "LeafletJS", "JWT", "Git"],
+    id: "7",
+    achievements: [
+      "Optimized delivery logistics by implementing a 'Shortest Path' algorithm, resulting in a 15% improvement in delivery time estimates and a 10% reduction in total fuel/distance costs.",
+      "Developed a responsive, mobile-first UI using Tailwind CSS, ensuring consistent branding and high performance across web and mobile platforms.",
+      "Designed a scalable NoSQL schema with MongoDB and Mongoose, managing complex data relations between recipes, user geolocation data, and order history. Implemented secure authentication flows integrating NextAuth.js and JWT.",
+    ],
+    gradient: "from-purple-600 to-pink-600",
+    images: ["/images/camping1.gif", "/images/camping2.gif"],
   },
 ];
 

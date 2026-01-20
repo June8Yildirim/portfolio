@@ -28,7 +28,9 @@ export default function ProjectDetailModal({
             ×
           </button>
           <div className="p-4 md:p-8 w-full">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Project Details</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Project Details
+            </h2>
             <div className="space-y-4 md:space-y-8">
               <div>
                 <h3 className="text-lg md:text-xl font-semibold mb-2">
@@ -45,7 +47,9 @@ export default function ProjectDetailModal({
                 </p>
               </div>
               <div className="radial-gradient shadow-2xl p-3 md:p-4 rounded-2xl">
-                <h4 className="font-semibold mb-2 text-sm md:text-base">Features:</h4>
+                <h4 className="font-semibold mb-2 text-sm md:text-base">
+                  Features:
+                </h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&
                     project.key_features.map((feature, index) => (
@@ -105,6 +109,7 @@ export default function ProjectDetailModal({
                   ))}
                 </div>
               </div>
+
               <div className="pt-4">
                 <a
                   href={

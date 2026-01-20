@@ -106,6 +106,24 @@ body {
       @apply flex-center lg:gap-12 gap-7;
     }
   }
+  .swiper {
+    padding: 20px;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-pagination-bullet {
+    background: #9ca3af;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+  }
+  .swiper-pagination-bullet-active {
+    background: #3b82f6;
+    opacity: 1;
+  }
   /* Target the specific container or the whole body */
   .hide-scrollbar {
     /* Firefox */

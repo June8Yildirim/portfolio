@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { projects } from "~/constats/projects";
+import ImageCarousel from "../CustomImgSwiper";
 
 const Projects = ({
   setOpenDetail,
@@ -75,6 +76,7 @@ const Projects = ({
                     <span>{achievement}</span>
                   </li>
                 ))}
+                {project.images && <ImageCarousel images={project.images} />}
                 <button
                   className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
                   onClick={() => setOpenDetail(project.id)}
