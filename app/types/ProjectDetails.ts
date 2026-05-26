@@ -4,9 +4,9 @@ export interface ProjectDetail {
   id: string;
   app_identity: AppIdentity;
   core_purpose: CorePurpose;
-  key_features: jeyFeature[];
+  key_features: KeyFeature[];
   user_experience: UserExperience;
-  technical_architecture: TechnicalArchitecture;
+  technical_architecture?: TechnicalArchitecture;
   target_audience: TargetAudience[];
   security_and_privacy: SecurityAndPrivacy;
   data_sync?: DataSync;
@@ -16,7 +16,27 @@ export interface ProjectDetail {
   habit_lifecycle?: HabitLifecycle;
   mood_tracking?: MoodTracking;
   reporting_features?: ReportingFeatures;
+  notifications?: Notifications;
+  widget_integration?: WidgetIntegration;
   summary: string;
+  link?: string;
+}
+
+export interface Notifications {
+  type: string;
+  scheduling: string;
+  content: string;
+  management: string;
+  authorization: string;
+}
+
+export interface WidgetIntegration {
+  platform: string;
+  sizes: string[];
+  update_frequency: string;
+  data_source: string;
+  display_content: string;
+  configuration: string;
 }
 
 export interface AppIdentity {
@@ -45,10 +65,11 @@ export interface ProblemWithDetails {
 export interface KeyFeature {
   title: string;
   description: string;
-  automation_level: "High" | "Medium" | "Low";
-  impact: string;
+  automation_level?: "High" | "Medium" | "Low";
+  impact?: string;
   technology?: string;
   status?: string;
+  [key: string]: any;
 }
 
 export interface UserExperience {
@@ -90,7 +111,7 @@ export interface EnumDefinition {
   name: string;
   cases: string[];
   raw_values?: number[];
-  properties: string[];
+  properties?: string[];
 }
 
 export interface TargetAudience {

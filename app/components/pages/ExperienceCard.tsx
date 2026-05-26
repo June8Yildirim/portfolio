@@ -4,25 +4,38 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import type { Experience } from "~/types/Experience";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
+interface ExperienceCardProps {
+  experience: Experience;
+  isExpanded: boolean;
+  onToggle: () => void;
+}
+
+export const ExperienceCard = ({ experience, isExpanded, onToggle }: ExperienceCardProps) => {
   const isSoftware = experience.category === "software";
-  const techRef = useRef(null);
-  const responsRef = useRef(null);
+  const techRef = useRef<HTMLDivElement>(null);
+  const responsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    // @ts-ignore
     const t1 = new SplitText(".t1", { type: "words" });
+    // @ts-ignore
     const t2 = new SplitText(".t2", { type: "words" });
+    // @ts-ignore
     const t3 = new SplitText(".t3", { type: "words" });
+    // @ts-ignore
     const t4 = new SplitText(".t4", { type: "words" });
+    // @ts-ignore
     const t5 = new SplitText(".t5", { type: "lines" });
+    // @ts-ignore
     const t6 = new SplitText(".t6", { type: "lines" });
-    t1.chars.forEach((ch) => ch.classList.add("text-gradient"));
-    t2.chars.forEach((ch) => ch.classList.add("text-gradient"));
-    t3.chars.forEach((ch) => ch.classList.add("text-gradient"));
-    t4.chars.forEach((ch) => ch.classList.add("text-gradient"));
+    t1.chars.forEach((ch: any) => ch.classList.add("text-gradient"));
+    t2.chars.forEach((ch: any) => ch.classList.add("text-gradient"));
+    t3.chars.forEach((ch: any) => ch.classList.add("text-gradient"));
+    t4.chars.forEach((ch: any) => ch.classList.add("text-gradient"));
 
     gsap.from(t1.chars, {
       opacity: 0,
@@ -76,7 +89,7 @@ export const ExperienceCard = ({ experience, isExpanded, onToggle }) => {
 
   // Animate expansion
   useEffect(() => {
-    if (isExpanded) {
+    if (isExpanded && responsRef.current) {
       const items = responsRef.current.querySelectorAll("li");
       gsap.fromTo(
         items,

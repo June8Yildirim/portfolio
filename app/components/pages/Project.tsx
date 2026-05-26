@@ -8,25 +8,27 @@ const Projects = ({
 }: {
   setOpenDetail: (id: string) => void;
 }) => {
-  const projectsRef = useRef([]);
+  const projectsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     projectsRef.current.forEach((project, index) => {
-      gsap.fromTo(
-        project,
-        { x: "-100%", opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.6,
-          delay: index * 0.1,
-          ease: "power2.out",
-        },
-      );
+      if (project) {
+        gsap.fromTo(
+          project,
+          { x: "-100%", opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.6,
+            delay: index * 0.1,
+            ease: "power2.out",
+          },
+        );
+      }
     });
   }, []);
 
-  const addToRefs = (el) => {
+  const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !projectsRef.current.includes(el)) {
       projectsRef.current.push(el);
     }

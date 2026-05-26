@@ -34,17 +34,38 @@ export default function ProjectDetailModal({
             <div className="space-y-4 md:space-y-8">
               <div>
                 <h3 className="text-lg md:text-xl font-semibold mb-2">
-                  Project ID: {projectId}
+                  {project?.app_identity.name}
                 </h3>
                 <p className="text-gray-700 mb-2 md:mb-4 text-sm md:text-base">
-                  {project?.app_identity["name"]}
+                  {project?.app_identity.tagline}
                 </p>
-                <p className="text-gray-700 mb-2 md:mb-4 text-sm md:text-base">
-                  {project?.app_identity["developer"]}
-                </p>
-                <p className="text-gray-700 mb-2 md:mb-4 text-sm md:text-base">
-                  {project?.app_identity["tagline"]}
-                </p>
+              </div>
+              <div className="radial-gradient  flex-row justify-between items-start flex shadow-2xl p-4 gap-2 rounded">
+                <div className="pt-4">
+                  <a
+                    href={project?.app_identity.url || "#"}
+                    target={project?.app_identity.url ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className={`${project?.app_identity.url ? "bg-blue-100 text-sky-400 px-3 py-1 rounded-full font-semibold pointer-coarse" : "text-gray-500 cursor-not-allowed"} hover:underline`}
+                  >
+                    {project?.app_identity.url
+                      ? "Live Demo →"
+                      : "Demo Not Available"}
+                  </a>
+                </div>
+                <div className="flex-col justify-items-start items-start flex p-4 gap-2 rounded">
+                  <h4 className="font-semibold mb-2">Platforms:</h4>
+                  <div className="flex-wrap flex  gap-2 rounded">
+                    {project?.app_identity.platforms.map((platform, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                      >
+                        {platform}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
               <div className="radial-gradient shadow-2xl p-3 md:p-4 rounded-2xl">
                 <h4 className="font-semibold mb-2 text-sm md:text-base">
@@ -54,10 +75,10 @@ export default function ProjectDetailModal({
                   {project &&
                     project.key_features.map((feature, index) => (
                       <li key={index}>
-                        <strong>{feature?.title}</strong>
-                        <p className="ml-5">{feature?.description}</p>
+                        <strong>{feature.title}</strong>
+                        <p className="ml-5">{feature.description}</p>
                         <span className="ml-5 text-sm text-gray-500">
-                          Automation: {feature?.automation_level}
+                          Automation: {feature.automation_level}
                         </span>
                       </li>
                     ))}
@@ -66,30 +87,27 @@ export default function ProjectDetailModal({
               {project && (
                 <div className="radial-gradient shadow-2xl p-4 rounded-2xl">
                   <p className="ml-5 text-sm text-gray-500">
-                    - {project.core_purpose["mission"]}
+                    - {project.core_purpose.mission}
                   </p>
                   <p className="ml-5 text-sm text-gray-500">
-                    - {project.core_purpose["positioning"]}
+                    - {project.core_purpose.positioning}
                   </p>
-                  {project.core_purpose["problem_solved"].map((solve) => (
-                    <p
-                      className="ml-5 text-sm text-gray-500"
-                      key={solve.toString()}
-                    >
-                      - {solve?.toString()}
+                  {project.core_purpose.problem_solved.map((solve, idx) => (
+                    <p className="ml-5 text-sm text-gray-500" key={idx}>
+                      - {typeof solve === "string" ? solve : solve.title}
                     </p>
                   ))}
                 </div>
               )}
               <div className="radial-gradient shadow-2xl p-4  rounded-2xl">
-                <h4 className="font-semibold mb-2">Features:</h4>
+                <h4 className="font-semibold mb-2">Target Audience:</h4>
                 <ul className="list-disc list-inside space-y-1 text-gray-700">
                   {project &&
-                    project.target_audience.map((feature, index) => (
+                    project.target_audience.map((audience, index) => (
                       <li key={index}>
-                        <strong>{feature?.persona}</strong>
+                        <strong>{audience.persona}</strong>
                         <span className="ml-5 text-sm text-gray-500">
-                          {feature?.use_case}
+                          {audience.use_case}
                         </span>
                       </li>
                     ))}
@@ -98,30 +116,6 @@ export default function ProjectDetailModal({
               <span className="ml-5 text-sm text-gray-500">
                 {project?.summary}
               </span>
-
-              <div className="radial-gradient  flex-col justify-items-start items-start flex shadow-2xl p-4 gap-2 rounded">
-                <h4 className="font-semibold mb-2">Technologies:</h4>
-                <div className="flex-wrap flex  gap-2 rounded">
-                  {project?.app_identity.platforms.map((platform) => (
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      {platform.toString()}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <a
-                  href={
-                    project && project.app_identity.url
-                      ? project.app_identity?.url
-                      : ""
-                  }
-                  className={`${project?.app_identity.url} ? text-sky-100: "text-gray-500" hover:underline`}
-                >
-                  View Live Demo →
-                </a>
-              </div>
             </div>
           </div>
         </div>

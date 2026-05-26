@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useRef, useState, lazy, Suspense } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+
+const ProjectGraph = lazy(() => import("./ProjectGraph/index"));
 
 export default function ProjectsMain({
   index,
@@ -13,6 +15,7 @@ export default function ProjectsMain({
   mounted: boolean;
   setMounted: (isOn: boolean) => void;
 }) {
+  const [graphOpen, setGraphOpen] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
   const boxRef = useRef<HTMLDivElement>(null); // useScrollAnimation({ index, length, mounted });
 
@@ -61,12 +64,24 @@ export default function ProjectsMain({
             From e-commerce platforms to interactive dashboards, each project
             showcases attention to detail and innovation.
           </p>
-          <div className="flex gap-2 md:gap-4">
+          <div className="flex gap-2 md:gap-4 flex-wrap">
             <button
               className="border-2 border-gray-600 text-gray-300 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-full text-sm md:text-base font-semibold hover:border-gray-400 hover:text-white transition-colors"
               onClick={() => setMounted(!mounted)}
             >
               Explore More
+            </button>
+            <button
+              className="px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-full text-sm md:text-base font-semibold transition-all"
+              style={{
+                background: "rgba(0, 68, 204, 0.2)",
+                border: "2px solid rgba(0, 100, 255, 0.5)",
+                color: "#88aaff",
+                boxShadow: "0 0 20px rgba(0, 80, 255, 0.2)",
+              }}
+              onClick={() => setGraphOpen(true)}
+            >
+              ✦ Neural Graph View
             </button>
           </div>
           <div className="mt-8 text-sm text-gray-500">
@@ -74,6 +89,13 @@ export default function ProjectsMain({
           </div>
         </div>
       </div>
+
+      {/* 3D Neural Graph Overlay */}
+      {graphOpen && (
+        <Suspense fallback={null}>
+          <ProjectGraph onClose={() => setGraphOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

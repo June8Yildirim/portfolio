@@ -1,7 +1,8 @@
 import type { Config } from "@react-router/dev/config";
 
+const isGHPages = process.env.GITHUB_PAGES === "true";
+
 export default {
-  // Config options...
-  // Server-side render by default, to enable SPA mode set this to `false`
-  ssr: true,
+  ssr: false,
+  ...(isGHPages && { basename: "/portfolio/" }),
 } satisfies Config;

@@ -4,8 +4,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface DetailsModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
 // Modal Component
-export default function DetailsModal({ isOpen, onClose, children }) {
+export default function DetailsModal({ isOpen, onClose, children }: DetailsModalProps) {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef(null);
 

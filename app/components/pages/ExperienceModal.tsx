@@ -4,22 +4,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExperienceCard } from "./ExperienceCard";
 import { experienceData } from "~/constats/experiences";
 import { useGSAP } from "@gsap/react";
+import type { Experience } from "~/types/Experience";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ExperienceSection() {
-  const [expandedId, setExpandedId] = useState(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
   const [filteredExperiences, setFilteredExperiences] =
-    useState(experienceData);
+    useState<Experience[]>(experienceData as Experience[]);
   const [filter, setFilter] = useState("all");
-  const headerRef = useRef(null);
-  const statsRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const filterExperiences =
       filter === "all"
-        ? experienceData
-        : experienceData.filter((exp) => exp.category === filter);
+        ? (experienceData as Experience[])
+        : (experienceData as Experience[]).filter((exp) => exp.category === filter);
     setFilteredExperiences(filterExperiences);
     // Header animation
   }, [filter]);
@@ -52,7 +53,7 @@ export default function ExperienceSection() {
     }
   }, []);
 
-  const toggleExpand = (id) => {
+  const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
