@@ -3,6 +3,7 @@ import { NeuralBackground } from "./Background";
 import Nav from "./Nav";
 import Hero from "./Hero";
 import Projects, { type ProjectsHandle } from "./Projects";
+import Education from "./Education";
 import Experience from "./Experience";
 import Contact from "./Contact";
 
@@ -35,6 +36,10 @@ export default function NeoPortfolio() {
         <div className="h-px mx-8 md:mx-24" style={{ background: "linear-gradient(to right, transparent, rgba(0,100,255,0.25), transparent)" }} />
 
         <Projects ref={projectsRef} />
+
+        <div className="h-px mx-8 md:mx-24" style={{ background: "linear-gradient(to right, transparent, rgba(0,100,255,0.15), transparent)" }} />
+
+        <Education />
 
         <div className="h-px mx-8 md:mx-24" style={{ background: "linear-gradient(to right, transparent, rgba(0,100,255,0.15), transparent)" }} />
 
