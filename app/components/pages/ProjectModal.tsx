@@ -55,14 +55,26 @@ export default function ProjectDetailModal({
                 </div>
                 <div className="flex-col justify-items-start items-start flex p-4 gap-2 rounded">
                   <h4 className="font-semibold mb-2">Platforms:</h4>
-                  <div className="flex-wrap flex  gap-2 rounded">
+                  <div className="flex-wrap flex gap-2 rounded">
                     {project?.app_identity.platforms.map((platform, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
-                      >
-                        {platform}
-                      </span>
+                      platform.link ? (
+                        <a
+                          href={platform.link}
+                          key={idx}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                        >
+                          {platform.name}
+                        </a>
+                      ) : (
+                        <span
+                          key={idx}
+                          className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                        >
+                          {platform.name}
+                        </span>
+                      )
                     ))}
                   </div>
                 </div>

@@ -3,15 +3,16 @@ import { useEffect, useRef, useState } from "react";
 const roles = [
   "FullStack Developer",
   "iOS Developer",
-  "React Native Engineer",
-  "Spring Boot Architect",
+  "Multi-Platform App Developer/React Native",
+  "Spring Boot/Java Developer",
+  "Junior DevOps Engineer",
 ];
 
 const stats = [
   { value: "8+", label: "Projects" },
-  { value: "3+", label: "Years Exp" },
-  { value: "2", label: "App Stores" },
-  { value: "5", label: "Companies" },
+  { value: "5+", label: "Years Exp" },
+  { value: "5", label: "App Stores" },
+  // { value: "5", label: "Companies" },
 ];
 
 export default function Hero({

@@ -314,15 +314,23 @@ export const projects = [
     gradient: "from-violet-600 to-purple-700",
   },
   {
+    title: "WarZone",
+    company: "Cuneyt Yildirim",
+    technologies: ["C++"],
+    id: "13",
+    achievements: [
+      "Engineered a turn-based strategy simulation engine in pure C++, implementing game-state management, player turns, and win-condition evaluation without external frameworks.",
+      "Designed a map and territory system allowing players to conquer, reinforce, and defend regions through strategic troop deployment and attack mechanics.",
+      "Implemented AI opponent logic with rule-based decision trees for automated attack, defend, and fortify actions during computer-controlled turns.",
+      "Architected the game using object-oriented design with clean separation between game engine, player entities, territory models, and UI rendering layers.",
+    ],
+    gradient: "from-red-700 to-slate-800",
+    link: "https://github.com/June8Yildirim/WarZone",
+  },
+  {
     title: "Chores Auction iOS",
     company: "Cuneyt Yildirim",
-    technologies: [
-      "SwiftUI",
-      "Swift",
-      "CoreData",
-      "CloudKit",
-      "Git",
-    ],
+    technologies: ["SwiftUI", "Swift", "CoreData", "CloudKit", "Git"],
     id: "12",
     achievements: [
       "Built a household chore management app using CloudKit public database for real-time team sharing without a custom backend.",
@@ -341,10 +349,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "SaveEasy",
       developer: "Turina Tech",
       platforms: [
-        "Apple App Store",
-        "Google Play Store",
-        "React Native",
-        "Expo",
+        { name: "Apple App Store", link: "https://apps.apple.com/ca/app/saveeasy/id6738876717" },
+        { name: "Google Play Store" },
+        { name: "React Native" },
+        { name: "Expo" }
       ],
       url: "https://apps.apple.com/ca/app/saveeasy/id6738876717",
       tagline: "Personal finance and expense management application",
@@ -433,10 +441,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "VDrivers",
       developer: "Turina Technologies",
       platforms: [
-        "Apple App Store",
-        "Google Play Store",
-        "React Native",
-        "Expo",
+        { name: "Apple App Store" },
+        { name: "Google Play Store" },
+        { name: "React Native" },
+        { name: "Expo" }
       ],
       url: null, // Add URL if available
       tagline:
@@ -523,7 +531,9 @@ export const projectDetail: ProjectDetail[] = [
     app_identity: {
       name: "Restaurant Project",
       developer: "",
-      platforms: ["React"],
+      platforms: [
+        { name: "React" }
+      ],
       url: null, // Add URL if available
       tagline:
         "High-performance food delivery and logistics orchestration platform",
@@ -614,10 +624,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "Booking Bee",
       developer: "Respect Development",
       platforms: [
-        "Apple App Store",
-        "Google Play Store",
-        "React Native",
-        "Expo",
+        { name: "Apple App Store", link: "https://bookingbee-lnw2.onrender.com/profile" },
+        { name: "Google Play Store" },
+        { name: "React Native" },
+        { name: "Expo" },
       ],
       url: "https://bookingbee-lnw2.onrender.com/profile",
       tagline:
@@ -741,7 +751,9 @@ export const projectDetail: ProjectDetail[] = [
     app_identity: {
       name: "Assignment Organizer",
       developer: "Cuneyt Yildirim",
-      platforms: ["iOS (SwiftUI / Swift)"],
+      platforms: [
+        { name: "iOS (SwiftUI / Swift)", link: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892" }
+      ],
       url: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892",
       tagline:
         "Comprehensive assignment management platform with intelligent scheduling, real-time notifications, and seamless CloudKit synchronization",
@@ -985,7 +997,7 @@ export const projectDetail: ProjectDetail[] = [
       authorization: "Runtime permission requests with graceful handling",
     },
     widget_integration: {
-      platform: "WidgetKit",
+      platform: { name: "WidgetKit" },
       sizes: ["systemSmall", "systemMedium", "systemLarge"],
       update_frequency: "Automatic (WidgetKit timeline)",
       data_source: "Shared CoreData store via App Groups",
@@ -1035,7 +1047,9 @@ export const projectDetail: ProjectDetail[] = [
     app_identity: {
       name: "HabitTracking",
       developer: "Cuneyt Yildirim",
-      platforms: ["iOS (SwiftUI / SwiftData)"],
+      platforms: [
+        { name: "iOS (SwiftUI / SwiftData)", link: "https://apps.apple.com/ca/app/habitizer/id6757522855" }
+      ],
       url: "https://apps.apple.com/ca/app/habitizer/id6757522855",
       tagline:
         "Comprehensive habit tracking platform with mood integration, intelligent scheduling, visual analytics, and seamless CloudKit synchronization",
@@ -1284,7 +1298,7 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     technical_architecture: {
-      platform: "iOS",
+      platform: { name: "iOS" },
       minimum_deployment: "iOS 18.5+",
       framework: "SwiftUI",
       language: "Swift 5.0+",
@@ -1757,19 +1771,37 @@ export const projectDetail: ProjectDetail[] = [
       name: "Hotel Management System",
       developer: "Cuneyt Yildirim",
       platforms: [
-        "Web — Admin Portal (Next.js)",
-        "Web — Owner Portal (Next.js)",
-        "Web — Hotel Portal (Next.js)",
-        "Web — Agency Portal (Next.js)",
-        "Mobile — React Native / Expo",
-        "Backend — Node.js / Express",
-        "Infrastructure — Docker / Nginx",
+        {
+          name: "Web — Admin Portal (Next.js)",
+          link: "https://hotel-management-admin-portal-k60x0rpgt.vercel.app/",
+        },
+        {
+          name: "Web — Agency Portal (Next.js)",
+          link: "https://hotel-management-agency-8tjg7fqni-cuneytyildirims-projects.vercel.app",
+        },
+        {
+          name: "Web — Hotel Portal (Next.js)",
+          link: "https://hotel-management-hotel-portal-cb68a3s6i.vercel.app",
+        },
+        {
+          name: "Web — Owner Portal (Next.js)",
+          link: "https://hotel-management-owner-portal-juysl3x9q.vercel.app",
+        },
+        {
+          name: "Web — Web Portal (Next.js)",
+          link: "https://hotel-management-systemwebportal-geav5x8jf.vercel.app/",
+        },
+        { name: "Mobile — React Native / Expo", link: "" },
+        { name: "Backend — Node.js / Express", link: "" },
+        { name: "Infrastructure — Docker / Nginx", link: "" },
       ],
       url: null,
-      tagline: "6-application hotel management ecosystem: 4 Next.js portals + Express API + React Native mobile, orchestrated with Docker Compose and Nginx",
+      tagline:
+        "6-application hotel management ecosystem: 4 Next.js portals + Express API + React Native mobile, orchestrated with Docker Compose and Nginx",
     },
     core_purpose: {
-      mission: "Build a full ecosystem covering every stakeholder in the hotel industry — platform admins, hotel owners, hotel-level staff, travel agencies, and end customers — through purpose-built portals backed by a shared REST API.",
+      mission:
+        "Build a full ecosystem covering every stakeholder in the hotel industry — platform admins, hotel owners, hotel-level staff, travel agencies, and end customers — through purpose-built portals backed by a shared REST API.",
       problem_solved: [
         "No single platform covering all hotel stakeholders (admin, owner, hotel, agency, customer) in one ecosystem",
         "Fragmented role and permission management across hotel branches",
@@ -1778,72 +1810,84 @@ export const projectDetail: ProjectDetail[] = [
         "No mobile customer-facing app connecting to the hotel backend",
         "Complex multi-service deployment requiring manual coordination",
       ],
-      positioning: "A production-grade 6-application monorepo spanning 5 years of active development, with a shared Express/MongoDB API at its core, 4 Next.js web portals for distinct user roles, and a React Native mobile app for end customers — all wired together with Docker Compose and Nginx.",
+      positioning:
+        "A production-grade 6-application monorepo spanning 5 years of active development, with a shared Express/MongoDB API at its core, 4 Next.js web portals for distinct user roles, and a React Native mobile app for end customers — all wired together with Docker Compose and Nginx.",
     },
     key_features: [
       {
         title: "Express REST API — Shared Backend (Port 4000)",
-        description: "Central Node.js/Express server providing all REST endpoints for every portal. Handles authentication (JWT + bcrypt), hotel/branch/room/booking/employee/department CRUD, subscription management, and audit logging. MongoDB + Mongoose with comprehensive schema validation.",
+        description:
+          "Central Node.js/Express server providing all REST endpoints for every portal. Handles authentication (JWT + bcrypt), hotel/branch/room/booking/employee/department CRUD, subscription management, and audit logging. MongoDB + Mongoose with comprehensive schema validation.",
         automation_level: "High",
         technology: "Node.js, Express, MongoDB, Mongoose, JWT, bcrypt",
       },
       {
         title: "Admin Portal — Platform-Level Control (Port 3001)",
-        description: "Next.js dashboard for platform super-admins. Manages all agencies and hotels on the platform, configures global subscription plans and tiers, handles user roles and permissions across all levels, runs data seeders for initial setup, and provides system-wide audit logs.",
+        description:
+          "Next.js dashboard for platform super-admins. Manages all agencies and hotels on the platform, configures global subscription plans and tiers, handles user roles and permissions across all levels, runs data seeders for initial setup, and provides system-wide audit logs.",
         automation_level: "High",
         technology: "Next.js, TypeScript, TailwindCSS, JWT",
       },
       {
         title: "Owner Portal — Hotel Owner Dashboard (Port 3002)",
-        description: "Next.js portal for hotel owners. Full management of branches, room types (with image upload via Cloudinary/local), individual rooms and availability, employee accounts, department creation, and granular permission assignment per employee. Owners can configure which staff members access which hotel features.",
+        description:
+          "Next.js portal for hotel owners. Full management of branches, room types (with image upload via Cloudinary/local), individual rooms and availability, employee accounts, department creation, and granular permission assignment per employee. Owners can configure which staff members access which hotel features.",
         automation_level: "High",
         technology: "Next.js, TypeScript, TailwindCSS, Multipart image upload",
       },
       {
         title: "Hotel Portal — Branch-Level Operations (Port 3003)",
-        description: "Next.js portal for hotel branch staff. Day-to-day hotel management: viewing room availability, processing bookings, updating room statuses, and managing guest check-ins/check-outs. Role-gated views ensure staff only see features their permissions allow.",
+        description:
+          "Next.js portal for hotel branch staff. Day-to-day hotel management: viewing room availability, processing bookings, updating room statuses, and managing guest check-ins/check-outs. Role-gated views ensure staff only see features their permissions allow.",
         automation_level: "Medium",
         technology: "Next.js, TypeScript, TailwindCSS, JWT role middleware",
       },
       {
         title: "Agency Portal — Travel Agency Dashboard (Port 3004)",
-        description: "Next.js portal for travel agencies partnering with hotels. Agencies can view partner hotel inventories, manage guest bookings on behalf of clients, track reservation statuses, and handle agency-specific workflows. NextAuth integration for agency-specific session handling.",
+        description:
+          "Next.js portal for travel agencies partnering with hotels. Agencies can view partner hotel inventories, manage guest bookings on behalf of clients, track reservation statuses, and handle agency-specific workflows. NextAuth integration for agency-specific session handling.",
         automation_level: "Medium",
         technology: "Next.js, TypeScript, NextAuth, TailwindCSS",
       },
       {
         title: "Mobile App — Customer-Facing React Native",
-        description: "Expo React Native app for end customers. Features hotel discovery, room browsing, booking flow, and a favourites system. State managed with Redux + Redux Sagas for complex async booking flows. Connects to the central Express API for all data.",
+        description:
+          "Expo React Native app for end customers. Features hotel discovery, room browsing, booking flow, and a favourites system. State managed with Redux + Redux Sagas for complex async booking flows. Connects to the central Express API for all data.",
         automation_level: "High",
         technology: "React Native, Expo, Redux, Redux Sagas, TypeScript",
       },
       {
         title: "Nginx Reverse Proxy — Unified Routing",
-        description: "Nginx container routes incoming traffic to the appropriate Next.js portal (Admin/Owner/Hotel/Agency) and the Express API — all under a single entry point. Eliminates CORS complexity and simplifies SSL termination.",
+        description:
+          "Nginx container routes incoming traffic to the appropriate Next.js portal (Admin/Owner/Hotel/Agency) and the Express API — all under a single entry point. Eliminates CORS complexity and simplifies SSL termination.",
         automation_level: "High",
         technology: "Nginx, Docker Compose networking",
       },
       {
         title: "Docker Compose Orchestration",
-        description: "Single docker-compose.yml spins up all 6 services (Express API, 4 Next.js portals, Nginx) with isolated networks, shared MongoDB instance, and environment-specific config. Enables one-command full-stack startup for development and production.",
+        description:
+          "Single docker-compose.yml spins up all 6 services (Express API, 4 Next.js portals, Nginx) with isolated networks, shared MongoDB instance, and environment-specific config. Enables one-command full-stack startup for development and production.",
         automation_level: "High",
         technology: "Docker, Docker Compose, multi-stage Dockerfiles",
       },
       {
         title: "Granular RBAC Across Hierarchy",
-        description: "Role and permission engine spanning the Agency→Hotel→Branch hierarchy. Roles are dynamically created and permissions are assigned granularly. A user can have admin rights in one branch and read-only in another. Middleware enforces role checks on every protected endpoint.",
+        description:
+          "Role and permission engine spanning the Agency→Hotel→Branch hierarchy. Roles are dynamically created and permissions are assigned granularly. A user can have admin rights in one branch and read-only in another. Middleware enforces role checks on every protected endpoint.",
         automation_level: "High",
         technology: "MongoDB RBAC models, Express middleware, JWT claims",
       },
       {
         title: "Code Quality Tooling — Husky + Jest",
-        description: "Husky pre-commit hooks enforce linting and type checks across all portals before any commit. Jest test suites cover API controllers and critical business logic across the Express backend and Next.js portals.",
+        description:
+          "Husky pre-commit hooks enforce linting and type checks across all portals before any commit. Jest test suites cover API controllers and critical business logic across the Express backend and Next.js portals.",
         automation_level: "Medium",
         technology: "Husky, lint-staged, Jest, TypeScript",
       },
     ],
     user_experience: {
-      design_philosophy: "Role-specific portals — each stakeholder gets a purpose-built interface with only the controls they need",
+      design_philosophy:
+        "Role-specific portals — each stakeholder gets a purpose-built interface with only the controls they need",
       workflow_steps: [
         "Platform admin registers agencies and configures subscription plans via Admin Portal",
         "Agency creates hotel accounts and assigns owner credentials",
@@ -1855,11 +1899,31 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     target_audience: [
-      { persona: "Platform Administrators", use_case: "Managing agencies, hotels, subscriptions, and system-wide roles via the Admin Portal." },
-      { persona: "Hotel Owners", use_case: "Setting up and managing branches, room inventory, staff, and permissions via the Owner Portal." },
-      { persona: "Hotel Branch Staff", use_case: "Handling bookings, room availability, and guest operations via the Hotel Portal." },
-      { persona: "Travel Agencies", use_case: "Browsing partner hotel inventory and managing guest bookings via the Agency Portal." },
-      { persona: "Hotel Guests", use_case: "Discovering hotels, browsing rooms, and making bookings via the React Native mobile app." },
+      {
+        persona: "Platform Administrators",
+        use_case:
+          "Managing agencies, hotels, subscriptions, and system-wide roles via the Admin Portal.",
+      },
+      {
+        persona: "Hotel Owners",
+        use_case:
+          "Setting up and managing branches, room inventory, staff, and permissions via the Owner Portal.",
+      },
+      {
+        persona: "Hotel Branch Staff",
+        use_case:
+          "Handling bookings, room availability, and guest operations via the Hotel Portal.",
+      },
+      {
+        persona: "Travel Agencies",
+        use_case:
+          "Browsing partner hotel inventory and managing guest bookings via the Agency Portal.",
+      },
+      {
+        persona: "Hotel Guests",
+        use_case:
+          "Discovering hotels, browsing rooms, and making bookings via the React Native mobile app.",
+      },
     ],
     security_and_privacy: {
       authentication_methods: [
@@ -1868,57 +1932,68 @@ export const projectDetail: ProjectDetail[] = [
         "Email/Password with bcrypt hashing",
         "Password reset via time-limited email tokens",
       ],
-      data_encryption: "bcrypt password hashing, JWT signed tokens, HTTPS via Nginx",
-      data_integrity: "Mongoose schema validation, role-gated Express middleware, pre-commit Husky hooks",
+      data_encryption:
+        "bcrypt password hashing, JWT signed tokens, HTTPS via Nginx",
+      data_integrity:
+        "Mongoose schema validation, role-gated Express middleware, pre-commit Husky hooks",
     },
-    summary: "A 5-year, 6-application hotel management ecosystem built as a full monorepo. A central Express/MongoDB REST API powers four purpose-built Next.js portals (Admin, Owner, Hotel, Agency) and a React Native mobile app for customers — all orchestrated with Docker Compose and routed through Nginx. Features granular RBAC across a three-level agency→hotel→branch hierarchy, full booking/room/employee management, subscription plans, audit logging, and enforced code quality via Husky and Jest.",
+    summary:
+      "A 5-year, 6-application hotel management ecosystem built as a full monorepo. A central Express/MongoDB REST API powers four purpose-built Next.js portals (Admin, Owner, Hotel, Agency) and a React Native mobile app for customers — all orchestrated with Docker Compose and routed through Nginx. Features granular RBAC across a three-level agency→hotel→branch hierarchy, full booking/room/employee management, subscription plans, audit logging, and enforced code quality via Husky and Jest.",
   },
   {
     id: "9",
     app_identity: {
       name: "Family Tree",
       developer: "Cuneyt Yildirim",
-      platforms: ["Web (React)", "Netlify"],
+      platforms: [{ name: "Web (React)" }, { name: "Netlify" }],
       url: null,
-      tagline: "Interactive multi-generational family tree visualization with D3.js and member management",
+      tagline:
+        "Interactive multi-generational family tree visualization with D3.js and member management",
     },
     core_purpose: {
-      mission: "Allow families to digitally map and explore their lineage through an interactive, zoomable tree visualization.",
+      mission:
+        "Allow families to digitally map and explore their lineage through an interactive, zoomable tree visualization.",
       problem_solved: [
         "No intuitive visual tool for building and exploring family trees",
         "Manual diagramming tools that don't handle complex sibling/marriage layouts",
         "No type-safe family member CRUD with relationship tracking",
       ],
-      positioning: "A React + D3.js app with TanStack Router and TanStack Query for a fully interactive family tree with real-time updates.",
+      positioning:
+        "A React + D3.js app with TanStack Router and TanStack Query for a fully interactive family tree with real-time updates.",
     },
     key_features: [
       {
         title: "Custom D3.js Tree Layout",
-        description: "Multi-generational tree layout algorithm that positions nodes by generation level, groups siblings, centers married couples, and draws parent-child + marriage connection lines.",
+        description:
+          "Multi-generational tree layout algorithm that positions nodes by generation level, groups siblings, centers married couples, and draws parent-child + marriage connection lines.",
         automation_level: "High",
         technology: "D3.js SVG, custom Fibonacci/level positioning algorithm",
       },
       {
         title: "Zoom & Pan Navigation",
-        description: "D3 zoom behavior with scale extent [0.5x–2x] and auto-centering on initial render for seamless navigation of large trees.",
+        description:
+          "D3 zoom behavior with scale extent [0.5x–2x] and auto-centering on initial render for seamless navigation of large trees.",
         automation_level: "High",
         technology: "d3.zoom, SVG transform, zoomIdentity",
       },
       {
         title: "Member CRUD with Relationships",
-        description: "Add family members with first/last name, birthdate, gender, spouse, parents, and children. Bidirectional relationship resolution (fatherId/motherId + children array).",
+        description:
+          "Add family members with first/last name, birthdate, gender, spouse, parents, and children. Bidirectional relationship resolution (fatherId/motherId + children array).",
         automation_level: "Medium",
         technology: "TanStack Query mutations, React Hook Form",
       },
       {
         title: "Marriage & Sibling Grouping",
-        description: "Married couples are placed side-by-side with a connector line. Siblings are grouped under their shared parents with correct horizontal spacing.",
+        description:
+          "Married couples are placed side-by-side with a connector line. Siblings are grouped under their shared parents with correct horizontal spacing.",
         automation_level: "High",
         technology: "Custom sibling group algorithm, D3 line renderer",
       },
       {
         title: "Type-Safe Routing",
-        description: "TanStack Router with file-based routing and type-safe params for family tree, profile, dashboard, and member management views.",
+        description:
+          "TanStack Router with file-based routing and type-safe params for family tree, profile, dashboard, and member management views.",
         automation_level: "Low",
         technology: "TanStack Router, routeTree.gen.ts",
       },
@@ -1933,67 +2008,88 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     target_audience: [
-      { persona: "Families", use_case: "Documenting and visualizing multi-generational family history." },
-      { persona: "Genealogy Enthusiasts", use_case: "Building a digital, interactive family archive." },
+      {
+        persona: "Families",
+        use_case:
+          "Documenting and visualizing multi-generational family history.",
+      },
+      {
+        persona: "Genealogy Enthusiasts",
+        use_case: "Building a digital, interactive family archive.",
+      },
     ],
     security_and_privacy: {
       data_storage: "Client-side state, future backend integration planned",
-      data_integrity: "TypeScript type guards on Person and FamilyTreeData models",
+      data_integrity:
+        "TypeScript type guards on Person and FamilyTreeData models",
     },
-    summary: "An interactive family tree app built with React, D3.js, and TanStack Router featuring a custom multi-generational layout algorithm, zoom/pan navigation, and full member CRUD with bidirectional relationship resolution.",
+    summary:
+      "An interactive family tree app built with React, D3.js, and TanStack Router featuring a custom multi-generational layout algorithm, zoom/pan navigation, and full member CRUD with bidirectional relationship resolution.",
   },
   {
     id: "10",
     app_identity: {
       name: "GitHub Dev Tracker",
       developer: "Cuneyt Yildirim",
-      platforms: ["Web (React Router SSR)", "Docker"],
+      platforms: [{ name: "Web (React Router SSR)" }, { name: "Docker" }],
       url: null,
-      tagline: "Personal GitHub analytics dashboard with contribution heatmap, streak tracking, and language insights",
+      tagline:
+        "Personal GitHub analytics dashboard with contribution heatmap, streak tracking, and language insights",
     },
     core_purpose: {
-      mission: "Give developers a beautiful, self-hosted dashboard to visualize their GitHub activity, streaks, and language usage without relying on third-party services.",
+      mission:
+        "Give developers a beautiful, self-hosted dashboard to visualize their GitHub activity, streaks, and language usage without relying on third-party services.",
       problem_solved: [
         "GitHub's native contribution graph lacks streak tracking and repo-level insights",
         "No single view combining heatmap, work breakdown, and language distribution",
         "Dependency on third-party tools for personal developer analytics",
       ],
-      positioning: "A server-rendered React Router app using GitHub OAuth + REST/GraphQL APIs to deliver live developer insights.",
+      positioning:
+        "A server-rendered React Router app using GitHub OAuth + REST/GraphQL APIs to deliver live developer insights.",
     },
     key_features: [
       {
         title: "GitHub OAuth SSR Auth",
-        description: "Server-side session management with GitHub OAuth token storage. Loader redirects unauthenticated users and signs them out cleanly.",
+        description:
+          "Server-side session management with GitHub OAuth token storage. Loader redirects unauthenticated users and signs them out cleanly.",
         automation_level: "High",
-        technology: "React Router sessions, GitHub OAuth, cookie-based sessions",
+        technology:
+          "React Router sessions, GitHub OAuth, cookie-based sessions",
       },
       {
         title: "Contribution Heatmap",
-        description: "52-week contribution calendar with color-coded intensity levels (0–4), month labels, and day-of-week axis. Built from GitHub GraphQL API data.",
+        description:
+          "52-week contribution calendar with color-coded intensity levels (0–4), month labels, and day-of-week axis. Built from GitHub GraphQL API data.",
         automation_level: "High",
-        technology: "GitHub GraphQL contributionCalendar, custom Heatmap component",
+        technology:
+          "GitHub GraphQL contributionCalendar, custom Heatmap component",
       },
       {
         title: "Streak Calculator",
-        description: "Algorithm computing current and longest contribution streaks with edge-case handling for today's contributions and yesterday boundaries.",
+        description:
+          "Algorithm computing current and longest contribution streaks with edge-case handling for today's contributions and yesterday boundaries.",
         automation_level: "High",
-        technology: "Custom calculateStreaks() utility, ContributionCalendar data",
+        technology:
+          "Custom calculateStreaks() utility, ContributionCalendar data",
       },
       {
         title: "Work Breakdown Chart",
-        description: "Donut chart showing split between commits, pull requests, issues, and PR reviews from GitHub GraphQL contributionsCollection.",
+        description:
+          "Donut chart showing split between commits, pull requests, issues, and PR reviews from GitHub GraphQL contributionsCollection.",
         automation_level: "Medium",
         technology: "Recharts PieChart, GitHub GraphQL API",
       },
       {
         title: "Top Repositories by Commits",
-        description: "Horizontal bar chart of top 10 repositories ranked by commit count in the current year.",
+        description:
+          "Horizontal bar chart of top 10 repositories ranked by commit count in the current year.",
         automation_level: "Medium",
         technology: "Recharts BarChart, commitContributionsByRepository",
       },
       {
         title: "Language Distribution",
-        description: "Aggregates language bytes across all owned repositories and renders as a donut chart with GitHub's official language colors.",
+        description:
+          "Aggregates language bytes across all owned repositories and renders as a donut chart with GitHub's official language colors.",
         automation_level: "High",
         technology: "GitHub GraphQL languages edges, Recharts PieChart",
       },
@@ -2008,27 +2104,38 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     target_audience: [
-      { persona: "Developers", use_case: "Tracking personal coding activity, streaks, and language habits." },
-      { persona: "Team Leads", use_case: "Self-hosted alternative to third-party GitHub stat tools." },
+      {
+        persona: "Developers",
+        use_case:
+          "Tracking personal coding activity, streaks, and language habits.",
+      },
+      {
+        persona: "Team Leads",
+        use_case: "Self-hosted alternative to third-party GitHub stat tools.",
+      },
     ],
     security_and_privacy: {
       authentication_methods: ["GitHub OAuth"],
-      data_encryption: "Server-side session cookies, token never exposed to client",
+      data_encryption:
+        "Server-side session cookies, token never exposed to client",
       data_integrity: "All data fetched live from GitHub APIs per request",
     },
-    summary: "A self-hosted GitHub analytics dashboard built with React Router SSR, featuring OAuth authentication, a 52-week contribution heatmap, streak calculation, work breakdown and language distribution charts, and a live repository activity feed — all powered by GitHub's REST and GraphQL APIs.",
+    summary:
+      "A self-hosted GitHub analytics dashboard built with React Router SSR, featuring OAuth authentication, a 52-week contribution heatmap, streak calculation, work breakdown and language distribution charts, and a live repository activity feed — all powered by GitHub's REST and GraphQL APIs.",
   },
   {
     id: "11",
     app_identity: {
       name: "Spaced Repetition iOS",
       developer: "Cuneyt Yildirim",
-      platforms: ["iOS (SwiftUI / Swift)", "App Store"],
+      platforms: [{ name: "iOS (SwiftUI / Swift)" }, { name: "App Store" }],
       url: null,
-      tagline: "AI-powered spaced repetition flashcard system with SRS algorithm, LaTeX rendering, Gemini AI card generation, and WidgetKit integration",
+      tagline:
+        "AI-powered spaced repetition flashcard system with SRS algorithm, LaTeX rendering, Gemini AI card generation, and WidgetKit integration",
     },
     core_purpose: {
-      mission: "Help learners memorize and retain complex material using a scientifically-backed spaced repetition algorithm, with AI to automate card creation and rich card types for diverse content.",
+      mission:
+        "Help learners memorize and retain complex material using a scientifically-backed spaced repetition algorithm, with AI to automate card creation and rich card types for diverse content.",
       problem_solved: [
         "Rote memorization without intelligent review scheduling leads to rapid forgetting",
         "Manual flashcard creation is time-consuming for dense study material",
@@ -2036,90 +2143,113 @@ export const projectDetail: ProjectDetail[] = [
         "No home screen widget for at-a-glance review reminders",
         "Limited personalization — no themes, no achievement system, no markdown import",
       ],
-      positioning: "A native iOS SRS app built with SwiftUI and CoreData, integrating Gemini AI for card generation, LaTeX rendering for math/science content, 5 card types, WidgetKit, 7 color themes, and Markdown import/export.",
+      positioning:
+        "A native iOS SRS app built with SwiftUI and CoreData, integrating Gemini AI for card generation, LaTeX rendering for math/science content, 5 card types, WidgetKit, 7 color themes, and Markdown import/export.",
     },
     key_features: [
       {
         title: "Spaced Repetition System (SRS) Algorithm",
-        description: "Custom SRSManager.swift implementing the SRS algorithm with SRSAlgorithm enum. Cards are distributed across four review queues — Critical (overdue), Soon (due today), Stable (scheduled), and Mastered — each stored as a separate CoreData entity to optimize fetch performance.",
+        description:
+          "Custom SRSManager.swift implementing the SRS algorithm with SRSAlgorithm enum. Cards are distributed across four review queues — Critical (overdue), Soon (due today), Stable (scheduled), and Mastered — each stored as a separate CoreData entity to optimize fetch performance.",
         automation_level: "High",
-        technology: "SRSManager.swift, SRSAlgorithm enum, CoreData queue entities",
+        technology:
+          "SRSManager.swift, SRSAlgorithm enum, CoreData queue entities",
       },
       {
         title: "Five Card Types",
-        description: "FlashCard (front/back), True/False (TFBackside), Multiple Choice (MCBackside with distractors), Note (NoteBackside for reference cards), and Fill-in-the-Blank (FIBBackSideView with inline input). Each type has a distinct review interaction tailored to its format.",
+        description:
+          "FlashCard (front/back), True/False (TFBackside), Multiple Choice (MCBackside with distractors), Note (NoteBackside for reference cards), and Fill-in-the-Blank (FIBBackSideView with inline input). Each type has a distinct review interaction tailored to its format.",
         automation_level: "High",
-        technology: "SwiftUI custom card views, CardType enum, CoreData polymorphic models",
+        technology:
+          "SwiftUI custom card views, CardType enum, CoreData polymorphic models",
       },
       {
         title: "Gemini AI Card Generation",
-        description: "GeminiService.swift integrates Google's Gemini API to auto-generate flashcard content from user-provided text prompts or images. Cards are created directly into the current deck without manual entry.",
+        description:
+          "GeminiService.swift integrates Google's Gemini API to auto-generate flashcard content from user-provided text prompts or images. Cards are created directly into the current deck without manual entry.",
         automation_level: "High",
-        technology: "GeminiService.swift, URLSession async/await, Gemini REST API",
+        technology:
+          "GeminiService.swift, URLSession async/await, Gemini REST API",
       },
       {
         title: "LaTeX Rendering",
-        description: "LaTeXText.swift renders mathematical and scientific notation inline within card content, making the app suitable for STEM subjects like calculus, physics, and chemistry.",
+        description:
+          "LaTeXText.swift renders mathematical and scientific notation inline within card content, making the app suitable for STEM subjects like calculus, physics, and chemistry.",
         automation_level: "High",
         technology: "LaTeXText.swift, custom SwiftUI renderer",
       },
       {
         title: "Markdown Import / Export",
-        description: "MarkdownFileHandler and MarkdownExtract parse Markdown files into decks and cards. DeckExporter and CreateMarkDownFile export decks back to Markdown for sharing or backup. Enables interoperability with Obsidian, Notion, and other note tools.",
+        description:
+          "MarkdownFileHandler and MarkdownExtract parse Markdown files into decks and cards. DeckExporter and CreateMarkDownFile export decks back to Markdown for sharing or backup. Enables interoperability with Obsidian, Notion, and other note tools.",
         automation_level: "High",
-        technology: "MarkdownFileHandler, MarkdownExtract, DeckExporter, CreateMarkDownFile",
+        technology:
+          "MarkdownFileHandler, MarkdownExtract, DeckExporter, CreateMarkDownFile",
       },
       {
         title: "Subjects + Decks Organization",
-        description: "Cards are organized into Decks, which belong to Subjects. Users navigate subject → deck → card review sessions. Both Cram review (all cards regardless of schedule) and regular SRS review sessions are supported.",
+        description:
+          "Cards are organized into Decks, which belong to Subjects. Users navigate subject → deck → card review sessions. Both Cram review (all cards regardless of schedule) and regular SRS review sessions are supported.",
         automation_level: "Medium",
-        technology: "CoreData Subject/Deck/Card hierarchy, SwiftUI NavigationStack",
+        technology:
+          "CoreData Subject/Deck/Card hierarchy, SwiftUI NavigationStack",
       },
       {
         title: "WidgetKit Home Screen Widget",
-        description: "WidgetDataWriter writes review queue counts to a shared container. The widget displays pending Critical/Soon card counts on the home screen, prompting users to review without opening the app.",
+        description:
+          "WidgetDataWriter writes review queue counts to a shared container. The widget displays pending Critical/Soon card counts on the home screen, prompting users to review without opening the app.",
         automation_level: "High",
         technology: "WidgetKit, App Groups, WidgetDataWriter.swift",
       },
       {
         title: "7 Color Themes",
-        description: "AppColorScheme struct defines 7 full color themes (primary, secondary, accent, background, text, border, card surface). Users can switch themes globally from settings, with all UI components reacting immediately.",
+        description:
+          "AppColorScheme struct defines 7 full color themes (primary, secondary, accent, background, text, border, card surface). Users can switch themes globally from settings, with all UI components reacting immediately.",
         automation_level: "Low",
-        technology: "AppColorScheme struct, SwiftUI environment, UserDefaults persistence",
+        technology:
+          "AppColorScheme struct, SwiftUI environment, UserDefaults persistence",
       },
       {
         title: "Achievement System",
-        description: "AchievementStore tracks study milestones: cards reviewed, streaks maintained, decks completed. Achievements are displayed in AchievementsView and DeckStatsView, providing gamification and motivation.",
+        description:
+          "AchievementStore tracks study milestones: cards reviewed, streaks maintained, decks completed. Achievements are displayed in AchievementsView and DeckStatsView, providing gamification and motivation.",
         automation_level: "Medium",
         technology: "AchievementStore.swift, CoreData, AchievementsView",
       },
       {
         title: "Camera & Image Card Support",
-        description: "CardImageManager and CameraPickerView allow users to attach photos to cards — capturing diagrams, handwritten notes, or printed text directly from the camera and embedding them into the card content.",
+        description:
+          "CardImageManager and CameraPickerView allow users to attach photos to cards — capturing diagrams, handwritten notes, or printed text directly from the camera and embedding them into the card content.",
         automation_level: "Medium",
-        technology: "CardImageManager.swift, CameraPickerView, UIImagePickerController",
+        technology:
+          "CardImageManager.swift, CameraPickerView, UIImagePickerController",
       },
       {
         title: "Local Push Notifications",
-        description: "NotificationManager schedules daily review reminders and session completion alerts. Notifications respect user-defined review times and are cancelled/rescheduled when review sessions are completed early.",
+        description:
+          "NotificationManager schedules daily review reminders and session completion alerts. Notifications respect user-defined review times and are cancelled/rescheduled when review sessions are completed early.",
         automation_level: "High",
         technology: "UserNotifications framework, NotificationManager.swift",
       },
       {
         title: "Stats & Progress Dashboards",
-        description: "StatsView and DeckStatsView display review history, accuracy rates, cards per session, queue distribution, and streak data. Visual breakdowns help users understand their retention performance over time.",
+        description:
+          "StatsView and DeckStatsView display review history, accuracy rates, cards per session, queue distribution, and streak data. Visual breakdowns help users understand their retention performance over time.",
         automation_level: "High",
-        technology: "Swift Charts, StatsView, DeckStatsView, CoreData aggregation queries",
+        technology:
+          "Swift Charts, StatsView, DeckStatsView, CoreData aggregation queries",
       },
       {
         title: "Multiple Deck View Modes",
-        description: "Decks can be browsed in List, Grid, Stacked (StackedDeckView with layered card fan), or Wheel Picker modes, allowing users to choose the visual layout that suits their study style.",
+        description:
+          "Decks can be browsed in List, Grid, Stacked (StackedDeckView with layered card fan), or Wheel Picker modes, allowing users to choose the visual layout that suits their study style.",
         automation_level: "Low",
         technology: "SwiftUI custom layouts, StackedDeckView, WheelPicker",
       },
     ],
     user_experience: {
-      design_philosophy: "Study-session-first: minimal friction from launch to first card review, with depth available through stats, themes, and AI tooling",
+      design_philosophy:
+        "Study-session-first: minimal friction from launch to first card review, with depth available through stats, themes, and AI tooling",
       workflow_steps: [
         "User creates a Subject and a Deck (or imports a Markdown file)",
         "Cards are added manually, via AI generation (Gemini), or via camera image",
@@ -2132,71 +2262,107 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     target_audience: [
-      { persona: "Students (STEM)", use_case: "Memorizing formulas, definitions, and theorems with LaTeX rendering and AI card generation from lecture notes." },
-      { persona: "Language Learners", use_case: "Building vocabulary decks with spaced repetition for optimal long-term retention." },
-      { persona: "Medical / Law Students", use_case: "Managing thousands of high-volume flashcards with fill-in-the-blank and multiple choice formats." },
-      { persona: "Lifelong Learners", use_case: "Importing Markdown notes from Obsidian/Notion and converting them into SRS review decks." },
+      {
+        persona: "Students (STEM)",
+        use_case:
+          "Memorizing formulas, definitions, and theorems with LaTeX rendering and AI card generation from lecture notes.",
+      },
+      {
+        persona: "Language Learners",
+        use_case:
+          "Building vocabulary decks with spaced repetition for optimal long-term retention.",
+      },
+      {
+        persona: "Medical / Law Students",
+        use_case:
+          "Managing thousands of high-volume flashcards with fill-in-the-blank and multiple choice formats.",
+      },
+      {
+        persona: "Lifelong Learners",
+        use_case:
+          "Importing Markdown notes from Obsidian/Notion and converting them into SRS review decks.",
+      },
     ],
     security_and_privacy: {
-      authentication_methods: ["Local CoreData storage", "iCloud CloudKit sync (optional)"],
-      data_encryption: "CoreData local encryption, CloudKit end-to-end encryption",
-      data_integrity: "CoreData schema validation, SRS queue integrity enforced by SRSManager",
+      authentication_methods: [
+        "Local CoreData storage",
+        "iCloud CloudKit sync (optional)",
+      ],
+      data_encryption:
+        "CoreData local encryption, CloudKit end-to-end encryption",
+      data_integrity:
+        "CoreData schema validation, SRS queue integrity enforced by SRSManager",
     },
-    summary: "A feature-rich native iOS spaced repetition app built with SwiftUI and CoreData, implementing a custom SRS algorithm across four review queues (Critical, Soon, Stable, Mastered). Supports five card types including LaTeX, fill-in-the-blank, and multiple choice. Integrates Gemini AI for automatic card generation, Markdown import/export for Obsidian/Notion interoperability, WidgetKit for home screen review prompts, 7 color themes, an achievement system, camera image support, and comprehensive stats dashboards.",
+    summary:
+      "A feature-rich native iOS spaced repetition app built with SwiftUI and CoreData, implementing a custom SRS algorithm across four review queues (Critical, Soon, Stable, Mastered). Supports five card types including LaTeX, fill-in-the-blank, and multiple choice. Integrates Gemini AI for automatic card generation, Markdown import/export for Obsidian/Notion interoperability, WidgetKit for home screen review prompts, 7 color themes, an achievement system, camera image support, and comprehensive stats dashboards.",
   },
   {
     id: "12",
     app_identity: {
       name: "Chores Auction iOS",
       developer: "Cuneyt Yildirim",
-      platforms: ["iOS (SwiftUI / Swift)", "App Store"],
+      platforms: [{ name: "iOS (SwiftUI / Swift)" }, { name: "App Store" }],
       url: null,
-      tagline: "Household chore management with CloudKit team sharing, join codes, and real-time assignment tracking",
+      tagline:
+        "Household chore management with CloudKit team sharing, join codes, and real-time assignment tracking",
     },
     core_purpose: {
-      mission: "Remove the friction from household chore coordination by giving families and flatmates a shared, real-time chore board accessible to all team members without requiring accounts or a custom backend.",
+      mission:
+        "Remove the friction from household chore coordination by giving families and flatmates a shared, real-time chore board accessible to all team members without requiring accounts or a custom backend.",
       problem_solved: [
         "Household chores are assigned informally with no visibility or accountability",
         "Existing task apps are personal — not built for shared household use without backend complexity",
         "No easy way to join a shared household workspace on iOS without a sign-in flow",
         "Offline-first requirement: chores need to be accessible even without connectivity",
       ],
-      positioning: "A native iOS SwiftUI app using CloudKit's public database as a zero-backend shared workspace, with team join codes for frictionless onboarding and CoreData for offline-first local storage.",
+      positioning:
+        "A native iOS SwiftUI app using CloudKit's public database as a zero-backend shared workspace, with team join codes for frictionless onboarding and CoreData for offline-first local storage.",
     },
     key_features: [
       {
         title: "CloudKit Public Database Team Sharing",
-        description: "Uses CloudKit's public record zone — not the private iCloud container — so all team members share the same chore board in real time without individual iCloud accounts needing to be linked. All chore records include a teamId field for multi-team isolation.",
+        description:
+          "Uses CloudKit's public record zone — not the private iCloud container — so all team members share the same chore board in real time without individual iCloud accounts needing to be linked. All chore records include a teamId field for multi-team isolation.",
         automation_level: "High",
-        technology: "CloudKit CKDatabase.publicCloudDatabase, CKRecord, teamId field",
+        technology:
+          "CloudKit CKDatabase.publicCloudDatabase, CKRecord, teamId field",
       },
       {
         title: "Team Join Codes",
-        description: "Households generate a unique share code. Other members enter the code to join the team's shared workspace. Team membership is stored in CloudKit with the teamId tying all records together.",
+        description:
+          "Households generate a unique share code. Other members enter the code to join the team's shared workspace. Team membership is stored in CloudKit with the teamId tying all records together.",
         automation_level: "High",
-        technology: "CloudKit record queries, teamId-based filtering, share code generation",
+        technology:
+          "CloudKit record queries, teamId-based filtering, share code generation",
       },
       {
         title: "Chore Assignment Tracking",
-        description: "Each chore record has an assignedPerson field. Team members can claim or assign chores, mark them complete, and see who is responsible for each task in real time.",
+        description:
+          "Each chore record has an assignedPerson field. Team members can claim or assign chores, mark them complete, and see who is responsible for each task in real time.",
         automation_level: "Medium",
-        technology: "CKRecord assignedPerson field, SwiftUI list views, CloudKit fetch + save",
+        technology:
+          "CKRecord assignedPerson field, SwiftUI list views, CloudKit fetch + save",
       },
       {
         title: "CoreData Offline-First Storage",
-        description: "Chores are mirrored into CoreData for full offline access. Users can view and update their local chore state without connectivity, with changes synced to CloudKit when back online.",
+        description:
+          "Chores are mirrored into CoreData for full offline access. Users can view and update their local chore state without connectivity, with changes synced to CloudKit when back online.",
         automation_level: "High",
-        technology: "CoreData NSPersistentContainer, sync bridge between CoreData and CloudKit",
+        technology:
+          "CoreData NSPersistentContainer, sync bridge between CoreData and CloudKit",
       },
       {
         title: "Privacy-First Architecture",
-        description: "No custom backend server, no user accounts, no email collection. CloudKit handles all persistence with Apple's privacy guarantees. Includes a full in-app Privacy Policy screen as required for App Store submission.",
+        description:
+          "No custom backend server, no user accounts, no email collection. CloudKit handles all persistence with Apple's privacy guarantees. Includes a full in-app Privacy Policy screen as required for App Store submission.",
         automation_level: "Low",
-        technology: "CloudKit, SwiftUI Privacy Policy view, no third-party analytics",
+        technology:
+          "CloudKit, SwiftUI Privacy Policy view, no third-party analytics",
       },
     ],
     user_experience: {
-      design_philosophy: "Zero-friction onboarding — create or join a team in seconds, then see the shared chore board immediately",
+      design_philosophy:
+        "Zero-friction onboarding — create or join a team in seconds, then see the shared chore board immediately",
       workflow_steps: [
         "First user creates a household team and receives a share code",
         "Other members open the app and enter the share code to join",
@@ -2207,15 +2373,116 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     target_audience: [
-      { persona: "Families", use_case: "Assigning and tracking household chores among family members with real-time visibility." },
-      { persona: "Flatmates / Roommates", use_case: "Coordinating shared living space responsibilities without a group chat." },
-      { persona: "Small Shared Households", use_case: "Replacing informal verbal chore agreements with a transparent digital board." },
+      {
+        persona: "Families",
+        use_case:
+          "Assigning and tracking household chores among family members with real-time visibility.",
+      },
+      {
+        persona: "Flatmates / Roommates",
+        use_case:
+          "Coordinating shared living space responsibilities without a group chat.",
+      },
+      {
+        persona: "Small Shared Households",
+        use_case:
+          "Replacing informal verbal chore agreements with a transparent digital board.",
+      },
     ],
     security_and_privacy: {
-      authentication_methods: ["No account required — CloudKit public database access via team join code"],
-      data_encryption: "CloudKit server-side encryption, data transmitted over TLS",
-      data_integrity: "CoreData local validation, teamId-scoped CloudKit queries prevent cross-team data leaks",
+      authentication_methods: [
+        "No account required — CloudKit public database access via team join code",
+      ],
+      data_encryption:
+        "CloudKit server-side encryption, data transmitted over TLS",
+      data_integrity:
+        "CoreData local validation, teamId-scoped CloudKit queries prevent cross-team data leaks",
     },
-    summary: "A native iOS household chore management app built with SwiftUI, CoreData, and CloudKit's public database. Households create a team and share a join code — no accounts required. All chores are synced in real time across team members via CloudKit with CoreData providing offline-first access. Chores track an assignedPerson field and a teamId for multi-household isolation, with a privacy-first architecture that uses no custom backend and no user tracking.",
+    summary:
+      "A native iOS household chore management app built with SwiftUI, CoreData, and CloudKit's public database. Households create a team and share a join code — no accounts required. All chores are synced in real time across team members via CloudKit with CoreData providing offline-first access. Chores track an assignedPerson field and a teamId for multi-household isolation, with a privacy-first architecture that uses no custom backend and no user tracking.",
+  },
+  {
+    id: "13",
+    app_identity: {
+      name: "WarZone",
+      developer: "Cuneyt Yildirim",
+      platforms: [{ name: "C++ (Console / Desktop)", link: "https://github.com/June8Yildirim/WarZone" }],
+      url: "https://github.com/June8Yildirim/WarZone",
+      tagline: "Turn-based strategy war simulation built entirely in C++",
+    },
+    core_purpose: {
+      mission:
+        "Simulate a competitive territorial conquest game where players and AI opponents fight for map dominance through strategic troop deployment, attacks, and fortification.",
+      problem_solved: [
+        "No lightweight, dependency-free war strategy simulator written in pure C++",
+        "Demonstrating OOP design and game-state management without game engines",
+        "Implementing AI decision logic from scratch using rule-based strategies",
+      ],
+      positioning:
+        "A pure C++ strategy simulation showcasing game engine design, OOP architecture, AI opponent logic, and map/territory systems without any external libraries or frameworks.",
+    },
+    key_features: [
+      {
+        title: "Turn-Based Game Engine",
+        description:
+          "Core game loop managing player turns, phase transitions (reinforcement, attack, fortify), and win-condition evaluation across all active players.",
+        automation_level: "High",
+        technology: "C++ game loop, state machine, turn management",
+      },
+      {
+        title: "Territory & Map System",
+        description:
+          "Continent and territory graph model where territories track owner, troop count, and adjacency. Players can attack adjacent enemy territories and fortify owned ones.",
+        automation_level: "High",
+        technology: "C++ graph/adjacency list, Territory and Continent classes",
+      },
+      {
+        title: "AI Opponent Logic",
+        description:
+          "Computer-controlled players use rule-based decision trees to choose reinforce, attack, and fortify actions automatically during their turns.",
+        automation_level: "High",
+        technology: "C++ strategy pattern, rule-based AI, polymorphic Player classes",
+      },
+      {
+        title: "Object-Oriented Architecture",
+        description:
+          "Clean separation into Game, Player, Map, Territory, and Order classes. Command pattern for player orders (DeployOrder, AdvanceOrder, etc.) enables extensibility.",
+        automation_level: "Medium",
+        technology: "C++ OOP, command pattern, inheritance hierarchies",
+      },
+      {
+        title: "Order Execution System",
+        description:
+          "Players issue orders (Deploy, Advance, Bomb, Blockade, Airlift, Negotiate) which are queued and executed in priority order each turn, with validation against game state.",
+        automation_level: "High",
+        technology: "C++ order queue, polymorphic Order base class, priority execution",
+      },
+    ],
+    user_experience: {
+      design_philosophy: "Console-driven, rules-faithful Risk-style simulation",
+      workflow_steps: [
+        "Game loads a map file and assigns territories to players",
+        "Each player receives initial reinforcements based on territory count",
+        "Players issue orders: deploy troops, attack, fortify, or use cards",
+        "Orders are executed in sequence and results are displayed",
+        "The game continues until one player controls all territories",
+      ],
+    },
+    target_audience: [
+      {
+        persona: "C++ Learners",
+        use_case: "Studying OOP design, polymorphism, and game-state management in C++.",
+      },
+      {
+        persona: "Strategy Game Fans",
+        use_case: "Playing a Risk-style conquest simulation from the terminal.",
+      },
+    ],
+    security_and_privacy: {
+      data_storage: "Local file-based map loading, no network or user data",
+      data_integrity: "Order validation against live game state before execution",
+    },
+    summary:
+      "A pure C++ turn-based strategy war simulation implementing a full game engine with territory/continent maps, multi-player turns, a command-pattern order system, and rule-based AI opponents — built entirely without external libraries to demonstrate object-oriented design and game-state management.",
   },
 ];

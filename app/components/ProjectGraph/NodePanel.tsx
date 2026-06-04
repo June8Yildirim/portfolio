@@ -154,14 +154,27 @@ export default function NodePanel({ node, onClose }: Props) {
                     PLATFORMS
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {node.detail.app_identity.platforms.map((p) => (
-                      <span
-                        key={p}
-                        className="px-2 py-1 rounded text-xs"
-                        style={{ background: "rgba(0,30,80,0.6)", color: "#aabbff", border: "1px solid rgba(100,150,255,0.2)" }}
-                      >
-                        {p}
-                      </span>
+                    {node.detail.app_identity.platforms.map((p, idx) => (
+                      p.link ? (
+                        <a
+                          key={idx}
+                          href={p.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-2 py-1 rounded text-xs transition-colors hover:bg-blue-900/40"
+                          style={{ background: "rgba(0,30,80,0.6)", color: "#aabbff", border: "1px solid rgba(100,150,255,0.2)" }}
+                        >
+                          {p.name}
+                        </a>
+                      ) : (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 rounded text-xs"
+                          style={{ background: "rgba(0,30,80,0.6)", color: "#aabbff", border: "1px solid rgba(100,150,255,0.2)" }}
+                        >
+                          {p.name}
+                        </span>
+                      )
                     ))}
                   </div>
                 </div>

@@ -29,9 +29,12 @@ export interface Notifications {
   management: string;
   authorization: string;
 }
-
+export interface Platform {
+  name: string;
+  link?: string;
+}
 export interface WidgetIntegration {
-  platform: string;
+  platform: Platform;
   sizes: string[];
   update_frequency: string;
   data_source: string;
@@ -42,7 +45,7 @@ export interface WidgetIntegration {
 export interface AppIdentity {
   name: string;
   developer: string;
-  platforms: string[];
+  platforms: Platform[];
   url: string | null;
   tagline: string;
 }
@@ -79,7 +82,7 @@ export interface UserExperience {
 }
 
 export interface TechnicalArchitecture {
-  platform: string;
+  platform: Platform;
   minimum_deployment?: string;
   framework: string;
   language: string;
@@ -229,7 +232,7 @@ export interface ProjectMetadata {
   id: string;
   name: string;
   developer: string;
-  platform: string;
+  platform: Platform;
   summary: string;
 }
 

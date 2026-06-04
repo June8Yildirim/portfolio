@@ -61,6 +61,7 @@ const CARDS = [
       "React",
       "Next.js",
       "Spring Boot",
+      "TypeScript",
       "CI/CD",
       "Node.js",
       "Docker",
