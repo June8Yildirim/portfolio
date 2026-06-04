@@ -1,0 +1,105 @@
+{
+  "domains": [
+    {
+      "id": 1,
+      "index": "01",
+      "label": "LANGUAGE",
+      "title": "TypeScript",
+      "accent": "#3178c6",
+      "repos": [
+        { "name": "Development Tracker", "language": "TypeScript" },
+        { "name": "Family Tree", "language": "TypeScript" },
+        { "name": "garage bonne prix", "language": "TypeScript" },
+        { "name": "Booking Room", "language": "TypeScript" },
+        { "name": "election-vite-nodejs-ts", "language": "TypeScript" },
+        { "name": "azure-typescript-e2e-apps", "language": "TypeScript" },
+        { "name": "Booking Bee", "language": "TypeScript" },
+        { "name": "portfolio", "language": "TypeScript" }
+      ]
+    },
+    {
+      "id": 2,
+      "index": "02",
+      "label": "FRAMEWORK",
+      "title": "React Native",
+      "accent": "#61dafb",
+      "repos": [
+        { "name": "Pizza Order App", "language": "TypeScript" },
+        { "name": "Save&Eas", "language": "Kotlin" }
+      ]
+    },
+    {
+      "id": 3,
+      "index": "03",
+      "label": "PLATFORM",
+      "title": "Swift / SwiftUI",
+      "accent": "#fa7343",
+      "repos": [
+        { "name": "Assignment ManagerApp", "language": "Swift" },
+        { "name": "Spaced Repetition", "language": "Swift" },
+        { "name": "Budget Organizer", "language": "Swift" },
+        { "name": "Budget Manager", "language": "Swift" },
+        { "name": "tracking manager", "language": "Swift" },
+        { "name": "Diet Organizer", "language": "Swift" },
+        { "name": "assignment manager", "language": "Swift" },
+        { "name": "chores action", "language": "Swift" }
+      ]
+    },
+    {
+      "id": 4,
+      "index": "04",
+      "label": "FRAMEWORK",
+      "title": "Next.js",
+      "accent": "#00d0aa",
+      "repos": [
+        { "name": "Hotel Management System", "language": "TypeScript" },
+        { "name": "Hotel Management", "language": "TypeScript" },
+        { "name": "hypo-campus", "language": "TypeScript" },
+        { "name": "new chapter usa", "language": "TypeScript" }
+      ]
+    },
+    {
+      "id": 5,
+      "index": "05",
+      "label": "LANGUAGE / FRAMEWORK",
+      "title": "Java / Spring Boot",
+      "accent": "#6db33f",
+      "repos": [
+        { "name": "vprofile-project", "language": "Java" },
+        { "name": "346Assignments", "language": "Java" },
+        { "name": "353A1", "language": "Java" },
+        { "name": "Algorithm352", "language": "Java" },
+        { "name": "Design Patterns", "language": "Java" },
+        { "name": "piano Song UI", "language": "Java" },
+        { "name": "LordOfTheRingsTextBasedGameV2", "language": "Java" },
+        { "name": "TextBasedGameRepository", "language": "Java" }
+      ]
+    },
+    {
+      "id": 6,
+      "index": "06",
+      "label": "LANGUAGE",
+      "title": "C++",
+      "accent": "#f34b7d",
+      "repos": [
+        { "name": "War Zone", "language": "C++" },
+        { "name": "Tetromino", "language": "C++" }
+      ]
+    },
+    {
+      "id": 7,
+      "index": "07",
+      "label": "DEVOPS",
+      "title": "Docker",
+      "accent": "#2496ed",
+      "repos": [
+        { "name": "devops practise", "language": "TypeScript" },
+        { "name": "vprofile-project", "language": "Java" },
+        { "name": "Nasa CICD", "language": "JavaScript" },
+        { "name": "BashScripts", "language": "Shell" },
+        { "name": "100-Days-of-Cloud", "language": "Python" },
+        { "name": "azure-typescript-e2e-apps", "language": "TypeScript" }
+      ]
+    }
+  ]
+}

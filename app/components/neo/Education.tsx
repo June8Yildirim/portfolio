@@ -1,390 +1,387 @@
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+"use client";
+import { useState } from "react";
+import domainData from "~/constats/domainRepos.json";
 
-gsap.registerPlugin(ScrollTrigger);
+type Repo = { name: string; language: string | null };
 
-const CARDS = [
-  {
-    id: 1,
-    index: "01",
-    label: "BACHELOR'S DEGREE",
-    title: "Computer Science",
-    institution: "Concordia University",
-    period: "Jan 2024 — Jun 2029",
-    location: "Montreal, QC",
-    description:
-      "Bachelor's degree in Computer Science building advanced knowledge across algorithms, software architecture, artificial intelligence, and computer systems design. Developing the theoretical depth behind production-grade engineering.",
-    tags: [
-      "C/C++",
-      "Data Structures",
-      "Algorithms",
-      "Software Engineering",
-      "AI & ML",
-      "Computer Systems",
-      "Concurrency",
-    ],
-    accent: "#4488ff",
-  },
-  {
-    id: 2,
-    index: "02",
-    label: "APPLE PLATFORM",
-    title: "iOS & SwiftUI Engineering",
-    institution: "Apple Developer Program · Self-Directed",
-    period: "2024 — Present",
-    location: "Montreal, QC",
-    description:
-      "Deep expertise in Apple's native ecosystem — SwiftUI, CoreData, CloudKit, WidgetKit, and the App Store submission pipeline. Shipped multiple apps to the App Store with 5-star UX standards.",
-    tags: [
-      "SwiftUI",
-      "CoreData",
-      "CloudKit",
-      "WidgetKit",
-      "Gemini AI",
-      "LaTeX",
-    ],
-    accent: "#6655ff",
-  },
-  {
-    id: 3,
-    index: "03",
-    label: "WEB & FULLSTACK",
-    title: "Full Stack Engineering",
-    institution: "Industry Experience · Self-Directed",
-    period: "2023 — Present",
-    location: "Remote",
-    description:
-      "End-to-end web application development across the JavaScript and JVM stacks. From Next.js SSR to Spring Boot microservices, MongoDB schemas to Docker Compose orchestration.",
-    tags: [
-      "React",
-      "Next.js",
-      "Spring Boot",
-      "TypeScript",
-      "CI/CD",
-      "Node.js",
-      "Docker",
-      ".Net",
-      "SQL/NoSQL",
-    ],
-    accent: "#0099ff",
-  },
-  {
-    id: 4,
-    index: "04",
-    label: "CROSS-PLATFORM MOBILE",
-    title: "React Native & Expo",
-    institution: "Industry Experience",
-    period: "2023 — Present",
-    location: "Remote",
-    description:
-      "Production-grade cross-platform mobile development shipped to both the App Store and Google Play. Real-time Firebase, TanStack Query, Redux Sagas, and FCM push notifications.",
-    tags: [
-      "React Native",
-      "Expo",
-      "Firebase",
-      "Redux",
-      "Zustand",
-      "TanStack Query",
-    ],
-    accent: "#00bbff",
-  },
-  {
-    id: 5,
-    index: "05",
-    label: "DIPLOMA OF COLLEGE STUDIES",
-    title: "Computer Science",
-    institution: "Dawson College",
-    period: "Aug 2020 — Jun 2024",
-    location: "Montreal, QC",
-    description:
-      "Diploma of College Studies (DCS) in Computer Science covering full-stack web development, mobile engineering, databases, and modern DevOps practices. The foundation for shipping production apps across iOS, Android, and Web.",
-    tags: [
-      "Git",
-      "CI/CD",
-      "React",
-      "Node.js",
-      "Docker",
-      "SQL",
-      "Linux",
-      "Java",
-      "REST APIs",
-      "Agile",
-    ],
-    accent: "#6655ff",
-  },
-  {
-    id: 6,
-    index: "06",
-    label: "DIPLOMA OF VOCATIONAL STUDIES",
-    title: "Computer & Information Sciences",
-    institution: "Pearson Electrotechnology Centre (PEC)",
-    period: "Aug 2018 — Apr 2020",
-    location: "Montreal, QC",
-    description:
-      "Diploma of Vocational Studies (DVS) in Computer and Information Sciences and Support Services. Hands-on training in networking infrastructure, hardware maintenance, and enterprise IT system support.",
-    tags: ["Networking", "Computer Maintenance", "IT Support"],
-    accent: "#0099ff",
-  },
-];
+type Domain = {
+  id: number;
+  index: string;
+  label: string;
+  title: string;
+  accent: string;
+  repos: Repo[];
+};
+
+const DOMAINS: Domain[] = domainData.domains as Domain[];
+
+const LANG_COLORS: Record<string, string> = {
+  "C++": "#f34b7d",
+  Swift: "#fa7343",
+  TypeScript: "#3178c6",
+  JavaScript: "#f1e05a",
+  Java: "#b07219",
+  Kotlin: "#a97bff",
+  "C#": "#178600",
+  Python: "#3572A5",
+  HTML: "#e34c26",
+  CSS: "#563d7c",
+  Shell: "#89e051",
+  Go: "#00add8",
+};
+
+const SUMMARY =
+  "Full-stack engineer with 5+ years building and shipping production systems across iOS, web, and mobile. Worked across 3 companies shipping 15+ applications — from native SwiftUI apps on the App Store to Spring Boot backends, React Native platforms, and Next.js portals. Each domain below reflects repositories from my GitHub.";
 
 export default function Education() {
-  const pinRef = useRef<HTMLDivElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const listItems = gsap.utils.toArray<HTMLElement>(".edu-list-item");
-      const slides = gsap.utils.toArray<HTMLElement>(".edu-slide");
-      const fill = fillRef.current;
-      if (!fill || listItems.length === 0) return;
-
-      // Initial states
-      gsap.set(fill, {
-        scaleY: 1 / listItems.length,
-        transformOrigin: "top left",
-      });
-      gsap.set(slides, { autoAlpha: 0 });
-      gsap.set(listItems, { color: "rgba(0,70,160,0.35)" });
-
-      // First item + slide active by default
-      gsap.set(listItems[0], { color: "#4488ff" });
-      gsap.set(slides[0], { autoAlpha: 1 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pinRef.current,
-          start: "top top",
-          end: "+=" + listItems.length * 50 + "%",
-          pin: true,
-          scrub: true,
-        },
-      });
-
-      listItems.forEach((item, i) => {
-        const prevItem = listItems[i - 1];
-        if (prevItem) {
-          tl.set(item, { color: "#4488ff" }, 0.5 * i)
-            .to(slides[i], { autoAlpha: 1, duration: 0.2 }, "<")
-            .set(prevItem, { color: "rgba(0,70,160,0.35)" }, "<")
-            .to(slides[i - 1], { autoAlpha: 0, duration: 0.2 }, "<");
-        }
-      });
-
-      tl.to(
-        fill,
-        {
-          scaleY: 1,
-          transformOrigin: "top left",
-          ease: "none",
-          duration: tl.duration(),
-        },
-        0,
-      ).to({}, {}); // small pause before un-pin
-    },
-    { scope: pinRef },
-  );
+  const [activeId, setActiveId] = useState<number | null>(null);
+  const activeDomain = DOMAINS.find((d) => d.id === activeId) ?? null;
 
   return (
-    <section id="education">
-      {/* Pinned container */}
+    <section
+      id="education"
+      className="relative overflow-hidden"
+      style={{ background: "#050510", minHeight: "100vh" }}
+    >
+      {/* PCB dot-grid */}
       <div
-        ref={pinRef}
-        className="relative overflow-hidden"
-        style={{ height: "100vh", background: "#050510" }}
-      >
-        {/* PCB dot-grid */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(0,80,200,0.06) 1px, transparent 1px)",
-            backgroundSize: "22px 22px",
-          }}
-        />
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(0,80,200,0.06) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
 
-        {/* Header */}
-        <div className="absolute top-10 inset-x-0 text-center pointer-events-none">
-          <p
-            className="text-xs font-mono tracking-[0.25em] uppercase mb-2"
-            style={{ color: "#4488ff" }}
-          >
-            Background
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Education
-          </h2>
+      {/* Header */}
+      <div className="pt-16 pb-4 text-center relative z-10">
+        <p
+          className="text-xs font-mono tracking-[0.25em] uppercase mb-2"
+          style={{ color: "#4488ff" }}
+        >
+          Background
+        </p>
+        <h2 className="text-3xl md:text-4xl font-bold text-white">
+          Core GitHub Repos Domains
+        </h2>
+      </div>
+
+      {/* Main layout */}
+      <div className="relative z-10 flex flex-col md:flex-row gap-6 px-6 md:px-14 pt-8 pb-16 max-w-7xl mx-auto">
+        {/* ── Left: content panel ── */}
+        <div className="flex-1 min-h-[520px]">
+          {!activeDomain ? (
+            <SummaryPanel />
+          ) : (
+            <ReposPanel domain={activeDomain} />
+          )}
         </div>
 
-        {/* Main content */}
-        <div className="flex h-full items-center justify-center px-6 md:px-16 gap-10 md:gap-20 max-w-6xl mx-auto pt-24">
-          {/* ── Left: fill bar + list ── */}
-          <div className="flex gap-5 md:gap-8 items-start shrink-0">
-            {/* Fill bar track + fill */}
-            <div
-              className="relative rounded-full overflow-hidden"
-              style={{
-                width: 2,
-                height: CARDS.length * 72,
-                background: "rgba(0,50,130,0.18)",
-              }}
-            >
-              <div
-                ref={fillRef}
-                className="absolute top-0 inset-x-0 rounded-full"
+        {/* ── Right: domain buttons ── */}
+        <div className="md:w-64 shrink-0 flex flex-col gap-2">
+          {DOMAINS.map((domain) => {
+            const isActive = domain.id === activeId;
+            return (
+              <button
+                key={domain.id}
+                onClick={() => setActiveId(isActive ? null : domain.id)}
+                className="w-full text-left px-4 py-3 rounded-xl transition-all duration-200"
                 style={{
-                  height: "100%",
-                  background: "linear-gradient(to bottom, #4488ff, #0066ff)",
-                  boxShadow: "0 0 8px rgba(0,120,255,0.5)",
-                  transformOrigin: "top",
+                  background: isActive
+                    ? `${domain.accent}14`
+                    : "rgba(4,10,26,0.7)",
+                  border: `1px solid ${isActive ? domain.accent + "55" : "rgba(0,50,130,0.2)"}`,
+                  boxShadow: isActive
+                    ? `0 0 20px ${domain.accent}18, inset 0 1px 0 ${domain.accent}18`
+                    : "none",
+                  cursor: "pointer",
                 }}
-              />
-            </div>
-
-            {/* List */}
-            <ul className="space-y-6">
-              {CARDS.map((card) => (
-                <li
-                  key={card.id}
-                  className="edu-list-item"
-                  style={{
-                    color: "rgba(0,70,160,0.35)",
-                    transition: "color 0.15s",
-                  }}
-                >
-                  <span
-                    className="block text-xs font-mono mb-0.5"
-                    style={{ opacity: 0.6, letterSpacing: "0.1em" }}
-                  >
-                    {card.index}
-                  </span>
-                  <span className="block font-semibold text-sm md:text-base leading-tight max-w-[180px]">
-                    {card.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Right: slides ── */}
-          <div
-            className="relative flex-1"
-            style={{ height: "58vh", maxHeight: 520 }}
-          >
-            {CARDS.map((card) => (
-              <div
-                key={card.id}
-                className="edu-slide absolute inset-0"
-                style={{ visibility: "hidden" }}
               >
-                <div
-                  className="h-full rounded-2xl p-7 md:p-10 flex flex-col justify-between relative overflow-hidden"
-                  style={{
-                    background: "rgba(4, 10, 26, 0.9)",
-                    border: `1px solid ${card.accent}44`,
-                    backdropFilter: "blur(16px)",
-                    boxShadow: `0 0 48px ${card.accent}12, inset 0 1px 0 ${card.accent}14`,
-                  }}
-                >
-                  {/* Top shimmer */}
-                  <div
-                    className="absolute inset-x-0 top-0 h-px"
-                    style={{
-                      background: `linear-gradient(to right, transparent, ${card.accent}88, transparent)`,
-                    }}
-                  />
-
-                  {/* Corner accents */}
-                  <div
-                    className="absolute top-4 right-4 w-5 h-5"
-                    style={{
-                      borderTop: `1px solid ${card.accent}44`,
-                      borderRight: `1px solid ${card.accent}44`,
-                    }}
-                  />
-                  <div
-                    className="absolute bottom-4 left-4 w-5 h-5"
-                    style={{
-                      borderBottom: `1px solid ${card.accent}28`,
-                      borderLeft: `1px solid ${card.accent}28`,
-                    }}
-                  />
-
-                  {/* Large background index */}
+                <div className="flex items-center gap-3">
                   <span
-                    className="absolute bottom-6 right-8 font-mono font-bold select-none pointer-events-none"
+                    className="text-xs font-mono shrink-0"
                     style={{
-                      fontSize: 96,
-                      lineHeight: 1,
-                      color: `${card.accent}0d`,
-                      letterSpacing: "-0.05em",
+                      color: isActive ? domain.accent : "rgba(0,70,160,0.35)",
                     }}
                   >
-                    {card.index}
+                    {domain.index}
                   </span>
 
-                  {/* Top section */}
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <span
-                      className="inline-block text-xs font-mono tracking-[0.18em] px-2 py-1 rounded mb-5"
+                      className="block text-[10px] font-mono tracking-[0.12em] uppercase mb-0.5"
                       style={{
-                        background: `${card.accent}14`,
-                        border: `1px solid ${card.accent}30`,
-                        color: card.accent,
+                        color: isActive
+                          ? `${domain.accent}bb`
+                          : "rgba(0,70,160,0.38)",
                       }}
                     >
-                      {card.label}
+                      {domain.label}
                     </span>
-
-                    <h3
-                      className="font-bold text-white mb-1"
-                      style={{ fontSize: "clamp(18px, 2.4vw, 26px)" }}
+                    <span
+                      className="block font-semibold text-sm leading-tight"
+                      style={{
+                        color: isActive ? "#fff" : "rgba(80,120,200,0.55)",
+                      }}
                     >
-                      {card.title}
-                    </h3>
-                    <p
-                      className="text-sm mb-0.5"
-                      style={{ color: card.accent }}
-                    >
-                      {card.institution}
-                    </p>
-                    <p
-                      className="text-xs font-mono mb-5"
-                      style={{ color: "rgba(0,80,160,0.5)" }}
-                    >
-                      {card.period} · {card.location}
-                    </p>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "#3a5270" }}
-                    >
-                      {card.description}
-                    </p>
+                      {domain.title}
+                    </span>
                   </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-4">
-                    {card.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="text-xs px-2 py-0.5 rounded font-mono"
-                        style={{
-                          background: `${card.accent}10`,
-                          border: `1px solid ${card.accent}28`,
-                          color: `${card.accent}bb`,
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Repo count badge */}
+                  <span
+                    className="text-[10px] font-mono px-1.5 py-0.5 rounded shrink-0"
+                    style={{
+                      background: isActive
+                        ? `${domain.accent}20`
+                        : "rgba(0,50,130,0.15)",
+                      color: isActive ? domain.accent : "rgba(0,70,160,0.35)",
+                      border: `1px solid ${isActive ? domain.accent + "30" : "rgba(0,50,130,0.15)"}`,
+                    }}
+                  >
+                    {domain.repos.length}
+                  </span>
                 </div>
-              </div>
-            ))}
-          </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
+  );
+}
+
+function SummaryPanel() {
+  const totalRepos = DOMAINS.reduce((acc, d) => acc + d.repos.length, 0);
+  return (
+    <div
+      className="h-full rounded-2xl p-8 md:p-10 relative overflow-hidden flex flex-col justify-between"
+      style={{
+        background: "rgba(4,10,26,0.9)",
+        border: "1px solid rgba(0,80,200,0.2)",
+        backdropFilter: "blur(16px)",
+        minHeight: 520,
+      }}
+    >
+      <div
+        className="absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, #4488ff55, transparent)",
+        }}
+      />
+      <div
+        className="absolute top-4 right-4 w-5 h-5"
+        style={{
+          borderTop: "1px solid rgba(0,80,200,0.3)",
+          borderRight: "1px solid rgba(0,80,200,0.3)",
+        }}
+      />
+      <div
+        className="absolute bottom-4 left-4 w-5 h-5"
+        style={{
+          borderBottom: "1px solid rgba(0,80,200,0.15)",
+          borderLeft: "1px solid rgba(0,80,200,0.15)",
+        }}
+      />
+      <span
+        className="absolute bottom-6 right-8 font-mono font-bold select-none pointer-events-none"
+        style={{
+          fontSize: 96,
+          lineHeight: 1,
+          color: "rgba(0,80,200,0.04)",
+          letterSpacing: "-0.05em",
+        }}
+      >
+        DEV
+      </span>
+
+      <div>
+        <p
+          className="text-xs font-mono tracking-[0.22em] uppercase mb-5"
+          style={{ color: "#4488ff" }}
+        >
+          Select a domain →
+        </p>
+        <h3
+          className="text-2xl md:text-3xl font-bold text-white mb-2"
+          style={{ lineHeight: 1.15 }}
+        >
+          Full-Stack Engineer
+        </h3>
+        <p className="text-base mb-6" style={{ color: "#4488ff" }}>
+          across 7 core domains
+        </p>
+        <p
+          className="text-sm md:text-base leading-relaxed"
+          style={{ color: "#3a5270", maxWidth: 560 }}
+        >
+          {SUMMARY}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 mt-8">
+        {[
+          { label: "Repos Tracked", value: `${totalRepos}+` },
+          { label: "Companies", value: "3" },
+          { label: "Core Domains", value: "7" },
+        ].map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-xl p-4 text-center"
+            style={{
+              background: "rgba(0,70,180,0.08)",
+              border: "1px solid rgba(0,80,200,0.15)",
+            }}
+          >
+            <span className="block text-2xl font-bold text-white">
+              {stat.value}
+            </span>
+            <span
+              className="block text-xs font-mono mt-1"
+              style={{ color: "rgba(0,100,200,0.55)" }}
+            >
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ReposPanel({ domain }: { domain: Domain }) {
+  return (
+    <div
+      className="h-full rounded-2xl p-8 md:p-10 relative overflow-hidden flex flex-col"
+      style={{
+        background: "rgba(4,10,26,0.9)",
+        border: `1px solid ${domain.accent}44`,
+        backdropFilter: "blur(16px)",
+        boxShadow: `0 0 48px ${domain.accent}0c, inset 0 1px 0 ${domain.accent}14`,
+        minHeight: 520,
+      }}
+    >
+      <div
+        className="absolute inset-x-0 top-0 h-px"
+        style={{
+          background: `linear-gradient(to right, transparent, ${domain.accent}66, transparent)`,
+        }}
+      />
+      <div
+        className="absolute top-4 right-4 w-5 h-5"
+        style={{
+          borderTop: `1px solid ${domain.accent}44`,
+          borderRight: `1px solid ${domain.accent}44`,
+        }}
+      />
+      <div
+        className="absolute bottom-4 left-4 w-5 h-5"
+        style={{
+          borderBottom: `1px solid ${domain.accent}28`,
+          borderLeft: `1px solid ${domain.accent}28`,
+        }}
+      />
+      <span
+        className="absolute bottom-6 right-8 font-mono font-bold select-none pointer-events-none"
+        style={{
+          fontSize: 96,
+          lineHeight: 1,
+          color: `${domain.accent}08`,
+          letterSpacing: "-0.05em",
+        }}
+      >
+        {domain.index}
+      </span>
+
+      {/* Header */}
+      <div className="mb-5 shrink-0">
+        <span
+          className="inline-block text-xs font-mono tracking-[0.18em] px-2 py-1 rounded mb-4"
+          style={{
+            background: `${domain.accent}14`,
+            border: `1px solid ${domain.accent}30`,
+            color: domain.accent,
+          }}
+        >
+          {domain.label}
+        </span>
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+          {domain.title}
+        </h3>
+        <p
+          className="text-xs font-mono tracking-[0.15em] uppercase"
+          style={{ color: `${domain.accent}88` }}
+        >
+          {domain.repos.length} repositor
+          {domain.repos.length !== 1 ? "ies" : "y"}
+        </p>
+      </div>
+
+      {/* Repo list */}
+      <div
+        className="flex-1 overflow-y-auto space-y-1.5 pr-1"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {domain.repos.map((repo) => {
+          const langColor = repo.language
+            ? (LANG_COLORS[repo.language] ?? "#888")
+            : "#555";
+          return (
+            <a
+              key={repo.name}
+              href={`https://github.com/June8Yildirim/${repo.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-150 group"
+              style={{
+                background: `${domain.accent}08`,
+                border: `1px solid ${domain.accent}18`,
+                textDecoration: "none",
+              }}
+            >
+              {/* Language dot */}
+              <div
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ background: langColor }}
+              />
+
+              <span className="flex-1 text-sm font-mono text-white group-hover:opacity-75 transition-opacity truncate">
+                {repo.name.toUpperCase()}
+              </span>
+
+              {repo.language && (
+                <span
+                  className="text-[10px] font-mono px-2 py-0.5 rounded shrink-0"
+                  style={{
+                    background: `${langColor}18`,
+                    color: langColor,
+                    border: `1px solid ${langColor}30`,
+                  }}
+                >
+                  {repo.language}
+                </span>
+              )}
+
+              {/* External link icon */}
+              <svg
+                className="w-3 h-3 shrink-0 opacity-0 group-hover:opacity-40 transition-opacity"
+                style={{ color: domain.accent }}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          );
+        })}
+      </div>
+    </div>
   );
 }

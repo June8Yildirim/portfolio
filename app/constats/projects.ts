@@ -930,7 +930,7 @@ export const projectDetail: ProjectDetail[] = [
       ],
     },
     technical_architecture: {
-      platform: "iOS",
+      platform: { name: "iOS" },
       minimum_deployment: "iOS 18.5",
       framework: "SwiftUI",
       language: "Swift 5.0+",
