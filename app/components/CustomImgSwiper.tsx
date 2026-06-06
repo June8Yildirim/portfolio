@@ -39,7 +39,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="h-80 md:h-96 rounded-lg bg-gray-100 animate-pulse flex items-center justify-center">
+        <div className="h-96 md:h-[32rem] rounded-lg bg-gray-100 animate-pulse flex items-center justify-center">
           <p className="text-gray-500">Loading images...</p>
         </div>
       </div>
@@ -90,7 +90,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative h-96 md:h-[32rem] rounded-lg overflow-hidden shadow-lg">
               <img
                 src={image}
                 alt={`Screenshot ${index + 1}`}

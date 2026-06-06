@@ -46,10 +46,14 @@ export default function ProjectDetailModal({
                     href={project?.app_identity.url || "#"}
                     target={project?.app_identity.url ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className={`${project?.app_identity.url ? "bg-blue-100 text-sky-400 px-3 py-1 rounded-full font-semibold pointer-coarse" : "text-gray-500 cursor-not-allowed"} hover:underline`}
+                    className={`inline-flex items-center px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                      project?.app_identity.url
+                        ? "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-lg hover:shadow-blue-500/30 hover:scale-105 active:scale-95"
+                        : "bg-gray-800 text-gray-500 cursor-not-allowed opacity-50"
+                    }`}
                   >
                     {project?.app_identity.url
-                      ? "Live Demo →"
+                      ? "View Live Demo →"
                       : "Demo Not Available"}
                   </a>
                 </div>

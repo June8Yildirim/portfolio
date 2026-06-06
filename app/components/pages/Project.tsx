@@ -79,12 +79,24 @@ const Projects = ({
                   </li>
                 ))}
                 {project.images && <ImageCarousel images={project.images} />}
-                <button
-                  className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
-                  onClick={() => setOpenDetail(project.id)}
-                >
-                  Details
-                </button>
+                <div className="flex gap-4 mt-4">
+                  <button
+                    className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-semibold hover:border-gray-400 hover:text-white transition-colors"
+                    onClick={() => setOpenDetail(project.id)}
+                  >
+                    Details
+                  </button>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
+                    >
+                      View Live
+                    </a>
+                  )}
+                </div>
               </ul>
             </div>
           </div>

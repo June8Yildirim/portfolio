@@ -27,6 +27,7 @@ export const projects = [
       "/images/SaveEasyAuth.png",
     ],
     gradient: "from-emerald-600 to-teal-600",
+    link: "https://apps.apple.com/ca/app/saveeasy/id6738876717",
   },
   {
     id: "1",
@@ -76,10 +77,15 @@ export const projects = [
     gradient: "from-teal-600 to-emerald-600",
     mainImage: "/images/mainScreen.png",
     images: [
-      "/images/AssignmentScreen.png",
-      "/images/AssignmentDaily2.png",
-      "/images/AssignmentSchedule.png",
+      "/images/assignment/IMG_2502.png",
+      "/images/assignment/IMG_2503.png",
+      "/images/assignment/IMG_2504.png",
+      "/images/assignment/IMG_2505.png",
+      "/images/assignment/IMG_2506.png",
+      "/images/assignment/IMG_2507.png",
+      "/images/assignment/IMG_2508.png",
     ],
+    link: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892",
   },
   {
     id: "4",
@@ -103,11 +109,16 @@ export const projects = [
     gradient: "from-fuchsia-600 to-violet-600",
     mainImage: "/images/HabitMain.png",
     images: [
-      "/images/HabitMain.png",
-      "/images/HabitMood.png",
-      "/images/HabitReport.png",
-      "/images/HabitPomodoro.png",
+      "/images/habit/IMG_2515.png",
+      "/images/habit/IMG_2516.png",
+      "/images/habit/IMG_2517.png",
+      "/images/habit/IMG_2518.png",
+      "/images/habit/IMG_2519.png",
+      "/images/habit/IMG_2520.png",
+      "/images/habit/IMG_2521.png",
+      "/images/habit/IMG_2521.png",
     ],
+    link: "https://apps.apple.com/ca/app/habitizer/id6757522855",
   },
   {
     id: "5",
@@ -130,14 +141,15 @@ export const projects = [
       "Implemented a dual-workflow request system (Enrollment & Timeslots) with role-based access control, ensuring distinct, secure experiences for both instructors and students.",
     ],
     images: [
-      "/images/TuttorMain.png",
-      "/images/TutorWeekschedule.png",
-      "/images/TutorThemes.png",
-      "/images/TutorSess.png",
-      "/images/TutorInst.png",
-      "/images/Tutordetailsession.png",
-      "/images/TutorProfile.png",
+      "/images/booking_bee/TuttorMain.png",
+      "/images/booking_bee/TutorWeekschedule.png",
+      "/images/booking_bee/TutorThemes.png",
+      "/images/booking_bee/TutorSess.png",
+      "/images/booking_bee/TutorInst.png",
+      "/images/booking_bee/Tutordetailsession.png",
+      "/images/booking_bee/TutorProfile.png",
     ],
+    link: "https://bookingbee-lnw2.onrender.com/profile",
   },
   {
     title: "Restaurant Project",
@@ -177,10 +189,19 @@ export const projects = [
     ],
     gradient: "from-purple-600 to-pink-600",
     images: [
-      "/images/BudgetMain.png",
-      "/images/BudgetReport.png",
-      "/images/BudgetExpense.png",
-      "/images/BudgetCategories.png",
+      "/images/budget/IMG_2476.png",
+      "/images/budget/IMG_2477.png",
+      "/images/budget/IMG_2478.png",
+      "/images/budget/IMG_2479.png",
+      "/images/budget/IMG_2480.png",
+      "/images/budget/IMG_2481.png",
+      "/images/budget/IMG_2482.png",
+      "/images/budget/IMG_2483.png",
+      "/images/budget/IMG_2484.png",
+      "/images/budget/IMG_2485.png",
+      "/images/budget/IMG_2486.png",
+      "/images/budget/IMG_2487.png",
+      "/images/budget/IMG_2488.png",
     ],
   },
   {
@@ -214,7 +235,7 @@ export const projects = [
       // "Deployed full-stack application using AWS EC2/Docker or Heroku with CI/CD pipeline using GitHub Actions",
     ],
     gradient: "from-purple-600 to-pink-600",
-    images: ["/images/camping1.gif", "/images/camping2.gif"],
+    images: ["/images/camp/camping1.gif", "/images/camp/camping2.gif"],
   },
   {
     title: "Hotel Management System",
@@ -239,6 +260,7 @@ export const projects = [
       "Jest",
     ],
     id: "8",
+    link: "https://hotel-management-systemwebportal-geav5x8jf.vercel.app/",
     achievements: [
       "Architected a 6-application ecosystem — Express backend, Admin portal, Owner portal, Hotel portal, Agency portal, and a React Native mobile app — all orchestrated via Docker Compose with Nginx reverse proxy.",
       "Built a shared Express/MongoDB REST API (port 4000) serving all 4 Next.js portals with centralized JWT auth, role management, and booking/room logic.",
@@ -247,6 +269,7 @@ export const projects = [
       "Implemented Husky pre-commit hooks, Jest test suites across all portals, and Nginx routing for all 4 web portals under a single domain.",
     ],
     gradient: "from-indigo-600 to-blue-600",
+    images: [],
   },
   {
     title: "Family Tree",
@@ -268,6 +291,7 @@ export const projects = [
       "Integrated TanStack Router and TanStack Query for type-safe routing and server-state management across the family member CRUD workflows.",
     ],
     gradient: "from-green-600 to-teal-600",
+    images: [],
   },
   {
     title: "GitHub Dev Tracker",
@@ -289,6 +313,7 @@ export const projects = [
       "Visualized developer insights with Recharts: contributions breakdown (pie), top repositories by commits (bar), and language distribution (pie).",
     ],
     gradient: "from-slate-600 to-gray-700",
+    images: ["/images/git/IMG_2510", "/images/git/IMG_2511"],
   },
   {
     title: "Spaced Repetition iOS",
@@ -312,6 +337,21 @@ export const projects = [
       "Added LaTeX rendering, Markdown import/export, WidgetKit home-screen widget, achievement system, 7 color themes, and local push notifications.",
     ],
     gradient: "from-violet-600 to-purple-700",
+    images: [
+      "/images/spaced/IMG_2489.png",
+      "/images/spaced/IMG_2490.png",
+      "/images/spaced/IMG_2491.png",
+      "/images/spaced/IMG_2492.png",
+      "/images/spaced/IMG_2493.png",
+      "/images/spaced/IMG_2494.png",
+      "/images/spaced/IMG_2495.png",
+      "/images/spaced/IMG_2496.png",
+      "/images/spaced/IMG_2497.png",
+      "/images/spaced/IMG_2498.png",
+      "/images/spaced/IMG_2499.png",
+      "/images/spaced/IMG_2500.png",
+      "/images/spaced/IMG_2501.png",
+    ],
   },
   {
     title: "WarZone",
@@ -339,6 +379,14 @@ export const projects = [
       "Shipped full privacy policy compliance with data-minimization patterns using CloudKit's public record zones.",
     ],
     gradient: "from-orange-600 to-amber-600",
+    images: [
+      "/images/chores/IMG_2509.png",
+      "/images/chores/IMG_2510.png",
+      "/images/chores/IMG_2511.png",
+      "/images/chores/IMG_2512.png",
+      "/images/chores/IMG_2513.png",
+      "/images/chores/IMG_2514.png",
+    ],
   },
 ];
 
@@ -349,10 +397,13 @@ export const projectDetail: ProjectDetail[] = [
       name: "SaveEasy",
       developer: "Turina Tech",
       platforms: [
-        { name: "Apple App Store", link: "https://apps.apple.com/ca/app/saveeasy/id6738876717" },
+        {
+          name: "Apple App Store",
+          link: "https://apps.apple.com/ca/app/saveeasy/id6738876717",
+        },
         { name: "Google Play Store" },
         { name: "React Native" },
-        { name: "Expo" }
+        { name: "Expo" },
       ],
       url: "https://apps.apple.com/ca/app/saveeasy/id6738876717",
       tagline: "Personal finance and expense management application",
@@ -444,7 +495,7 @@ export const projectDetail: ProjectDetail[] = [
         { name: "Apple App Store" },
         { name: "Google Play Store" },
         { name: "React Native" },
-        { name: "Expo" }
+        { name: "Expo" },
       ],
       url: null, // Add URL if available
       tagline:
@@ -531,9 +582,7 @@ export const projectDetail: ProjectDetail[] = [
     app_identity: {
       name: "Restaurant Project",
       developer: "",
-      platforms: [
-        { name: "React" }
-      ],
+      platforms: [{ name: "React" }],
       url: null, // Add URL if available
       tagline:
         "High-performance food delivery and logistics orchestration platform",
@@ -624,7 +673,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "Booking Bee",
       developer: "Respect Development",
       platforms: [
-        { name: "Apple App Store", link: "https://bookingbee-lnw2.onrender.com/profile" },
+        {
+          name: "Apple App Store",
+          link: "https://bookingbee-lnw2.onrender.com/profile",
+        },
         { name: "Google Play Store" },
         { name: "React Native" },
         { name: "Expo" },
@@ -752,7 +804,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "Assignment Organizer",
       developer: "Cuneyt Yildirim",
       platforms: [
-        { name: "iOS (SwiftUI / Swift)", link: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892" }
+        {
+          name: "iOS (SwiftUI / Swift)",
+          link: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892",
+        },
       ],
       url: "https://apps.apple.com/ca/app/assignment-organizer/id6757585892",
       tagline:
@@ -1048,7 +1103,10 @@ export const projectDetail: ProjectDetail[] = [
       name: "HabitTracking",
       developer: "Cuneyt Yildirim",
       platforms: [
-        { name: "iOS (SwiftUI / SwiftData)", link: "https://apps.apple.com/ca/app/habitizer/id6757522855" }
+        {
+          name: "iOS (SwiftUI / SwiftData)",
+          link: "https://apps.apple.com/ca/app/habitizer/id6757522855",
+        },
       ],
       url: "https://apps.apple.com/ca/app/habitizer/id6757522855",
       tagline:
@@ -2406,7 +2464,12 @@ export const projectDetail: ProjectDetail[] = [
     app_identity: {
       name: "WarZone",
       developer: "Cuneyt Yildirim",
-      platforms: [{ name: "C++ (Console / Desktop)", link: "https://github.com/June8Yildirim/WarZone" }],
+      platforms: [
+        {
+          name: "C++ (Console / Desktop)",
+          link: "https://github.com/June8Yildirim/WarZone",
+        },
+      ],
       url: "https://github.com/June8Yildirim/WarZone",
       tagline: "Turn-based strategy war simulation built entirely in C++",
     },
@@ -2441,7 +2504,8 @@ export const projectDetail: ProjectDetail[] = [
         description:
           "Computer-controlled players use rule-based decision trees to choose reinforce, attack, and fortify actions automatically during their turns.",
         automation_level: "High",
-        technology: "C++ strategy pattern, rule-based AI, polymorphic Player classes",
+        technology:
+          "C++ strategy pattern, rule-based AI, polymorphic Player classes",
       },
       {
         title: "Object-Oriented Architecture",
@@ -2455,7 +2519,8 @@ export const projectDetail: ProjectDetail[] = [
         description:
           "Players issue orders (Deploy, Advance, Bomb, Blockade, Airlift, Negotiate) which are queued and executed in priority order each turn, with validation against game state.",
         automation_level: "High",
-        technology: "C++ order queue, polymorphic Order base class, priority execution",
+        technology:
+          "C++ order queue, polymorphic Order base class, priority execution",
       },
     ],
     user_experience: {
@@ -2471,7 +2536,8 @@ export const projectDetail: ProjectDetail[] = [
     target_audience: [
       {
         persona: "C++ Learners",
-        use_case: "Studying OOP design, polymorphism, and game-state management in C++.",
+        use_case:
+          "Studying OOP design, polymorphism, and game-state management in C++.",
       },
       {
         persona: "Strategy Game Fans",
@@ -2480,7 +2546,8 @@ export const projectDetail: ProjectDetail[] = [
     ],
     security_and_privacy: {
       data_storage: "Local file-based map loading, no network or user data",
-      data_integrity: "Order validation against live game state before execution",
+      data_integrity:
+        "Order validation against live game state before execution",
     },
     summary:
       "A pure C++ turn-based strategy war simulation implementing a full game engine with territory/continent maps, multi-player turns, a command-pattern order system, and rule-based AI opponents — built entirely without external libraries to demonstrate object-oriented design and game-state management.",

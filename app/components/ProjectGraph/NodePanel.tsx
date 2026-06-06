@@ -35,7 +35,8 @@ export default function NodePanel({ node, onClose }: Props) {
   const next = () => setState((s) => Math.min(s + 1, 3) as PanelState);
   const prev = () => setState((s) => Math.max(s - 1, 1) as PanelState);
   const hasImages = node.images && node.images.length > 0;
-  const hasFeatures = node.detail?.key_features && node.detail.key_features.length > 0;
+  const hasFeatures =
+    node.detail?.key_features && node.detail.key_features.length > 0;
 
   return (
     <div
@@ -59,10 +60,15 @@ export default function NodePanel({ node, onClose }: Props) {
           style={{ borderBottom: "1px solid rgba(0, 100, 255, 0.2)" }}
         >
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-mono tracking-widest mb-1" style={{ color: "#4488ff" }}>
+            <p
+              className="text-xs font-mono tracking-widest mb-1"
+              style={{ color: "#4488ff" }}
+            >
               {node.company || "Personal Project"}
             </p>
-            <h2 className="text-xl font-bold text-white truncate">{node.title}</h2>
+            <h2 className="text-xl font-bold text-white truncate">
+              {node.title}
+            </h2>
           </div>
           <button
             onClick={onClose}
@@ -73,7 +79,10 @@ export default function NodePanel({ node, onClose }: Props) {
         </div>
 
         {/* State tabs */}
-        <div className="flex px-5 pt-3 gap-1" style={{ borderBottom: "1px solid rgba(0,100,255,0.12)" }}>
+        <div
+          className="flex px-5 pt-3 gap-1"
+          style={{ borderBottom: "1px solid rgba(0,100,255,0.12)" }}
+        >
           {([1, 2, 3] as PanelState[]).map((s) => (
             <button
               key={s}
@@ -81,7 +90,8 @@ export default function NodePanel({ node, onClose }: Props) {
               className="pb-2 px-3 text-xs font-mono tracking-wider transition-all"
               style={{
                 color: state === s ? "#4488ff" : "#445566",
-                borderBottom: state === s ? "2px solid #4488ff" : "2px solid transparent",
+                borderBottom:
+                  state === s ? "2px solid #4488ff" : "2px solid transparent",
               }}
             >
               {stateLabels[s]}
@@ -91,7 +101,6 @@ export default function NodePanel({ node, onClose }: Props) {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-5 scrollbar-thin">
-
           {/* STATE 1 — Overview */}
           {state === 1 && (
             <div className="space-y-5">
@@ -115,26 +124,39 @@ export default function NodePanel({ node, onClose }: Props) {
               {/* Summary */}
               {node.detail?.summary && (
                 <div>
-                  <p className="text-xs font-mono tracking-widest mb-2" style={{ color: "#4488ff" }}>
+                  <p
+                    className="text-xs font-mono tracking-widest mb-2"
+                    style={{ color: "#4488ff" }}
+                  >
                     SUMMARY
                   </p>
-                  <p className="text-sm text-gray-300 leading-relaxed">{node.detail.summary}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {node.detail.summary}
+                  </p>
                 </div>
               )}
 
               {/* Mission */}
               {node.detail?.core_purpose?.mission && (
                 <div>
-                  <p className="text-xs font-mono tracking-widest mb-2" style={{ color: "#4488ff" }}>
+                  <p
+                    className="text-xs font-mono tracking-widest mb-2"
+                    style={{ color: "#4488ff" }}
+                  >
                     MISSION
                   </p>
-                  <p className="text-sm text-gray-400 leading-relaxed">{node.detail.core_purpose.mission}</p>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {node.detail.core_purpose.mission}
+                  </p>
                 </div>
               )}
 
               {/* Achievements */}
               <div>
-                <p className="text-xs font-mono tracking-widest mb-2" style={{ color: "#4488ff" }}>
+                <p
+                  className="text-xs font-mono tracking-widest mb-2"
+                  style={{ color: "#4488ff" }}
+                >
                   KEY ACHIEVEMENTS
                 </p>
                 <ul className="space-y-2">
@@ -150,11 +172,14 @@ export default function NodePanel({ node, onClose }: Props) {
               {/* Platforms */}
               {node.detail?.app_identity?.platforms && (
                 <div>
-                  <p className="text-xs font-mono tracking-widest mb-2" style={{ color: "#4488ff" }}>
+                  <p
+                    className="text-xs font-mono tracking-widest mb-2"
+                    style={{ color: "#4488ff" }}
+                  >
                     PLATFORMS
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {node.detail.app_identity.platforms.map((p, idx) => (
+                    {node.detail.app_identity.platforms.map((p, idx) =>
                       p.link ? (
                         <a
                           key={idx}
@@ -162,7 +187,11 @@ export default function NodePanel({ node, onClose }: Props) {
                           target="_blank"
                           rel="noreferrer"
                           className="px-2 py-1 rounded text-xs transition-colors hover:bg-blue-900/40"
-                          style={{ background: "rgba(0,30,80,0.6)", color: "#aabbff", border: "1px solid rgba(100,150,255,0.2)" }}
+                          style={{
+                            background: "rgba(0,30,80,0.6)",
+                            color: "#aabbff",
+                            border: "1px solid rgba(100,150,255,0.2)",
+                          }}
                         >
                           {p.name}
                         </a>
@@ -170,12 +199,16 @@ export default function NodePanel({ node, onClose }: Props) {
                         <span
                           key={idx}
                           className="px-2 py-1 rounded text-xs"
-                          style={{ background: "rgba(0,30,80,0.6)", color: "#aabbff", border: "1px solid rgba(100,150,255,0.2)" }}
+                          style={{
+                            background: "rgba(0,30,80,0.6)",
+                            color: "#aabbff",
+                            border: "1px solid rgba(100,150,255,0.2)",
+                          }}
                         >
                           {p.name}
                         </span>
-                      )
-                    ))}
+                      ),
+                    )}
                   </div>
                 </div>
               )}
@@ -185,14 +218,30 @@ export default function NodePanel({ node, onClose }: Props) {
                   href={node.detail.app_identity.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-block text-xs font-mono px-4 py-2 rounded-lg transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-mono px-5 py-2.5 rounded-xl transition-all duration-300"
                   style={{
-                    background: "rgba(0, 68, 204, 0.25)",
-                    border: "1px solid rgba(0, 100, 255, 0.4)",
-                    color: "#88aaff",
+                    background:
+                      "linear-gradient(135deg, rgba(0, 80, 255, 0.3), rgba(0, 40, 150, 0.2))",
+                    border: "1px solid rgba(0, 100, 255, 0.5)",
+                    color: "#aaccff",
+                    boxShadow: "0 0 15px rgba(0, 80, 255, 0.1)",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(135deg, rgba(0, 100, 255, 0.4), rgba(0, 60, 200, 0.3))";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 20px rgba(0, 80, 255, 0.25)";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(135deg, rgba(0, 80, 255, 0.3), rgba(0, 40, 150, 0.2))";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 15px rgba(0, 80, 255, 0.1)";
+                    e.currentTarget.style.transform = "translateY(0)";
                   }}
                 >
-                  ↗ View Live
+                  <span className="text-sm">↗</span> View Live
                 </a>
               )}
             </div>
@@ -210,29 +259,40 @@ export default function NodePanel({ node, onClose }: Props) {
                     spaceBetween={12}
                     slidesPerView={1}
                     className="rounded-xl overflow-hidden"
-                    style={{ "--swiper-navigation-color": "#4488ff", "--swiper-pagination-color": "#4488ff" } as React.CSSProperties}
+                    style={
+                      {
+                        "--swiper-navigation-color": "#4488ff",
+                        "--swiper-pagination-color": "#4488ff",
+                      } as React.CSSProperties
+                    }
                   >
                     {node.images!.map((img, i) => (
                       <SwiperSlide key={i}>
-                        <div className="relative" style={{ paddingBottom: "62%" }}>
+                        <div className="flex items-center justify-center h-[480px]">
                           <img
                             src={img}
                             alt={`${node.title} screenshot ${i + 1}`}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="max-h-full max-w-full object-contain"
                             style={{ borderRadius: 12 }}
                           />
                         </div>
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <p className="text-xs font-mono text-center" style={{ color: "#334466" }}>
+                  <p
+                    className="text-xs font-mono text-center"
+                    style={{ color: "#334466" }}
+                  >
                     {node.images!.length} screenshots
                   </p>
                 </div>
               ) : (
                 <div
                   className="flex flex-col items-center justify-center h-48 rounded-xl"
-                  style={{ border: "1px dashed rgba(0,100,255,0.2)", color: "#334466" }}
+                  style={{
+                    border: "1px dashed rgba(0,100,255,0.2)",
+                    color: "#334466",
+                  }}
                 >
                   <span className="text-3xl mb-2">🖼</span>
                   <p className="text-xs font-mono">No screenshots available</p>
@@ -255,11 +315,16 @@ export default function NodePanel({ node, onClose }: Props) {
                     }}
                   >
                     <div className="flex items-start gap-2 mb-2">
-                      <span className="text-xs font-mono font-bold mt-0.5" style={{ color: "#4488ff" }}>
+                      <span
+                        className="text-xs font-mono font-bold mt-0.5"
+                        style={{ color: "#4488ff" }}
+                      >
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <p className="text-sm font-semibold text-white leading-tight">{feature.title}</p>
+                        <p className="text-sm font-semibold text-white leading-tight">
+                          {feature.title}
+                        </p>
                         {feature.automation_level && (
                           <span
                             className="text-xs font-mono"
@@ -277,9 +342,14 @@ export default function NodePanel({ node, onClose }: Props) {
                         )}
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 leading-relaxed pl-6">{feature.description}</p>
+                    <p className="text-xs text-gray-400 leading-relaxed pl-6">
+                      {feature.description}
+                    </p>
                     {feature.technology && (
-                      <p className="text-xs font-mono mt-2 pl-6" style={{ color: "#335577" }}>
+                      <p
+                        className="text-xs font-mono mt-2 pl-6"
+                        style={{ color: "#335577" }}
+                      >
                         {feature.technology}
                       </p>
                     )}
@@ -287,7 +357,10 @@ export default function NodePanel({ node, onClose }: Props) {
                 ))
               ) : (
                 <div>
-                  <p className="text-xs font-mono tracking-widest mb-3" style={{ color: "#4488ff" }}>
+                  <p
+                    className="text-xs font-mono tracking-widest mb-3"
+                    style={{ color: "#4488ff" }}
+                  >
                     PROBLEM SOLVED
                   </p>
                   {node.detail?.core_purpose?.problem_solved?.map((p, i) => (
@@ -297,7 +370,9 @@ export default function NodePanel({ node, onClose }: Props) {
                       style={{ borderBottom: "1px solid rgba(0,50,150,0.15)" }}
                     >
                       <span style={{ color: "#4488ff" }}>◆</span>
-                      <span>{typeof p === "string" ? p : (p as any).title}</span>
+                      <span>
+                        {typeof p === "string" ? p : (p as any).title}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -315,7 +390,10 @@ export default function NodePanel({ node, onClose }: Props) {
             onClick={prev}
             disabled={state === 1}
             className="px-4 py-1.5 text-xs font-mono rounded-lg transition-all disabled:opacity-25"
-            style={{ border: "1px solid rgba(0,100,255,0.3)", color: "#4488ff" }}
+            style={{
+              border: "1px solid rgba(0,100,255,0.3)",
+              color: "#4488ff",
+            }}
           >
             ← Back
           </button>
@@ -336,7 +414,10 @@ export default function NodePanel({ node, onClose }: Props) {
             onClick={next}
             disabled={state === 3}
             className="px-4 py-1.5 text-xs font-mono rounded-lg transition-all disabled:opacity-25"
-            style={{ border: "1px solid rgba(0,100,255,0.3)", color: "#4488ff" }}
+            style={{
+              border: "1px solid rgba(0,100,255,0.3)",
+              color: "#4488ff",
+            }}
           >
             Next →
           </button>
