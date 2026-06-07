@@ -2577,7 +2577,7 @@ export const projectDetail: ProjectDetail[] = [
       name: "ADT Learning App",
       developer: "Cuneyt Yildirim",
       platforms: [{ name: "Web (React 19 / TypeScript)" }],
-      url: null,
+      url: "https://data-structure-cy.netlify.app/",
       tagline:
         "Interactive reference platform for sorting algorithms and Gang of Four design patterns with multi-language code examples and animated visualizations",
     },
@@ -2601,49 +2601,56 @@ export const projectDetail: ProjectDetail[] = [
         automation_level: "High",
         impact:
           "Makes abstract algorithm behaviour immediately intuitive through colour-coded animations rather than static pseudocode.",
-        technology: "React 19 useState/useEffect, CSS vars, SortStep generator functions",
+        technology:
+          "React 19 useState/useEffect, CSS vars, SortStep generator functions",
       },
       {
         title: "8 Sorting Algorithm Pages",
         description:
           "Bubble, Selection, Insertion, Merge, Quick, Heap, Radix, and Bucket Sort — each with Overview, Step Trace, Complexity table, and Code tabs. Complexity panel includes Big-O badges, worst/average/best rows, and space complexity.",
         automation_level: "Medium",
-        technology: "Generic SortOverviewPanel, SortStepsPanel, SortComplexityPanel, SortCodePanel components",
+        technology:
+          "Generic SortOverviewPanel, SortStepsPanel, SortComplexityPanel, SortCodePanel components",
       },
       {
         title: "12 GoF Design Pattern Pages",
         description:
           "Observer, Strategy, Template Method, Chain of Responsibility, Singleton, Prototype, Factory Method, Abstract Factory, Adapter, Bridge, Composite, and Facade — each with tabbed Overview, Example, Consequences, and Code sections.",
         automation_level: "Medium",
-        technology: "PatternPage shell component, PatternOverviewPanel, PatternExamplePanel, PatternConsequencesPanel",
+        technology:
+          "PatternPage shell component, PatternOverviewPanel, PatternExamplePanel, PatternConsequencesPanel",
       },
       {
         title: "Four-Language Code Viewer",
         description:
           "Language-switching code panel (TypeScript, Python, Java, C++) for every sorting algorithm and every design pattern page.",
         automation_level: "Low",
-        technology: "SortCodePanel with DEFAULT_LABELS, React useState for active language",
+        technology:
+          "SortCodePanel with DEFAULT_LABELS, React useState for active language",
       },
       {
         title: "Custom UI Component Library",
         description:
           "Published @cuneytyildirim/ui npm package providing Tabs, Card, Badge, Alert, Table, Button, Progress, Accordion, ParadigmProvider, and ParadigmSwitcher. Supports four visual paradigms: Flat, Skeumorphic, Neumorphic, and Glass.",
         automation_level: "Low",
-        technology: "React 19 + TypeScript, Tailwind CSS v4, @tailwindcss/vite, CSS custom properties via @theme inline",
+        technology:
+          "React 19 + TypeScript, Tailwind CSS v4, @tailwindcss/vite, CSS custom properties via @theme inline",
       },
       {
         title: "Accordion Sidebar Navigation",
         description:
           "Collapsible sidebar with three sections (Sorting Algorithms, Design Patterns, Data Structures) rendered via the Accordion component. Active item highlighted; first two sections default open.",
         automation_level: "Low",
-        technology: "Accordion component, AccordionItem interface, ActiveView union type routing",
+        technology:
+          "Accordion component, AccordionItem interface, ActiveView union type routing",
       },
       {
         title: "Type-Safe Step Generation Engine",
         description:
           "Centralised sortSteps.ts module with roles() and merge() helpers that produce fully-typed SortStep arrays for all 8 algorithms without TypeScript cast errors.",
         automation_level: "High",
-        technology: "TypeScript Record<number, ElementRole>, roles() + merge() pure helpers",
+        technology:
+          "TypeScript Record<number, ElementRole>, roles() + merge() pure helpers",
       },
     ],
     user_experience: {
