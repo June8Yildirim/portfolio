@@ -205,6 +205,25 @@ export const projects = [
     ],
   },
   {
+    id: "6",
+    title: "ADT Learning App",
+    company: "Cuneyt Yildirim",
+    technologies: [
+      "TypeScript",
+      "React 19",
+      "Vite",
+      "TailwindCSS",
+      "React Hooks",
+    ],
+    achievements: [
+      "Built an interactive educational platform covering 8 sorting algorithms with animated step-by-step bar chart visualizations and per-element role coloring (compare, swap, pivot, sorted).",
+      "Implemented 12 Gang of Four design pattern reference pages — each with tabbed Overview, Example, Consequences, and multi-language Code sections covering TypeScript, Python, Java, and C++.",
+      "Authored a custom UI component library (@cuneytyildirim/ui) with four visual paradigms (Flat, Skeumorphic, Neumorphic, Glass), shared via npm across projects.",
+      "Designed a generic sort-step engine and reusable panel component system to eliminate repeated UI code across all algorithm and pattern pages.",
+    ],
+    gradient: "from-violet-600 to-indigo-600",
+  },
+  {
     title: "Camping Project",
     company: "",
     technologies: [
@@ -2551,5 +2570,141 @@ export const projectDetail: ProjectDetail[] = [
     },
     summary:
       "A pure C++ turn-based strategy war simulation implementing a full game engine with territory/continent maps, multi-player turns, a command-pattern order system, and rule-based AI opponents — built entirely without external libraries to demonstrate object-oriented design and game-state management.",
+  },
+  {
+    id: "6",
+    app_identity: {
+      name: "ADT Learning App",
+      developer: "Cuneyt Yildirim",
+      platforms: [{ name: "Web (React 19 / TypeScript)" }],
+      url: null,
+      tagline:
+        "Interactive reference platform for sorting algorithms and Gang of Four design patterns with multi-language code examples and animated visualizations",
+    },
+    core_purpose: {
+      mission:
+        "Provide developers and CS students with an interactive, visually rich reference for fundamental computer science concepts — sorting algorithms and design patterns — presented with animated step traces, complexity analysis, and production-ready code in four languages.",
+      problem_solved: [
+        "Fragmented learning resources spread across multiple sites and books",
+        "No side-by-side multi-language code comparisons for design patterns",
+        "Lack of animated, step-by-step algorithm visualizers paired with code",
+        "No unified reference covering both algorithms and patterns in one app",
+      ],
+      positioning:
+        "A single-page React 19 application with a custom component library that delivers animated algorithm visualizers, tabbed design pattern pages, and four-language code examples (TypeScript, Python, Java, C++) under one roof.",
+    },
+    key_features: [
+      {
+        title: "Animated Sorting Visualizer",
+        description:
+          "Bar chart visualizer for all 8 sorting algorithms using per-step element roles (compare, swap, pivot, sorted, bucket) rendered with CSS custom properties. Plays through each generated step with configurable speed.",
+        automation_level: "High",
+        impact:
+          "Makes abstract algorithm behaviour immediately intuitive through colour-coded animations rather than static pseudocode.",
+        technology: "React 19 useState/useEffect, CSS vars, SortStep generator functions",
+      },
+      {
+        title: "8 Sorting Algorithm Pages",
+        description:
+          "Bubble, Selection, Insertion, Merge, Quick, Heap, Radix, and Bucket Sort — each with Overview, Step Trace, Complexity table, and Code tabs. Complexity panel includes Big-O badges, worst/average/best rows, and space complexity.",
+        automation_level: "Medium",
+        technology: "Generic SortOverviewPanel, SortStepsPanel, SortComplexityPanel, SortCodePanel components",
+      },
+      {
+        title: "12 GoF Design Pattern Pages",
+        description:
+          "Observer, Strategy, Template Method, Chain of Responsibility, Singleton, Prototype, Factory Method, Abstract Factory, Adapter, Bridge, Composite, and Facade — each with tabbed Overview, Example, Consequences, and Code sections.",
+        automation_level: "Medium",
+        technology: "PatternPage shell component, PatternOverviewPanel, PatternExamplePanel, PatternConsequencesPanel",
+      },
+      {
+        title: "Four-Language Code Viewer",
+        description:
+          "Language-switching code panel (TypeScript, Python, Java, C++) for every sorting algorithm and every design pattern page.",
+        automation_level: "Low",
+        technology: "SortCodePanel with DEFAULT_LABELS, React useState for active language",
+      },
+      {
+        title: "Custom UI Component Library",
+        description:
+          "Published @cuneytyildirim/ui npm package providing Tabs, Card, Badge, Alert, Table, Button, Progress, Accordion, ParadigmProvider, and ParadigmSwitcher. Supports four visual paradigms: Flat, Skeumorphic, Neumorphic, and Glass.",
+        automation_level: "Low",
+        technology: "React 19 + TypeScript, Tailwind CSS v4, @tailwindcss/vite, CSS custom properties via @theme inline",
+      },
+      {
+        title: "Accordion Sidebar Navigation",
+        description:
+          "Collapsible sidebar with three sections (Sorting Algorithms, Design Patterns, Data Structures) rendered via the Accordion component. Active item highlighted; first two sections default open.",
+        automation_level: "Low",
+        technology: "Accordion component, AccordionItem interface, ActiveView union type routing",
+      },
+      {
+        title: "Type-Safe Step Generation Engine",
+        description:
+          "Centralised sortSteps.ts module with roles() and merge() helpers that produce fully-typed SortStep arrays for all 8 algorithms without TypeScript cast errors.",
+        automation_level: "High",
+        technology: "TypeScript Record<number, ElementRole>, roles() + merge() pure helpers",
+      },
+    ],
+    user_experience: {
+      design_philosophy: "Clean, Focused, and Reference-First",
+      workflow_steps: [
+        "Open the app — defaults to Bubble Sort page",
+        "Select an algorithm or pattern from the sidebar accordion",
+        "Browse Overview tab for intent, participants, and use-cases",
+        "Switch to Visualizer (algorithms) or Example tab for step-by-step walkthrough",
+        "Check Complexity / Consequences tab for trade-offs",
+        "Open Code tab and switch between TypeScript, Python, Java, C++",
+        "Toggle UI paradigm via ParadigmSwitcher to change the visual style",
+      ],
+      ui_components: [
+        "Accordion sidebar with three collapsible sections",
+        "Tab bar navigation (4 tabs per page)",
+        "Animated bar chart visualizer with play/pause controls",
+        "SortCodePanel language switcher",
+        "Badge chips for complexity and pattern type",
+        "Alert callout for algorithm-specific tips",
+        "Complexity table with colour-coded cells",
+        "Participant and use-case lists in Overview",
+        "Step-by-step walkthrough in Example panel",
+        "Benefits / liabilities lists in Consequences panel",
+        "ParadigmSwitcher for Flat / Skeuo / Neo / Glass themes",
+      ],
+    },
+    technical_architecture: {
+      platform: { name: "Web" },
+      framework: "React 19",
+      language: "TypeScript",
+      data_persistence: {
+        primary: "In-memory React state (no backend)",
+        user_preferences: "URL / component state",
+      },
+    },
+    target_audience: [
+      {
+        persona: "Junior Developers",
+        use_case:
+          "Learning sorting algorithms and design patterns with visual aids and real code examples in their language of choice.",
+      },
+      {
+        persona: "CS Students",
+        use_case:
+          "Using the step-trace and complexity panels as a study reference alongside university coursework.",
+      },
+      {
+        persona: "Senior Engineers",
+        use_case:
+          "Quick pattern lookup with production-quality Java or C++ examples when doing cross-language work.",
+      },
+    ],
+    security_and_privacy: {
+      data_encryption: "N/A — fully client-side, no user data collected",
+      privacy_features: [
+        "No authentication, no tracking, no analytics",
+        "All content rendered locally — no external API calls",
+      ],
+    },
+    summary:
+      "An interactive web reference built with React 19 and TypeScript covering 8 sorting algorithms and 12 Gang of Four design patterns. Each algorithm ships with an animated bar-chart visualizer, step-trace panel, Big-O complexity table, and four-language code examples. Each design pattern has tabbed Overview, Example, Consequences, and Code sections with TypeScript, Python, Java, and C++ implementations. The project is underpinned by a custom-published @cuneytyildirim/ui component library supporting four visual paradigms.",
   },
 ];
