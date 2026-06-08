@@ -86,6 +86,8 @@ export interface TechnicalArchitecture {
   minimum_deployment?: string;
   framework: string;
   language: string;
+  navigation?: string;
+  state_management?: { global?: string; local?: string };
   data_persistence: DataPersistence;
   swiftdata_entities?: SwiftDataEntity[];
   enums?: EnumDefinition[];
