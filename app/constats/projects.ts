@@ -407,6 +407,45 @@ export const projects = [
       "/images/chores/IMG_2514.png",
     ],
   },
+  {
+    title: "Ordering Pizza Management",
+    company: "Cuneyt Yildirim",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Expo Router",
+      "React Context API",
+    ],
+    id: "14",
+    achievements: [
+      "Built a dual-mode pizza ordering system — a fully customizable builder with topping selection and an animated arch-scroll picker for pre-configured pizzas — both feeding a shared context-driven basket with real-time price calculation.",
+      "Engineered a dynamic size-selection system (S/M/L/XL) with size-responsive visual scaling of pizza and plate images, giving users immediate tactile feedback as they switch between sizes.",
+      "Implemented a full-featured Admin dashboard with inline CRUD for toppings (meat, vegetable, seafood, and cheese categories with enable/disable toggles), sizes (diameter, slices, servings, base price), pizza types, and pre-built menu items — with a live stats header tracking totals across all entities.",
+      "Architected a React Context state layer managing the basket, order history, and user profile across the app, persisting completed orders with status badges, itemized receipts, and formatted order IDs.",
+    ],
+    gradient: "from-sky-300 to-emerald-300",
+    images: [
+      "/images/pizza/IMG_2610.png",
+      "/images/pizza/IMG_2611.png",
+      "/images/pizza/IMG_2612.png",
+      "/images/pizza/IMG_2613.png",
+      "/images/pizza/IMG_2614.png",
+      "/images/pizza/IMG_2615.png",
+      "/images/pizza/IMG_2616.png",
+      "/images/pizza/IMG_2617.png",
+      "/images/pizza/IMG_2618.png",
+      "/images/pizza/IMG_2619.png",
+      "/images/pizza/IMG_2620.png",
+      "/images/pizza/IMG_2621.png",
+      "/images/pizza/IMG_2622.png",
+      "/images/pizza/IMG_2623.png",
+      "/images/pizza/IMG_2624.png",
+      "/images/pizza/IMG_2625.png",
+      "/images/pizza/IMG_2626.png",
+      "/images/pizza/IMG_2627.png",
+    ],
+  },
 ];
 
 export const projectDetail: ProjectDetail[] = [
@@ -2570,6 +2609,171 @@ export const projectDetail: ProjectDetail[] = [
     },
     summary:
       "A pure C++ turn-based strategy war simulation implementing a full game engine with territory/continent maps, multi-player turns, a command-pattern order system, and rule-based AI opponents — built entirely without external libraries to demonstrate object-oriented design and game-state management.",
+  },
+  {
+    id: "14",
+    app_identity: {
+      name: "Ordering Pizza Management",
+      developer: "Cuneyt Yildirim",
+      platforms: [
+        { name: "iOS (React Native / Expo)" },
+        { name: "Android (React Native / Expo)" },
+      ],
+      url: null,
+      tagline:
+        "Full-featured pizza ordering and restaurant management app with dual ordering modes, admin CRUD dashboard, basket, and order history",
+    },
+    core_purpose: {
+      mission:
+        "Deliver an end-to-end pizza ordering experience — from custom topping selection to pre-configured menu picks — while giving restaurant operators a complete admin panel to manage their menu in real time.",
+      problem_solved: [
+        "No single app covering both the customer ordering flow and the operator admin workflow",
+        "Static menus with no way for operators to enable/disable toppings or adjust sizes and prices",
+        "Lack of a smooth, tactile pizza selection experience beyond a flat list",
+        "No per-order receipt history tied to a user profile",
+      ],
+      positioning:
+        "A React Native / Expo app with Expo Router tab navigation, a shared React Context state layer, and two distinct experiences: a customer-facing ordering flow and a full admin management dashboard.",
+    },
+    key_features: [
+      {
+        title: "Customizable Pizza Builder",
+        description:
+          "Customers build a pizza from scratch by selecting a base type, size (S/M/L/XL), and toppings from categorized groups (meat, vegetable, seafood, cheese). Selections update a live pizza preview and feed directly into the shared basket context.",
+        automation_level: "High",
+        technology: "React Native, React Context (PizzaContext), TypeScript",
+      },
+      {
+        title: "Animated Arch-Scroll Pizza Picker",
+        description:
+          "Pre-configured pizzas are browsed through a custom ArchAnimationSlider — an arc-shaped scroll picker that cycles through menu items with smooth animations. Size buttons (S/M/L/XL) scale the pizza and plate images proportionally in real time.",
+        automation_level: "High",
+        technology:
+          "ArchAnimationSlider component, size-responsive image scaling, expo-linear-gradient",
+      },
+      {
+        title: "Shared Context Basket",
+        description:
+          "PizzaContext manages the active basket across both ordering modes. Items added from either the builder or the arch picker land in the same cart, with real-time price calculation based on the selected size (S: $8, M: $10, L: $12, XL: $14).",
+        automation_level: "High",
+        technology: "React Context API, useReducer / useState patterns",
+      },
+      {
+        title: "Order History with Itemized Receipts",
+        description:
+          "Completed orders are persisted in context and displayed as styled receipt cards — showing order date, a formatted order ID (last 8 characters of UUID), status badge, per-pizza breakdown with topping tags, and a total price summary.",
+        automation_level: "Medium",
+        technology: "PizzaContext orderHistory, React Native ScrollView, UUID",
+      },
+      {
+        title: "User Profile Management",
+        description:
+          "Customers can view and edit their profile (name, email, phone, address) directly in the app. The profile screen toggles between read-only and edit modes with save/cancel flows, persisted via PizzaContext.",
+        automation_level: "Low",
+        technology: "React Native TextInput, PizzaContext updateProfile()",
+      },
+      {
+        title: "Admin Dashboard — Toppings Management",
+        description:
+          "Operators manage all toppings across four categories (meat, vegetable, seafood, cheese). Each topping can be enabled/disabled via a toggle switch, edited inline (label, value key, colour, category), or deleted with a confirmation alert. New toppings can be added from a form at the bottom.",
+        automation_level: "High",
+        technology:
+          "React Native Switch, inline edit forms, Alert.alert confirmation",
+      },
+      {
+        title: "Admin Dashboard — Sizes Management",
+        description:
+          "All four pizza sizes (S/M/L/XL) are editable: label, full name, diameter, slice count, servings, base price, and accent colour. Inline edit cards update size data immediately without navigation.",
+        automation_level: "High",
+        technology:
+          "Inline SizeDraft state, numeric/decimal keyboard types, colour preview",
+      },
+      {
+        title: "Admin Dashboard — Pizza Types",
+        description:
+          "Pizza types (e.g. Margherita, BBQ Chicken) are displayed as read-only cards listing their name, colour dot, and all assigned default toppings as chips. A topping count badge gives a quick overview.",
+        automation_level: "Low",
+        technology: "Static PizzaType data, topping chip grid rendering",
+      },
+      {
+        title: "Admin Dashboard — Pre-Built Pizzas",
+        description:
+          "Operators can edit any pre-configured menu pizza: rename it, adjust its base price, change its default size, and add or remove toppings via a grid of toggleable chips. Pizzas can also be deleted from the menu with a confirmation alert.",
+        automation_level: "High",
+        technology:
+          "PizzaDraft state, toppingIds toggle logic, size pill selector",
+      },
+      {
+        title: "Live Admin Stats Header",
+        description:
+          "The top of the admin screen shows four live stat cards — Toppings (enabled/total), Sizes, Types, and Pizzas — derived directly from local state so they update instantly as operators make changes.",
+        automation_level: "High",
+        technology: "Derived stats object, React Native View grid layout",
+      },
+    ],
+    user_experience: {
+      design_philosophy:
+        "Two audiences, two flows — customers get a smooth, visual ordering journey; operators get a power-user CRUD dashboard — both inside the same tab-navigated app",
+      workflow_steps: [
+        "Customer opens the app to the home tab and selects a pizza type and toppings via the builder",
+        "Or switches to the Ready-to-Go tab and uses the arch picker to browse pre-configured pizzas",
+        "Taps a size button to resize the pizza preview and set the price",
+        "Adds to cart — the item lands in the shared basket",
+        "Reviews order history and edits their profile in the Order tab",
+        "Operator opens the Admin tab to manage toppings, sizes, types, or menu pizzas",
+        "All menu changes reflect immediately in the ordering flow",
+      ],
+      ui_components: [
+        "Expo Router tab bar with four tabs (Home, Ready, Order, Admin)",
+        "ArchAnimationSlider — custom arch-shaped pizza picker",
+        "Pizza and plate images with size-responsive scaling",
+        "Floating 'Add to Cart' action button",
+        "Collapsible Pizza Overview card",
+        "Order history receipt cards with topping tags and status badges",
+        "Profile form with read/edit mode toggle",
+        "Admin stats row with four metric cards",
+        "Segmented tab selector inside Admin screen",
+        "Category filter chips for topping management",
+        "Inline edit cards with colour preview inputs",
+        "Topping toggle chip grid for pizza editing",
+        "LinearGradient backgrounds and card gradients",
+      ],
+    },
+    technical_architecture: {
+      platform: { name: "iOS & Android" },
+      framework: "React Native / Expo",
+      language: "TypeScript",
+      navigation: "Expo Router (file-based tabs)",
+      state_management: {
+        global: "React Context API — PizzaContext",
+        local: "useState / useEffect per screen",
+      },
+      data_persistence: {
+        primary:
+          "In-memory React Context (session state — basket, order history, profile)",
+        future_scope: "AsyncStorage or remote API integration",
+      },
+    },
+    target_audience: [
+      {
+        persona: "Pizza Customers",
+        use_case:
+          "Browsing the menu, customizing a pizza with their preferred toppings and size, and tracking their order history.",
+      },
+      {
+        persona: "Restaurant Operators",
+        use_case:
+          "Managing the live menu — enabling/disabling toppings, updating sizes and prices, editing pre-built pizza offerings — without a web back-office.",
+      },
+    ],
+    security_and_privacy: {
+      data_storage:
+        "All data stored in-memory via React Context — no network calls, no external APIs in current scope",
+      data_integrity:
+        "TypeScript type guards on all pizza, topping, size, and order models",
+    },
+    summary:
+      "A React Native / Expo pizza ordering and management app built with TypeScript and Expo Router. Customers order through two flows: a full customizable pizza builder and an animated arch-scroll picker for pre-configured menu items, both feeding a shared context-driven basket with dynamic pricing. Completed orders are saved as itemized receipts with status badges. A dedicated Admin tab provides full CRUD management for toppings (with category filters and enable/disable toggles), sizes (with price and dimension editing), pizza types, and pre-built menu pizzas — all with live stat cards at the top of the dashboard.",
   },
   {
     id: "6",
