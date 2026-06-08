@@ -2751,7 +2751,6 @@ export const projectDetail: ProjectDetail[] = [
       data_persistence: {
         primary:
           "In-memory React Context (session state — basket, order history, profile)",
-        future_scope: "AsyncStorage or remote API integration",
       },
     },
     target_audience: [

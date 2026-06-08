@@ -3,7 +3,7 @@ export const sections = [
     title: "Welcome",
     subtitle: "Creative Developer",
     content:
-      "Crafting beautiful digital experiences with modern web technologies.",
+      "Building production-grade apps across iOS, React Native, and full-stack web.",
     gradient: "from-purple-600 to-pink-600",
     icon: "👋",
   },
@@ -12,7 +12,7 @@ export const sections = [
     subtitle: "Cuneyt Yildirim",
     description: "A Passionate Developer",
     content:
-      "I blend design and code to build responsive, user-friendly applications that make an impact.",
+      "Full-stack developer shipping native iOS apps, cross-platform React Native, and web systems — from architecture to App Store release.",
     gradient: "from-blue-600 to-cyan-600",
     icon: "💡",
   },
@@ -20,7 +20,7 @@ export const sections = [
     title: "Projects",
     subtitle: "Recent Work",
     content:
-      "From e-commerce platforms to interactive dashboards, each project showcases attention to detail and innovation.",
+      "From App Store iOS apps and real-time logistics platforms to 6-app Docker ecosystems and interactive algorithm visualisers — each project built end to end.",
     gradient: "from-green-600 to-teal-600",
     icon: "🚀",
   },
@@ -28,7 +28,7 @@ export const sections = [
     title: "Skills",
     subtitle: "Tech Stack",
     content:
-      "React, GSAP, Tailwind CSS, Node.js, and a passion for learning new technologies.",
+      "SwiftUI · React Native · Next.js · Spring Boot · .NET · TypeScript · Docker · Firebase · CoreData · CloudKit",
     gradient: "from-orange-600 to-red-600",
     icon: "⚡",
   },

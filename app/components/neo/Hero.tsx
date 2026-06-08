@@ -9,10 +9,10 @@ const roles = [
 ];
 
 const stats = [
-  { value: "8+", label: "Projects" },
-  { value: "5+", label: "Years Exp" },
-  { value: "5", label: "App Stores" },
-  // { value: "5", label: "Companies" },
+  { value: "10+", label: "Projects" },
+  { value: "6+", label: "Years Exp" },
+  { value: "7+", label: "App Stores" },
+  { value: "5+", label: "Web App" },
 ];
 
 export default function Hero({
@@ -244,11 +244,12 @@ export default function Hero({
                 className="text-sm leading-relaxed mb-4"
                 style={{ color: "#4a6080" }}
               >
-                Montreal-based software developer specialising in native iOS
-                apps, cross-platform React Native, and full-stack web systems.
-                I've shipped production apps to the App Store and Google Play,
-                architected Spring Boot backends, and built 6-application
-                ecosystems from scratch over 5 years.
+                Montreal-based full-stack developer with 5+ years building
+                across native iOS (SwiftUI / SwiftData), React Native, and
+                full-stack web. I've published 3 iOS apps to the App Store,
+                architected a 6-app Docker / Nginx ecosystem, engineered Spring
+                Boot backends serving 100+ concurrent users, and shipped
+                AI-powered pipelines — from first commit to production.
               </p>
               <div
                 className="flex items-center gap-1.5 text-xs font-mono"
