@@ -215,6 +215,7 @@ export const projects = [
       "TailwindCSS",
       "React Hooks",
     ],
+    link: "https://data-structure-cy.netlify.app/",
     achievements: [
       "Built an interactive educational platform covering 8 sorting algorithms with animated step-by-step bar chart visualizations and per-element role coloring (compare, swap, pivot, sorted).",
       "Implemented 12 Gang of Four design pattern reference pages — each with tabbed Overview, Example, Consequences, and multi-language Code sections covering TypeScript, Python, Java, and C++.",
@@ -279,7 +280,7 @@ export const projects = [
       "Jest",
     ],
     id: "8",
-    link: "https://hotel-management-systemwebportal-geav5x8jf.vercel.app/",
+    link: "https://hotel-management-systemwebportal-8m9pn7uka.vercel.app/",
     achievements: [
       "Architected a 6-application ecosystem — Express backend, Admin portal, Owner portal, Hotel portal, Agency portal, and a React Native mobile app — all orchestrated via Docker Compose with Nginx reverse proxy.",
       "Built a shared Express/MongoDB REST API (port 4000) serving all 4 Next.js portals with centralized JWT auth, role management, and booking/room logic.",
@@ -1889,15 +1890,15 @@ export const projectDetail: ProjectDetail[] = [
       platforms: [
         {
           name: "Web — Admin Portal (Next.js)",
-          link: "https://hotel-management-admin-portal-k60x0rpgt.vercel.app/",
+          link: "https://hotel-management-admin-portal-35b1d95ab.vercel.app/login",
         },
         {
           name: "Web — Agency Portal (Next.js)",
-          link: "https://hotel-management-agency-8tjg7fqni-cuneytyildirims-projects.vercel.app",
+          link: "https://hotel-management-agency-p8avcirgq-cuneytyildirims-projects.vercel.app/",
         },
         {
           name: "Web — Hotel Portal (Next.js)",
-          link: "https://hotel-management-hotel-portal-cb68a3s6i.vercel.app",
+          link: "https://hotel-management-hotel-portal.vercel.app",
         },
         {
           name: "Web — Owner Portal (Next.js)",
@@ -1905,7 +1906,7 @@ export const projectDetail: ProjectDetail[] = [
         },
         {
           name: "Web — Web Portal (Next.js)",
-          link: "https://hotel-management-systemwebportal-geav5x8jf.vercel.app/",
+          link: "https://hotel-management-systemwebportal-8m9pn7uka.vercel.app/",
         },
         { name: "Mobile — React Native / Expo", link: "" },
         { name: "Backend — Node.js / Express", link: "" },
