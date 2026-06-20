@@ -447,6 +447,30 @@ export const projects = [
       "/images/pizza/IMG_2627.png",
     ],
   },
+  {
+    id: "15",
+    title: "PRO-BALL ANALYTICA",
+    company: "Cuneyt Yildirim",
+    technologies: [
+      "TypeScript",
+      "React 19",
+      "TanStack Start",
+      "TanStack Router",
+      "TanStack Query",
+      "MongoDB",
+      "Mongoose",
+      "TailwindCSS",
+      "Vite",
+    ],
+    achievements: [
+      "Architected a full-stack NBA scouting platform with four analytical modules — War Room, Player Profile, Statistical Deep Dive, and Head-to-Head Comparison — all powered by live MongoDB queries via TanStack Start server functions.",
+      "Built a League Efficiency Quadrant using pure SVG, dynamically plotting all 30 NBA teams by offensive and defensive rating with auto-scaled axes and four labeled performance zones.",
+      "Engineered a player Skill Fingerprint radar chart and career scoring sparkline rendered entirely in SVG, with percentile color-coding and interactive season/team/player dropdowns backed by React Query.",
+      "Implemented a Head-to-Head Comparison engine comparing two players across 8 advanced metrics (PER, TS%, BPM, VORP, USG%) with mirrored bar charts, edge summaries, and an auto-generated scouting synopsis.",
+    ],
+    gradient: "from-orange-600 to-red-600",
+    images: [],
+  },
 ];
 
 export const projectDetail: ProjectDetail[] = [
@@ -2917,5 +2941,94 @@ export const projectDetail: ProjectDetail[] = [
     },
     summary:
       "An interactive web reference built with React 19 and TypeScript covering 8 sorting algorithms and 12 Gang of Four design patterns. Each algorithm ships with an animated bar-chart visualizer, step-trace panel, Big-O complexity table, and four-language code examples. Each design pattern has tabbed Overview, Example, Consequences, and Code sections with TypeScript, Python, Java, and C++ implementations. The project is underpinned by a custom-published @cuneytyildirim/ui component library supporting four visual paradigms.",
+  },
+  {
+    id: "15",
+    app_identity: {
+      name: "PRO-BALL ANALYTICA",
+      developer: "Cuneyt Yildirim",
+      platforms: [
+        { name: "Web" },
+        { name: "TanStack Start" },
+        { name: "MongoDB" },
+      ],
+      url: null,
+      tagline: "Full-stack NBA scouting and analytics platform",
+    },
+    core_purpose: {
+      mission:
+        "Provide scouts and analysts with deep, data-driven insights across team efficiency, player performance, and head-to-head comparisons in a single cohesive tool.",
+      problem_solved: [
+        "Fragmented NBA statistics scattered across multiple sites",
+        "Lack of visual tools for comparing team efficiency quadrants",
+        "No unified view combining advanced player metrics, shot zones, and career trends",
+      ],
+      positioning:
+        "A full-stack SSR application using TanStack Start server functions to query MongoDB directly, delivering live scouting data without a separate API layer.",
+    },
+    key_features: [
+      {
+        title: "Team War Room",
+        description:
+          "Per-team dashboard with record, Net Rtg, ORtg, DRtg, and pace. Includes a League Efficiency Quadrant SVG scatter plot (all 30 teams), Four Factors table with league ranks, and a Roster Watch table with USG%, net rating, and PER for each player.",
+        automation_level: "High",
+      },
+      {
+        title: "Player Profile (Player DNA)",
+        description:
+          "Per-player scouting card with shooting splits, six advanced metrics (PER, TS%, BPM, VORP, WS/48, USG%), a shot-zone breakdown across six court zones, and a radar chart Skill Fingerprint across Scoring, Rebounding, Playmaking, Defense, Athleticism, and IQ.",
+        automation_level: "High",
+      },
+      {
+        title: "Statistical Deep Dive",
+        description:
+          "Tab-per-player UI with a career scoring sparkline, full shot distribution table with eFG%, advanced breakdown (OBPM, DBPM, Win Shares, VORP), and season context stats.",
+        automation_level: "High",
+      },
+      {
+        title: "Head-to-Head Comparison",
+        description:
+          "Compare any two players from any team and season. Mirrored bar chart across 8 metrics, edge summary showing which categories each player wins, and an auto-generated scouting synopsis with Scout Verdict.",
+        automation_level: "High",
+      },
+      {
+        title: "Season & Team Selectors",
+        description:
+          "All four views support independent season selection (1947–2026) and team selection across all 30 NBA franchises, with React Query caching to minimize redundant DB trips.",
+        automation_level: "High",
+      },
+    ],
+    user_experience: {
+      design_philosophy: "Data-Dense, Scout-Grade, Dark UI",
+      workflow_steps: [
+        "Select team and season from the War Room to get a league overview",
+        "Switch to Player Profile to drill into an individual player's radar and zones",
+        "Use Deep Dive tabs to browse every player on a roster at once",
+        "Open Compare to pit any two players head-to-head with an auto verdict",
+      ],
+    },
+    target_audience: [
+      {
+        persona: "NBA Scouts",
+        use_case:
+          "Quickly evaluating player efficiency, shot profiles, and clutch performance across seasons.",
+      },
+      {
+        persona: "Basketball Analysts",
+        use_case:
+          "Comparing team Four Factors rankings and efficiency quadrant positioning across the full league.",
+      },
+      {
+        persona: "Sports Fans",
+        use_case:
+          "Exploring head-to-head stat comparisons between favorite players with visual breakdowns.",
+      },
+    ],
+    security_and_privacy: {
+      data_encryption: "N/A — read-only analytics dashboard, no user accounts",
+      privacy_features: ["No authentication required", "No user data collected"],
+    },
+    summary:
+      "A full-stack NBA scouting platform built with TanStack Start, React 19, and MongoDB. Delivers four analytical views — War Room, Player Profile, Statistical Deep Dive, and Head-to-Head Comparison — through TanStack Start server functions that query MongoDB collections directly. All visualizations (radar charts, sparklines, SVG quadrant plots) are rendered in pure SVG with no charting library dependency. Data covers seasons from 1947 to 2026 across all 30 NBA teams.",
   },
 ];
