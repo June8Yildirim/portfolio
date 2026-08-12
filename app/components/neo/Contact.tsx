@@ -15,8 +15,8 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    handle: "https://www.linkedin.com/in/conrad-yildirim-42318ab3/",
-    href: "https://www.linkedin.com/in/conrad-yildirim-42318ab3/",
+    handle: "https://www.linkedin.com/in/conrad-yildirim/",
+    href: "https://www.linkedin.com/in/conrad-yildirim/",
     icon: "✉",
   },
 ];

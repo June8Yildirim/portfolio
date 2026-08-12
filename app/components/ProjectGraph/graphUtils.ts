@@ -1,5 +1,6 @@
-import { projects, projectDetail } from "~/constats/projects";
-import type { ProjectDetail } from "~/types/ProjectDetails";
+import { projects } from "~/constats/projects";
+import { projectDetail } from "~/constats/projectDetails";
+import type { ProjectDetailsItemType } from "~/types/ProjectDetailsItemType";
 
 export interface GraphNode {
   id: string;
@@ -12,7 +13,7 @@ export interface GraphNode {
   images?: string[];
   achievements: string[];
   position: [number, number, number];
-  detail?: ProjectDetail;
+  detail?: ProjectDetailsItemType;
 }
 
 export interface GraphEdge {
@@ -21,7 +22,10 @@ export interface GraphEdge {
   sharedTech: string[];
 }
 
-function fibonacciSphere(count: number, radius: number): [number, number, number][] {
+function fibonacciSphere(
+  count: number,
+  radius: number,
+): [number, number, number][] {
   const positions: [number, number, number][] = [];
   const phi = Math.PI * (3 - Math.sqrt(5));
   for (let i = 0; i < count; i++) {
@@ -54,7 +58,7 @@ export function buildGraph(): { nodes: GraphNode[]; edges: GraphEdge[] } {
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const shared = nodes[i].technologies.filter((t) =>
-        nodes[j].technologies.includes(t)
+        nodes[j].technologies.includes(t),
       );
       if (shared.length >= 1) {
         edges.push({

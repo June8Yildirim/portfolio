@@ -10,8 +10,8 @@ import ExperiencesMain from "./ExperiencesMain";
 import SkillsMain from "./SkillsMain";
 import AboutMain from "./AboutMeMain";
 import ContactMain from "./ContactMain";
-import { projectDetail } from "~/constats/projects";
-import type { ProjectDetail } from "~/types/ProjectDetails";
+import { projectDetail } from "~/constats/projectDetails";
+import type { ProjectDetailsItemType } from "~/types/ProjectDetailsItemType";
 import ProjectDetailModal from "./pages/ProjectModal";
 import ExperienceSection from "./pages/ExperienceModal";
 
@@ -23,7 +23,7 @@ export default function Portfolio() {
   const [experienceMounted, setExperiencesMounted] = useState(false);
   const [skillsMounted, setSkillsMounted] = useState(false);
   const [projectId, setProjectId] = useState<string | null>(null);
-  const [project, setProject] = useState<ProjectDetail | null>(null);
+  const [project, setProject] = useState<ProjectDetailsItemType | null>(null);
   //TODO: add to modal next to each  othher. When opendd the
   //details moodal if user clicks detauil button open new projectg next ot parenal modal.
   // TODO: you may think to merge component merge into one AboutMe and ContactMe,

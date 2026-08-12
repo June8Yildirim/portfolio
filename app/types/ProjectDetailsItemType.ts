@@ -1,6 +1,4 @@
-// Core Project Types
-
-export interface ProjectDetail {
+export interface ProjectDetailsItemType {
   id: string;
   app_identity: AppIdentity;
   core_purpose: CorePurpose;
@@ -246,13 +244,13 @@ export function isProblemWithDetails(
 }
 
 export function hasDataSync(
-  project: ProjectDetail,
-): project is ProjectDetail & { data_sync: DataSync } {
+  project: ProjectDetailsItemType,
+): project is ProjectDetailsItemType & { data_sync: DataSync } {
   return project.data_sync !== undefined;
 }
 
 export function hasMoodTracking(
-  project: ProjectDetail,
-): project is ProjectDetail & { mood_tracking: MoodTracking } {
+  project: ProjectDetailsItemType,
+): project is ProjectDetailsItemType & { mood_tracking: MoodTracking } {
   return project.mood_tracking !== undefined;
 }

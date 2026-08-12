@@ -1,4 +1,4 @@
-import type { ProjectDetail } from "~/types/ProjectDetails";
+import type { ProjectDetailsItemType } from "~/types/ProjectDetailsItemType";
 import Projects from "./Project";
 
 export default function ProjectDetailModal({
@@ -6,7 +6,7 @@ export default function ProjectDetailModal({
   project,
   setProjectId,
 }: {
-  project: ProjectDetail | null;
+  project: ProjectDetailsItemType | null;
   setProjectId: (id: string) => void;
   projectId: string | null;
 }) {
@@ -60,7 +60,7 @@ export default function ProjectDetailModal({
                 <div className="flex-col justify-items-start items-start flex p-4 gap-2 rounded">
                   <h4 className="font-semibold mb-2">Platforms:</h4>
                   <div className="flex-wrap flex gap-2 rounded">
-                    {project?.app_identity.platforms.map((platform, idx) => (
+                    {project?.app_identity.platforms.map((platform, idx) =>
                       platform.link ? (
                         <a
                           href={platform.link}
@@ -78,8 +78,8 @@ export default function ProjectDetailModal({
                         >
                           {platform.name}
                         </span>
-                      )
-                    ))}
+                      ),
+                    )}
                   </div>
                 </div>
               </div>
