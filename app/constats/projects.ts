@@ -281,7 +281,7 @@ export const projects: ProjectType[] = [
       "Jest",
     ],
     id: "8",
-    link: "https://hotel-management-systemwebportal-8m9pn7uka.vercel.app/",
+    link: "https://hotel-management-systemwebportal.vercel.app/",
     achievements: [
       "Architected a 6-application ecosystem — Express backend, Admin portal, Owner portal, Hotel portal, Agency portal, and a React Native mobile app — all orchestrated via Docker Compose with Nginx reverse proxy.",
       "Built a shared Express/MongoDB REST API (port 4000) serving all 4 Next.js portals with centralized JWT auth, role management, and booking/room logic.",

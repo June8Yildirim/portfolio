@@ -1441,11 +1441,11 @@ export const projectDetail: ProjectDetailsItemType[] = [
       platforms: [
         {
           name: "Web — Admin Portal (Next.js)",
-          link: "https://hotel-management-admin-portal-35b1d95ab.vercel.app/login",
+          link: "https://hotel-management-admin-portal.vercel.app/login",
         },
         {
           name: "Web — Agency Portal (Next.js)",
-          link: "https://hotel-management-agency-p8avcirgq-cuneytyildirims-projects.vercel.app/",
+          link: "https://hotel-management-agency.vercel.app/login",
         },
         {
           name: "Web — Hotel Portal (Next.js)",
@@ -1453,11 +1453,11 @@ export const projectDetail: ProjectDetailsItemType[] = [
         },
         {
           name: "Web — Owner Portal (Next.js)",
-          link: "https://hotel-management-owner-portal-juysl3x9q.vercel.app",
+          link: "https://hotel-management-owner-portal.vercel.app/login",
         },
         {
           name: "Web — Web Portal (Next.js)",
-          link: "https://hotel-management-systemwebportal-8m9pn7uka.vercel.app/",
+          link: "https://hotel-management-systemwebportal.vercel.app/",
         },
         { name: "Mobile — React Native / Expo", link: "" },
         { name: "Backend — Node.js / Express", link: "" },
