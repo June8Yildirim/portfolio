@@ -14,6 +14,22 @@ import "./app.css";
 // gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export const links: Route.LinksFunction = () => [
+  // Favicons — BASE_URL-prefixed so they resolve under the GitHub Pages subpath too.
+  // ?v=2 busts the browser's aggressive favicon cache after the icon changed.
+  {
+    rel: "icon",
+    type: "image/svg+xml",
+    href: `${import.meta.env.BASE_URL}favicon.svg?v=2`,
+  },
+  {
+    rel: "icon",
+    href: `${import.meta.env.BASE_URL}favicon.ico?v=2`,
+    sizes: "any",
+  },
+  {
+    rel: "apple-touch-icon",
+    href: `${import.meta.env.BASE_URL}apple-touch-icon.png?v=2`,
+  },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import ScrambleText from "../ScrambleText";
 const roles = [
   "FullStack Developer",
   "iOS Developer",
@@ -76,19 +76,19 @@ export default function Hero({
         {/* Eyebrow */}
         <div className="flex items-center justify-center gap-3 mb-8">
           <div
-            className="h-px w-12 flex-shrink-0"
+            className="h-px w-12 shrink-0"
             style={{
               background: "linear-gradient(to right, transparent, #4488ff)",
             }}
           />
           <span
-            className="text-xs font-mono tracking-[0.25em] uppercase"
+            className={`text-xs font-mono tracking-[0.25em] uppercase`}
             style={{ color: "#4488ff" }}
           >
             Software Developer
           </span>
           <div
-            className="h-px w-12 flex-shrink-0"
+            className="h-px w-12 shrink-0"
             style={{
               background: "linear-gradient(to left, transparent, #4488ff)",
             }}
@@ -96,25 +96,29 @@ export default function Hero({
         </div>
 
         {/* Name */}
-        <h1
-          className="font-bold text-white mb-4 leading-none"
+        <div
           style={{
-            fontSize: "clamp(2.8rem, 8vw, 6rem)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.05em",
+            margin: "0.25rem 0 1.5rem",
+            fontFamily: "ui-monospace, 'Inconsolata', monospace",
+            fontSize: "clamp(44px, 9vw, 88px)",
+            fontWeight: 700,
+            lineHeight: 1.02,
             letterSpacing: "-0.02em",
+            color: "#f4f8ff",
+            textShadow: "0 0 24px rgba(0, 90, 255, 0.28)",
           }}
         >
-          Cuneyt{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #4488ff 0%, #00ccff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Yildirim
-          </span>
-        </h1>
+          <ScrambleText
+            lines={["Cuneyt", "Yildirim"]}
+            duration={1.1}
+            stagger={0.28}
+            delay={0.15}
+          />
+        </div>
 
         {/* Typewriter role */}
         <div className="flex items-center justify-center gap-2 mb-8 h-10">
