@@ -1436,7 +1436,7 @@ export const projectDetail: ProjectDetailsItemType[] = [
   {
     id: "8",
     app_identity: {
-      name: "Hotel Management System",
+      name: "SoJourn Hotel Management System",
       developer: "Cuneyt Yildirim",
       platforms: [
         {
@@ -2568,10 +2568,12 @@ export const projectDetail: ProjectDetailsItemType[] = [
       name: "Customer Manager",
       developer: "Cuneyt Yildirim",
       platforms: [
-        { name: "Web (Next.js App Router)" },
-        { name: "Admin Console", link: "http://localhost:3001" },
+        {
+          name: "Web ",
+          link: "https://inventory-management-yildirim.netlify.app/",
+        },
       ],
-      url: null, // add the production URL when deployed
+      url: "https://inventory-management-yildirim.netlify.app/",
       tagline:
         "A multi-tenant warehouse CRM for customers, inventory, invoicing, and fleet.",
     },
@@ -2728,6 +2730,7 @@ export const projectDetail: ProjectDetailsItemType[] = [
           ],
         },
       ],
+      observable_objects: ["Tenant/warehouse context", "Session"],
       extensions: ["Super-admin console (apps/console)"],
     },
 
@@ -2800,7 +2803,7 @@ export const projectDetail: ProjectDetailsItemType[] = [
     summary:
       "A multi-tenant warehouse CRM built on Next.js 16, React 19, and Prisma/PostgreSQL that unifies customers, suppliers, inventory, line-item invoicing, and fleet management under strict per-warehouse data isolation. It layers RBAC, TOTP 2FA, realtime messaging (Pusher/Twilio/email), configurable settings, and a SaaS-style super-admin console — all covered by unit, e2e, and integration tests.",
 
-    link: "https://…", // add production URL when available
+    link: "https://inventory-management-yildirim.netlify.app/",
   },
   {
     id: "web-dev-toolkit",
@@ -2964,19 +2967,14 @@ export const projectDetail: ProjectDetailsItemType[] = [
   },
   {
     id: "git-learner",
-
     app_identity: {
-      name: "Git Learner",
+      name: "Interactive Visual Git Playground",
       developer: "Cuneyt Yildirim",
-      platforms: [
-        { name: "Web (any modern browser)" },
-        { name: "Netlify (hosting)", link: null },
-      ],
-      url: null, // deploy target configured via netlify.toml; no public URL captured
+      platforms: [{ name: "Web" }],
+      url: "https://gitpractising.netlify.app/", // deploy target configured via netlify.toml; no public URL captured
       tagline:
         "Learn Git visually — run real commands and watch the commit graph draw itself.",
     },
-
     core_purpose: {
       mission:
         "Turn abstract Git concepts into something you can see: learners type real Git commands and watch a live commit graph draw branches, merges, rebases, cherry-picks and conflicts as they happen.",
@@ -3060,7 +3058,7 @@ export const projectDetail: ProjectDetailsItemType[] = [
     },
 
     technical_architecture: {
-      platform: { name: "Web", link: null },
+      platform: { name: "Web" },
       framework: "React 19 + Vite 8",
       language: "TypeScript (strict)",
       navigation:
@@ -3149,151 +3147,344 @@ export const projectDetail: ProjectDetailsItemType[] = [
     link: "https://github.com/June8Yildirim/git_learner",
   },
   {
-    id: "crm-customer-manager",
+    id: "wireframe-generator",
 
     app_identity: {
-      name: "CRM Customer Manager",
+      name: "Wireframe Generator",
       developer: "Cuneyt Yildirim",
-      platforms: [{ name: "Web", link: "https://vercel.com" }],
-      url: null,
+      platforms: [
+        { name: "Web", link: "https://wireframegenerator.netlify.app/" },
+      ],
+      url: "https://wireframegenerator.netlify.app/",
       tagline:
-        "Multi-tenant customer, fleet, and invoicing management for warehouses.",
+        "Sketch a UI on a drag-and-drop canvas, then export it as an image, a document, or real React code.",
     },
 
     core_purpose: {
       mission:
-        "Give warehouse operators a single system to manage customers, suppliers, inventory, fleet, and invoices with strict tenant isolation.",
+        "Make low-fidelity UI layout fast and frictionless in the browser — no install, no account — and let a rough sketch become a real artifact developers and designers can use.",
       problem_solved: [
-        "Customer, supplier, and invoice data scattered across spreadsheets",
-        "No isolation between warehouses sharing one system",
-        "Manual, error-prone invoice creation and fleet tracking",
+        "Sketching a screen layout usually means opening a heavy design tool or reaching for pen and paper",
+        "Wireframes rarely translate into anything a developer can start from",
+        "Keeping visual style consistent across mocked screens is manual and error-prone",
       ],
       positioning:
-        "A privacy-conscious, multi-tenant CRM where every record is scoped to its warehouse.",
+        "A zero-backend, single-page wireframing tool that doubles as a code generator — export the same design to PNG, SVG, PDF, HTML, or React.",
     },
 
     key_features: [
       {
-        title: "Multi-Tenant Warehouse Isolation",
+        title: "Drag-and-drop canvas with 15+ primitives",
         description:
-          "Every controller and API route scopes queries by warehouseId so tenants never see each other's data.",
-        automation_level: "High",
-        impact: "Enforced data isolation across all resources",
-        technology: "Prisma row scoping + tenant middleware",
-        status: "Shipped",
-      },
-      {
-        title: "Invoicing",
-        description:
-          "Create, edit, and detail invoices with line items tied to customers and inventory.",
+          "Place, move, resize, and layer element types — heading, text, button, input, textarea, image, box, card, navbar, avatar, checkbox, radio, toggle, divider, and icon — with a layers panel for z-order and selection.",
         automation_level: "Medium",
-        technology: "Next.js API routes + Prisma",
-        status: "Shipped",
+        technology: "React 19 + custom canvas",
       },
       {
-        title: "Fleet Management",
+        title: "Six-format export from one serializer",
         description:
-          "Manage drivers and trucks with tabbed forms and validation.",
-        automation_level: "Medium",
-        status: "Shipped",
-      },
-      {
-        title: "Configurable Settings",
-        description:
-          "App options, drivers, and trucks are editable rather than hardcoded constants.",
-        automation_level: "Low",
-        status: "Shipped",
-      },
-      {
-        title: "Two-Factor Authentication",
-        description: "2FA for account security on top of primary login.",
+          "A single SVG serializer renders every element, then powers export to PNG, SVG, PDF, standalone HTML, ready-to-use React components, and JSON — so the visual and the code never drift apart.",
         automation_level: "High",
-        status: "Shipped",
+        impact: "A rough wireframe becomes a usable asset or starter code.",
+        technology: "SVG serialization pipeline",
+      },
+      {
+        title: "Theme- and palette-driven styling",
+        description:
+          "Elements carry semantic variants (primary, secondary, tertiary, success, warning, danger, surface, muted…) that resolve against a swappable theme, including gradient fills with configurable stops and angle.",
+        automation_level: "High",
+        technology: "Theme/palette resolver",
+      },
+      {
+        title: "Page template library",
+        description:
+          "Start from ready-made layouts — login, register, landing, pricing, contact, shop, product, and checkout — instead of a blank canvas.",
+        technology: "Composable template definitions",
+      },
+      {
+        title: "Local project persistence",
+        description:
+          "Projects save to the browser via localStorage and reload on return, with automatic migration of designs saved before gradients gained stops, angle, and kind.",
+        technology: "localStorage with legacy-format migration",
       },
     ],
 
     user_experience: {
       design_philosophy:
-        "Clean, dashboard-driven workflow with a persistent sidebar for fast navigation.",
+        "Keep the tool low-fidelity on purpose: quick to sketch with, opinionated about consistency, and honest that the output is a starting point, not a pixel-perfect mock.",
       workflow_steps: [
-        "Sign in (with 2FA)",
-        "Select / operate within a warehouse tenant",
-        "Manage customers, suppliers, and inventory",
-        "Create invoices and assign fleet",
-        "Adjust settings as needed",
+        "Open the app — no sign-in, blank canvas or a template",
+        "Drag elements onto the canvas and arrange them",
+        "Tune each element's variant, size, and theme in the properties panel",
+        "Export to PNG, SVG, PDF, HTML, React, or JSON",
+        "Save the project locally to continue later",
       ],
       ui_components: [
-        "Sidebar navigation",
-        "Data tables",
-        "Tabbed forms",
-        "Invoice detail view",
+        "Drag-and-drop canvas",
+        "Toolbar",
+        "Layers panel",
+        "Properties panel",
+        "Templates panel",
+        "Theme + palette panels",
+        "Projects modal",
       ],
     },
 
     technical_architecture: {
-      platform: { name: "Web", link: "https://vercel.com" },
-      framework: "Next.js (App Router)",
+      platform: { name: "Web" },
+      framework: "React 19 (with the React Compiler)",
       language: "TypeScript",
-      navigation: "App Router file-based routing + sidebar",
+      navigation: "Single-page app — panel-based workspace",
       state_management: {
-        global: "Server Components + route handlers",
-        local: "React state",
+        global: "Design document (elements, theme, selection) held in React state",
+        local: "Component-local UI state",
       },
       data_persistence: {
-        primary: "Prisma ORM",
-        container: "NeonDB (serverless Postgres)",
-        user_preferences: "App settings table",
-        secure_storage: "Hashed credentials + 2FA secrets",
+        primary: "In-memory design document",
+        local_storage: "Projects persisted to localStorage",
       },
-      observable_objects: ["Tenant/warehouse context", "Session"],
-      extensions: ["apps/console"],
+      extensions: [
+        "Vite 8 build pipeline",
+        "@rolldown/plugin-babel + babel-plugin-react-compiler",
+        "Oxlint for linting",
+        "SVG serializer powering PNG/SVG/PDF/HTML/React/JSON export",
+      ],
     },
 
     target_audience: [
       {
-        persona: "Warehouse operator",
-        use_case: "Managing customers, inventory, and invoices day to day",
+        persona: "Developer sketching a layout",
+        use_case:
+          "Rough out a screen and export React components to start coding from.",
       },
       {
-        persona: "Fleet coordinator",
-        use_case: "Assigning drivers and trucks to jobs",
+        persona: "Designer or PM",
+        use_case:
+          "Communicate a screen idea quickly without opening a heavy design tool.",
       },
       {
-        persona: "Business owner",
-        use_case: "Overseeing multiple isolated warehouse tenants",
+        persona: "Student / learner",
+        use_case:
+          "Practice UI composition and see how layouts map to markup and code.",
       },
     ],
 
     security_and_privacy: {
-      data_storage: "NeonDB Postgres, scoped per warehouse tenant",
+      data_storage:
+        "Everything stays in the browser — no backend, no accounts, projects saved only to localStorage.",
       privacy_features: [
-        "Per-warehouse data isolation",
-        "Tenant-scoped API routes",
+        "No sign-in or authentication",
+        "No server-side data collection or tracking",
       ],
-      authentication_methods: [
-        "Password login",
-        "Two-factor authentication (2FA)",
-      ],
-      data_integrity: "Prisma schema constraints and tenant-scoped queries",
     },
 
     development_details: {
       code_organization: [
-        "app/ (App Router pages + API routes)",
-        "backend/controllers (resource controllers)",
-        "prisma/schema.prisma (data model)",
-        "lib/tenant.ts (tenant scoping)",
+        "Element model + variants in src/types.ts",
+        "Export pipeline (PNG/SVG/PDF/HTML/React/JSON) in src/export.ts",
+        "Theme/palette resolvers in src/theme.ts and src/palette.ts",
+        "Page templates in src/templates.ts and composites.ts",
+        "Panels split one-per-file under src/components",
       ],
-      design_system: "Tailwind CSS + shared components",
-      testing:
-        "Jest/Vitest API tests under __tests__ (fleet, invoices, options, tenant scope)",
-      version_control: "Git (feature branches → main, deploy branch)",
-      sample_data: "Seeded test data for drivers, trucks, and invoices",
+      design_system: "Internal theme + palette tokens driving element variants",
+      testing: "Type-safety via `tsc -b`; linting via Oxlint",
+      version_control: "Git",
+      sample_data: "Built-in page templates as starting points",
+    },
+
+    ui_features: {
+      theming:
+        "Swappable theme with semantic color variants and configurable gradient fills",
+      animations: "Immediate canvas feedback on drag, resize, and selection",
+      gestures: "Pointer-based drag-and-drop, resize handles, and selection",
+      accessibility: "Keyboard-accessible controls in the editing panels",
+      responsive_design: "Panel-based workspace (toolbar · canvas · inspector)",
     },
 
     summary:
-      "CRM Customer Manager is a multi-tenant Next.js/Prisma web app for warehouse operations — managing customers, suppliers, inventory, fleet, and invoices with strict per-warehouse data isolation and 2FA-secured access.",
+      "Wireframe Generator is a zero-backend, in-browser low-fidelity design tool built with React 19, the React Compiler, and Vite 8. Users drag 15+ UI primitives onto a canvas, style them with a theme- and palette-driven variant system (including gradients), start from page templates, and export the same design six ways — PNG, SVG, PDF, HTML, React components, and JSON — all from a single SVG serializer, with projects persisted locally. Deployed as a static app on Netlify.",
 
-    link: "https://vercel.com",
+    link: "https://wireframegenerator.netlify.app/",
+  },
+  {
+    id: "employee-hours",
+
+    app_identity: {
+      name: "Employee Hours",
+      developer: "Cuneyt Yildirim",
+      platforms: [
+        { name: "iOS" },
+        { name: "Android" },
+        { name: "Web", link: "https://quickemployees.onrender.com" },
+        { name: "Desktop (Electron)" },
+      ],
+      url: "https://quickemployees.onrender.com",
+      tagline:
+        "Clock in for every job with a live timer, track your pay, and export invoices and timesheets in seconds.",
+    },
+
+    core_purpose: {
+      mission:
+        "Give people who work for one or more employers a single, accurate place to track their hours and know exactly what they're owed.",
+      problem_solved: [
+        "Hours tracked across paper, notes, and spreadsheets are easy to lose or miscount",
+        "People working several jobs have no single view of hours or earnings per employer",
+        "Turning tracked hours into an invoice or timesheet is manual and slow",
+      ],
+      positioning:
+        "A cross-platform time-tracker that works offline as a guest and optionally syncs to the cloud — one codebase across iOS, Android, Web, and desktop.",
+    },
+
+    key_features: [
+      {
+        title: "Live clock with breaks",
+        description:
+          "Clock In → Take Break → Resume → Clock Out, tracked to the second, so a shift is captured as it happens.",
+        automation_level: "High",
+        technology: "React Native + persisted timer state",
+      },
+      {
+        title: "Multiple employers",
+        description:
+          "Track many employers (\"patrons\"), each with its own weekly-hours goal, color, and log, kept cleanly separate.",
+        automation_level: "Medium",
+        technology: "Per-employer data model",
+      },
+      {
+        title: "Earnings and payments ledger",
+        description:
+          "An optional hourly rate turns hours into earnings, and a payments ledger lets users mark hours as paid to see what's still owed.",
+        automation_level: "Medium",
+        impact: "Clear view of money earned vs. money received.",
+      },
+      {
+        title: "Invoice, timesheet, and PDF export",
+        description:
+          "Generate an invoice, timesheet, or PDF from tracked hours and share it directly from the device.",
+        automation_level: "High",
+        technology: "expo-print + expo-sharing",
+      },
+      {
+        title: "Optional cloud sync with guest mode",
+        description:
+          "Sign in with email/password or Google/Apple to sync hours across devices, or keep working fully offline as a guest with local-only data.",
+        automation_level: "High",
+        technology: "NestJS + MongoDB backend on Render",
+      },
+      {
+        title: "iOS widget and reminders",
+        description:
+          "An iOS home-screen widget shows the live timer and clock controls, and optional local 'still clocked in?' reminders nudge users — with no marketing pushes.",
+        technology: "WidgetKit + expo-notifications",
+      },
+    ],
+
+    user_experience: {
+      design_philosophy:
+        "Fast to start a shift, honest about earnings, and usable with or without an account — the app should never get in the way of clocking in.",
+      workflow_steps: [
+        "Add an employer with an hourly rate and weekly goal",
+        "Clock in — take breaks and resume as needed",
+        "Clock out to log the shift to the second",
+        "Review weekly progress, earnings, and history",
+        "Export an invoice or timesheet and share it",
+      ],
+      ui_components: [
+        "Live timer",
+        "Employer list",
+        "Weekly goal progress",
+        "Stats and history",
+        "Payments ledger",
+        "Export sheet",
+      ],
+    },
+
+    technical_architecture: {
+      platform: { name: "iOS, Android, Web, Desktop" },
+      framework: "Expo / React Native (Expo Router)",
+      language: "TypeScript",
+      navigation: "Expo Router file-based routing with typed routes",
+      state_management: {
+        global: "TanStack Query for server state + local stores",
+        local: "AsyncStorage for offline/guest data",
+      },
+      data_persistence: {
+        primary: "NestJS + MongoDB backend (optional cloud account)",
+        local_storage: "AsyncStorage for offline-first guest data",
+        sync_service: "Cloud sync across devices when signed in",
+      },
+      extensions: [
+        "Electron build for a packaged desktop app",
+        "expo-print + expo-sharing for exports",
+        "expo-notifications for local reminders",
+        "React Native Reanimated for motion",
+      ],
+    },
+
+    target_audience: [
+      {
+        persona: "Freelancer / contractor",
+        use_case:
+          "Track billable hours per client and export invoices to get paid.",
+      },
+      {
+        persona: "Shift or hourly worker",
+        use_case:
+          "Log shifts accurately and confirm hours and pay against employer records.",
+      },
+      {
+        persona: "Someone juggling multiple jobs",
+        use_case:
+          "See hours and earnings for every employer in one place with per-job goals.",
+      },
+    ],
+
+    security_and_privacy: {
+      data_storage:
+        "Works fully offline as a guest with local-only data; cloud sync is opt-in behind authentication.",
+      authentication_methods: [
+        "Email / password",
+        "Google sign-in",
+        "Sign in with Apple",
+      ],
+      privacy_features: [
+        "Guest mode keeps all data on-device",
+        "Reminders are local only — no marketing push notifications",
+      ],
+    },
+
+    data_sync: {
+      method: "Backend API sync when signed in",
+      scope: "Hours, employers, and payments",
+      conflict_resolution: "Server as source of truth on sign-in",
+      offline_support: "Full offline-first guest mode via AsyncStorage",
+      multi_device: "Syncs across every device on the same account",
+    },
+
+    development_details: {
+      code_organization: [
+        "Expo Router screens under src/app (index, clients, stats, profile, explore)",
+        "Tracker/export logic under src/lib",
+        "NestJS API in nestserver",
+        "Electron shell under electron/",
+      ],
+      design_system: "Shared component library with light/dark support",
+      testing: "ESLint (expo config) + Jest on the NestJS backend",
+      version_control: "Git",
+      sample_data: "Guest-mode local data for first-run use",
+    },
+
+    ui_features: {
+      theming: "Automatic light/dark via the system appearance",
+      animations: "React Native Reanimated transitions",
+      gestures: "Native gesture handling for navigation and controls",
+      accessibility: "System font scaling and accessible controls",
+      responsive_design: "Adapts across phone, tablet, web, and desktop",
+    },
+
+    summary:
+      "Employee Hours is a cross-platform time-tracking app built from a single Expo / React Native codebase shipping to iOS, Android, Web, and a packaged Electron desktop build. A live Clock In → Break → Clock Out timer tracks shifts to the second across multiple employers, each with its own goal, rate, and payments ledger. A NestJS + MongoDB backend on Render provides optional cloud accounts (email/password, Google, Apple) with full offline guest mode, plus invoice/timesheet/PDF export, an iOS widget, and local reminders.",
+
+    link: "https://quickemployees.onrender.com",
   },
 ];

@@ -27,8 +27,18 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const base = import.meta.env.BASE_URL;
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      style={
+        {
+          // Public images referenced from CSS, prefixed with the deploy base URL.
+          "--asset-dev-avatar": `url("${base}images/dev_avatar.jpg")`,
+          "--asset-noisy-bg": `url("${base}images/avatar_dev.png")`,
+        } as React.CSSProperties
+      }
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

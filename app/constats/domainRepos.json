@@ -7,14 +7,18 @@
       "title": "TypeScript",
       "accent": "#3178c6",
       "repos": [
+        { "name": "portfolio", "language": "TypeScript" },
+        { "name": "Git Learner", "language": "TypeScript" },
+        { "name": "Pro-Ball Analytica", "language": "TypeScript" },
+        { "name": "ADT Learning", "language": "TypeScript" },
+        { "name": "Wireframe Generator", "language": "TypeScript" },
         { "name": "Development Tracker", "language": "TypeScript" },
+        { "name": "@cuneytyildirim/ui", "language": "TypeScript" },
         { "name": "Family Tree", "language": "TypeScript" },
         { "name": "garage bonne prix", "language": "TypeScript" },
         { "name": "Booking Room", "language": "TypeScript" },
         { "name": "election-vite-nodejs-ts", "language": "TypeScript" },
-        { "name": "azure-typescript-e2e-apps", "language": "TypeScript" },
-        { "name": "Booking Bee", "language": "TypeScript" },
-        { "name": "portfolio", "language": "TypeScript" }
+        { "name": "azure-typescript-e2e-apps", "language": "TypeScript" }
       ]
     },
     {
@@ -24,6 +28,7 @@
       "title": "React Native",
       "accent": "#61dafb",
       "repos": [
+        { "name": "Quick Employees", "language": "TypeScript" },
         { "name": "Pizza Order App", "language": "TypeScript" },
         { "name": "Save&Eas", "language": "Kotlin" }
       ]
@@ -41,8 +46,7 @@
         { "name": "Budget Manager", "language": "Swift" },
         { "name": "tracking manager", "language": "Swift" },
         { "name": "Diet Organizer", "language": "Swift" },
-        { "name": "assignment manager", "language": "Swift" },
-        { "name": "chores action", "language": "Swift" }
+        { "name": "assignment manager", "language": "Swift" }
       ]
     },
     {
@@ -65,14 +69,14 @@
       "title": "Java / Spring Boot",
       "accent": "#6db33f",
       "repos": [
-        { "name": "vprofile-project", "language": "Java" },
         { "name": "346Assignments", "language": "Java" },
         { "name": "353A1", "language": "Java" },
         { "name": "Algorithm352", "language": "Java" },
         { "name": "Design Patterns", "language": "Java" },
         { "name": "piano Song UI", "language": "Java" },
         { "name": "LordOfTheRingsTextBasedGameV2", "language": "Java" },
-        { "name": "TextBasedGameRepository", "language": "Java" }
+        { "name": "Text Based Game", "language": "Java" },
+        { "name": "Word Game", "language": "Java" }
       ]
     },
     {
@@ -94,10 +98,10 @@
       "accent": "#2496ed",
       "repos": [
         { "name": "devops practise", "language": "TypeScript" },
-        { "name": "vprofile-project", "language": "Java" },
+        { "name": "Hotel Management System", "language": "TypeScript" },
+        { "name": "Quick Employees", "language": "TypeScript" },
         { "name": "Nasa CICD", "language": "JavaScript" },
         { "name": "BashScripts", "language": "Shell" },
-        { "name": "100-Days-of-Cloud", "language": "Python" },
         { "name": "azure-typescript-e2e-apps", "language": "TypeScript" }
       ]
     }

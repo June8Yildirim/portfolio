@@ -213,9 +213,9 @@ export default function NodePanel({ node, onClose }: Props) {
                 </div>
               )}
 
-              {node.detail?.app_identity?.url && (
+              {(node.detail?.app_identity?.url ?? node.link) && (
                 <a
-                  href={node.detail.app_identity.url}
+                  href={node.detail?.app_identity?.url ?? node.link}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-xs font-mono px-5 py-2.5 rounded-xl transition-all duration-300"
@@ -268,7 +268,7 @@ export default function NodePanel({ node, onClose }: Props) {
                   >
                     {node.images!.map((img, i) => (
                       <SwiperSlide key={i}>
-                        <div className="flex items-center justify-center h-[480px]">
+                        <div className="flex items-center justify-center h-120">
                           <img
                             src={img}
                             alt={`${node.title} screenshot ${i + 1}`}

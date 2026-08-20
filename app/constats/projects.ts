@@ -1,7 +1,8 @@
+import { asset } from "~/lib/asset";
 import type { ProjectDetailsItemType } from "~/types/ProjectDetailsItemType";
 import type { ProjectType } from "~/types/ProjectType";
 
-export const projects: ProjectType[] = [
+const rawProjects: ProjectType[] = [
   {
     id: "0",
     title: "SaveEasy",
@@ -175,18 +176,25 @@ export const projects: ProjectType[] = [
     mainImage: "/images/restaurant.gif",
   },
   {
-    title: "Budget Manager",
-    company: "",
-    technologies: ["SwiftUI", "Vision", "CoreData", "iCloudDatabase", "Git"],
+    title: "Budgetizer",
+    company: "Cuneyt Yildirim",
+    technologies: [
+      "SwiftUI",
+      "Core Data",
+      "CloudKit",
+      "Swift Charts",
+      "Vision",
+      "App Intents",
+      "Sign in with Apple",
+      "Git",
+    ],
     id: "7",
     achievements: [
-      "Built SwiftUI budget app with responsive design and custom UI components",
-      "Implemented Vision framework for receipt scanning and text recognition",
-      "Created CoreData model with iCloud sync for multi-device access",
-      "Developed financial dashboards using Swift Charts with animations",
-      "Added ML-powered spending insights using CreateML",
-      "Integrated biometric authentication and Home Screen widgets",
-      "Optimized performance for handling thousands of transactions",
+      "Architected a multi-tab personal finance app in SwiftUI (Dashboard, Expenses, Budgets, Categories, Goals, Recurring, and Charts) backed by a Core Data model (Budget → Category → Expense) that syncs across every device with CloudKit.",
+      "Built a receipt-scanning flow with the Vision framework (VisionBillReader) that extracts totals and details from photographed bills, removing most manual expense entry.",
+      "Designed interactive financial dashboards with Swift Charts — animated summary cards plus pie, bar, and line charts with time-range filtering — for at-a-glance spending insight.",
+      "Added Siri Shortcuts and App Intents to log expenses and budgets by voice, alongside a budget-alert and reminder engine built on UserNotifications with a persisted notification history.",
+      "Delivered adaptive iPhone/iPad layouts (sidebar navigation), a first-run onboarding wizard, recurring-subscription tracking, savings goals, and Sign in with Apple, then shipped it to the App Store.",
     ],
     gradient: "from-purple-600 to-pink-600",
     images: [
@@ -204,6 +212,7 @@ export const projects: ProjectType[] = [
       "/images/budget/IMG_2487.png",
       "/images/budget/IMG_2488.png",
     ],
+    link: "https://apps.apple.com/ca/app/budgetizer/id6757916415",
   },
   {
     id: "6",
@@ -335,9 +344,10 @@ export const projects: ProjectType[] = [
     ],
     gradient: "from-slate-600 to-gray-700",
     images: ["/images/git/IMG_2510", "/images/git/IMG_2511"],
+    link: "https://development-tracker-three.vercel.app/",
   },
   {
-    title: "Spaced Repetition iOS",
+    title: "Hypo-Campus",
     company: "Cuneyt Yildirim",
     technologies: [
       "SwiftUI",
@@ -373,6 +383,7 @@ export const projects: ProjectType[] = [
       "/images/spaced/IMG_2500.png",
       "/images/spaced/IMG_2501.png",
     ],
+    link: "https://apps.apple.com/ca/app/hypo-campus/id6764491127",
   },
   {
     title: "WarZone",
@@ -408,6 +419,7 @@ export const projects: ProjectType[] = [
       "/images/chores/IMG_2513.png",
       "/images/chores/IMG_2514.png",
     ],
+    link: "https://apps.apple.com/ca/app/chores-auction/id6759507106",
   },
   {
     title: "Ordering Pizza Management",
@@ -580,29 +592,91 @@ export const projects: ProjectType[] = [
     link: "https://github.com/cuneytyildirim/webdevtoolkits",
   },
   {
-    id: "crm-customer-manager",
-    title: "CRM Customer Manager",
-    company: "Acme Logistics",
+    id: "employee-hours",
+    title: "Employee Hours",
+    company: "Cuneyt Yildirim",
     technologies: [
-      "Next.js (App Router)",
+      "React Native",
+      "Expo",
+      "Expo Router",
       "TypeScript",
-      "Prisma",
-      "NeonDB (Postgres)",
-      "Tailwind CSS",
+      "TanStack Query",
+      "NestJS",
+      "MongoDB",
+      "Electron",
+      "Reanimated",
+      "Git",
     ],
     achievements: [
-      "Built a multi-tenant warehouse isolation layer scoping every controller and API route by warehouseId",
-      "Implemented 2FA authentication for all admin users",
-      "Designed an updatable settings system with tabbed forms for drivers, trucks, and options",
-      "Cut invoice generation time by 40% with server-side rendering and caching",
+      "Built a cross-platform time-tracking app from a single Expo/React Native codebase shipping to iOS, Android, Web, and a packaged Electron desktop build, with a live Clock In → Break → Clock Out timer accurate to the second.",
+      "Designed a multi-employer model where each client carries its own weekly-hours goal, color, and log, with an hourly-rate earnings calculator and a payments ledger for marking hours paid.",
+      "Engineered a NestJS + MongoDB backend (deployed on Render) providing optional cloud accounts with email/password and Google/Apple sign-in, syncing hours across devices while keeping a fully offline guest mode.",
+      "Implemented invoice, timesheet, and PDF exports via expo-print and expo-sharing, an iOS home-screen widget for clock in/out, and local 'still clocked in?' reminders through expo-notifications.",
     ],
-    mainImage: "/projects/crm/dashboard.png",
+    mainImage: "/images/employee_hours/appicon.png",
     images: [
-      "/projects/crm/invoices.png",
-      "/projects/crm/fleet.png",
-      "/projects/crm/settings.png",
+      "/images/employee_hours/appicon.png",
+      "/images/employee_hours/logo-glow.png",
     ],
-    gradient: "from-indigo-500 via-purple-500 to-pink-500",
-    link: "https://crm.example.com",
+    gradient: "from-green-600 via-emerald-600 to-teal-600",
+    link: "https://quickemployees.onrender.com",
   },
+  {
+    id: "wireframe-generator",
+    title: "Wireframe Generator",
+    company: "Personal Project",
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite 8",
+      "React Compiler",
+      "Oxlint",
+      "SVG",
+      "Netlify",
+    ],
+    achievements: [
+      "Built a browser-based low-fidelity wireframing tool with a drag-and-drop canvas and 15+ UI element primitives (heading, text, button, input, card, navbar, avatar, toggle, and more) plus a layers panel for z-order and selection.",
+      "Engineered a multi-format export pipeline that turns a design into PNG, SVG, PDF, standalone HTML, ready-to-use React components, or JSON — all rendered from a single SVG serializer.",
+      "Designed a theme- and palette-driven styling system where semantic variants (primary, secondary, success, warning, danger, surface…) resolve against a swappable theme, including gradient fills with configurable stops and angle.",
+      "Shipped a starter library of page templates (login, register, landing, pricing, contact, shop, product, checkout) and local project persistence via localStorage, with legacy-format migration on load.",
+      "Kept the stack lean and fast — React 19 with the React Compiler, Vite 8, and Oxlint — deployed as a zero-backend static app on Netlify.",
+    ],
+    mainImage: "/images/wireframe/hero.png",
+    images: ["/images/wireframe/hero.png"],
+    gradient: "from-slate-600 via-gray-500 to-zinc-600",
+    link: "https://wireframegenerator.netlify.app/",
+  },
+  // {
+  //   id: "crm-customer-manager",
+  //   title: "CRM Customer Manager",
+  //   company: "Acme Logistics",
+  //   technologies: [
+  //     "Next.js (App Router)",
+  //     "TypeScript",
+  //     "Prisma",
+  //     "NeonDB (Postgres)",
+  //     "Tailwind CSS",
+  //   ],
+  //   achievements: [
+  //     "Built a multi-tenant warehouse isolation layer scoping every controller and API route by warehouseId",
+  //     "Implemented 2FA authentication for all admin users",
+  //     "Designed an updatable settings system with tabbed forms for drivers, trucks, and options",
+  //     "Cut invoice generation time by 40% with server-side rendering and caching",
+  //   ],
+  //   mainImage: "/projects/crm/dashboard.png",
+  //   images: [
+  //     "/projects/crm/invoices.png",
+  //     "/projects/crm/fleet.png",
+  //     "/projects/crm/settings.png",
+  //   ],
+  //   gradient: "from-indigo-500 via-purple-500 to-pink-500",
+  //   link: "https://crm.example.com",
+  // },
 ];
+
+// Prefix every image path with the deploy base URL (see ~/lib/asset).
+export const projects: ProjectType[] = rawProjects.map((project) => ({
+  ...project,
+  mainImage: project.mainImage ? asset(project.mainImage) : project.mainImage,
+  images: project.images?.map(asset),
+}));

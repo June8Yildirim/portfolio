@@ -13,6 +13,7 @@ export interface GraphNode {
   images?: string[];
   achievements: string[];
   position: [number, number, number];
+  link?: string;
   detail?: ProjectDetailsItemType;
 }
 
@@ -51,6 +52,7 @@ export function buildGraph(): { nodes: GraphNode[]; edges: GraphEdge[] } {
     images: (p as any).images,
     achievements: p.achievements,
     position: positions[i],
+    link: p.link,
     detail: projectDetail.find((d) => d.id === p.id),
   }));
 
