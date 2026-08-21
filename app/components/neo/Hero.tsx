@@ -112,12 +112,7 @@ export default function Hero({
             textShadow: "0 0 24px rgba(0, 90, 255, 0.28)",
           }}
         >
-          <ScrambleText
-            lines={["Cuneyt", "Yildirim"]}
-            duration={1.1}
-            stagger={0.28}
-            delay={0.15}
-          />
+          <ScrambleText lines={["Cuneyt", "Yildirim"]} />
         </div>
 
         {/* Typewriter role */}

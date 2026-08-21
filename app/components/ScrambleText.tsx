@@ -31,8 +31,6 @@ interface ScrambleTextProps {
 const CHAR_POOLS: Record<string, string> = {
   upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   lowerCase: "abcdefghijklmnopqrstuvwxyz",
-  upperAndLowerCase:
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
 };
 
 const escapeHTML = (s: string) =>
@@ -68,7 +66,7 @@ export default function ScrambleText({
   lines,
   variant = "reveal",
   chars = "upperCase",
-  rotations = 10,
+  rotations = 90,
   duration = 1,
   stagger = 0.2,
   delay = 0,
@@ -123,7 +121,7 @@ export default function ScrambleText({
     },
     {
       scope: rootRef,
-      dependencies: [lines, variant, chars, rotations, duration, stagger, delay],
+      dependencies: [lines, variant, chars, duration, stagger, delay],
     },
   );
 
