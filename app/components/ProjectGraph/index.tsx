@@ -59,6 +59,7 @@ export default function ProjectGraph({ onClose }: Props) {
     };
 
     sceneRef.current = scene;
+    scene.setActive(true);
     return () => scene.dispose();
   }, [mounted]);
 

@@ -6,15 +6,6 @@ import type { GraphNode } from "~/components/ProjectGraph/graphUtils";
 
 const { nodes, edges } = buildGraph();
 
-interface LabelData {
-  id: string;
-  x: number;
-  y: number;
-  visible: boolean;
-  title: string;
-  technologies: string[];
-}
-
 export interface ProjectsHandle {
   focusGraph: () => void;
 }
@@ -23,9 +14,10 @@ const Projects = forwardRef<ProjectsHandle>((_, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<NeuralScene | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const labelRefs = useRef(new Map<string, HTMLDivElement>());
+  const selectedRef = useRef<GraphNode | null>(null);
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
-  const [labels, setLabels] = useState<LabelData[]>([]);
-  const [ready, setReady] = useState(false);
+  selectedRef.current = selectedNode;
 
   useImperativeHandle(ref, () => ({
     focusGraph: () => {
@@ -34,9 +26,10 @@ const Projects = forwardRef<ProjectsHandle>((_, ref) => {
   }));
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const scene = new NeuralScene(canvasRef.current, nodes, edges);
+    const scene = new NeuralScene(canvas, nodes, edges);
 
     scene.onNodeClick = (id) => {
       const node = nodes.find((n) => n.id === id) ?? null;
@@ -44,27 +37,46 @@ const Projects = forwardRef<ProjectsHandle>((_, ref) => {
       if (node) scene.flyToNode(id);
     };
 
+    // Runs every frame — write straight to the DOM instead of going through React state.
     scene.onScreenPositionsUpdate = (positions) => {
-      if (!canvasRef.current) return;
-      const rect = canvasRef.current.getBoundingClientRect();
-      setLabels(
-        nodes.map((n) => {
-          const pos = positions.get(n.id) ?? { x: 0, y: 0, visible: false };
-          return {
-            id: n.id,
-            x: pos.x,
-            y: pos.y,
-            visible: pos.visible,
-            title: n.title,
-            technologies: n.technologies.slice(0, 3),
-          };
-        })
-      );
-      if (!ready && rect.width > 0) setReady(true);
+      const panelW = selectedRef.current ? Math.min(520, window.innerWidth * 0.38) : 0;
+      const rightBound = canvas.clientWidth - panelW - 24;
+
+      labelRefs.current.forEach((el, id) => {
+        const pos = positions.get(id);
+        const shown = !!pos && pos.visible && pos.x <= rightBound && pos.x >= 16;
+        if (pos) {
+          el.style.transform = `translate3d(${pos.x}px, ${pos.y - 54}px, 0) translateX(-50%)`;
+        }
+        el.style.opacity = shown ? String(pos.reveal) : "0";
+      });
     };
 
     sceneRef.current = scene;
-    return () => scene.dispose();
+
+    // Only render while the graph is on screen and the tab is visible.
+    let inView = false;
+    let introPlayed = false;
+    const sync = () => scene.setActive(inView && !document.hidden);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView && !introPlayed) {
+          introPlayed = true;
+          scene.playIntro();
+        }
+        sync();
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(canvas);
+    document.addEventListener("visibilitychange", sync);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      scene.dispose();
+    };
   }, []);
 
   const handleClose = useCallback(() => {
@@ -80,7 +92,7 @@ const Projects = forwardRef<ProjectsHandle>((_, ref) => {
       style={{ background: "rgba(5, 5, 18, 0.0)" }}
     >
       {/* Section header */}
-      <div className="text-center pt-24 pb-8 px-6 relative z-10">
+      <div data-reveal className="text-center pt-24 pb-8 px-6 relative z-10">
         <p className="text-xs font-mono tracking-[0.25em] uppercase mb-3" style={{ color: "#4488ff" }}>
           Neural Graph
         </p>
@@ -98,37 +110,34 @@ const Projects = forwardRef<ProjectsHandle>((_, ref) => {
 
         {/* Node labels */}
         <div className="absolute inset-0 pointer-events-none">
-          {labels.map((label) => {
-            if (!label.visible) return null;
-            const panelW = selectedNode ? Math.min(520, window.innerWidth * 0.38) : 0;
-            const rightBound = (canvasRef.current?.clientWidth ?? window.innerWidth) - panelW - 24;
-            if (label.x > rightBound || label.x < 16) return null;
-
-            return (
+          {nodes.map((node) => (
+            <div
+              key={node.id}
+              ref={(el) => {
+                if (el) labelRefs.current.set(node.id, el);
+                else labelRefs.current.delete(node.id);
+              }}
+              className="absolute left-0 top-0"
+              style={{ opacity: 0, transition: "opacity 0.25s ease", willChange: "transform" }}
+            >
               <div
-                key={label.id}
-                className="absolute"
-                style={{ left: label.x, top: label.y - 54, transform: "translateX(-50%)" }}
+                className="text-center mb-1 whitespace-nowrap"
+                style={{ fontSize: 10, fontWeight: 700, fontFamily: "monospace", letterSpacing: "0.06em", color: "#88aaff", textShadow: "0 0 10px rgba(0,100,255,0.7)" }}
               >
-                <div
-                  className="text-center mb-1 whitespace-nowrap"
-                  style={{ fontSize: 10, fontWeight: 700, fontFamily: "monospace", letterSpacing: "0.06em", color: "#88aaff", textShadow: "0 0 10px rgba(0,100,255,0.7)" }}
-                >
-                  {label.title}
-                </div>
-                <div className="flex gap-1 justify-center flex-wrap" style={{ maxWidth: 160 }}>
-                  {label.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      style={{ fontSize: 8, fontFamily: "monospace", padding: "1px 5px", borderRadius: 4, background: "rgba(0,20,70,0.8)", border: "1px solid rgba(0,80,200,0.28)", color: "#5577aa", whiteSpace: "nowrap" }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                {node.title}
               </div>
-            );
-          })}
+              <div className="flex gap-1 justify-center flex-wrap" style={{ maxWidth: 160 }}>
+                {node.technologies.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    style={{ fontSize: 8, fontFamily: "monospace", padding: "1px 5px", borderRadius: 4, background: "rgba(0,20,70,0.8)", border: "1px solid rgba(0,80,200,0.28)", color: "#5577aa", whiteSpace: "nowrap" }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Corner hint */}

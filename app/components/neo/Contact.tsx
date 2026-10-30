@@ -34,7 +34,7 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div data-reveal className="text-center mb-16">
           <p
             className="text-xs font-mono tracking-[0.25em] uppercase mb-3"
             style={{ color: "#4488ff" }}

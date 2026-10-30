@@ -6,8 +6,9 @@ export class NeuralBackground {
   private renderer: THREE.WebGLRenderer;
   private particles!: THREE.Points;
   private lines!: THREE.LineSegments;
-  private clock = new THREE.Clock(true);
   private raf = 0;
+  private running = false;
+  private readonly reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   private particlePositions: Float32Array = new Float32Array();
   private velocities: Float32Array = new Float32Array();
   private linePositions!: THREE.BufferAttribute;
@@ -28,8 +29,27 @@ export class NeuralBackground {
     this.buildLines();
 
     window.addEventListener("resize", this.onResize);
-    this.animate();
+    document.addEventListener("visibilitychange", this.onVisibilityChange);
+
+    if (this.reducedMotion) {
+      // Static network: build the connections once and draw a single frame.
+      this.updateParticles(false);
+      this.renderer.render(this.scene, this.camera);
+    } else {
+      this.setRunning(true);
+    }
   }
+
+  private setRunning(running: boolean) {
+    if (running === this.running) return;
+    this.running = running;
+    if (running) this.raf = requestAnimationFrame(this.animate);
+    else cancelAnimationFrame(this.raf);
+  }
+
+  private onVisibilityChange = () => {
+    if (!this.reducedMotion) this.setRunning(!document.hidden);
+  };
 
   private buildParticles() {
     const N = this.particleCount;
@@ -81,14 +101,14 @@ export class NeuralBackground {
     this.scene.add(this.lines);
   }
 
-  private updateParticles() {
+  private updateParticles(move = true) {
     const N = this.particleCount;
     const W = this.canvas.clientWidth;
     const H = this.canvas.clientHeight;
     const hw = W * 0.8;
     const hh = H * 0.8;
 
-    for (let i = 0; i < N; i++) {
+    for (let i = 0; move && i < N; i++) {
       this.particlePositions[i * 3] += this.velocities[i * 3];
       this.particlePositions[i * 3 + 1] += this.velocities[i * 3 + 1];
 
@@ -122,6 +142,7 @@ export class NeuralBackground {
   }
 
   private animate = () => {
+    if (!this.running) return;
     this.raf = requestAnimationFrame(this.animate);
     this.updateParticles();
     this.renderer.render(this.scene, this.camera);
@@ -133,11 +154,13 @@ export class NeuralBackground {
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h);
+    if (!this.running) this.renderer.render(this.scene, this.camera);
   };
 
   dispose() {
-    cancelAnimationFrame(this.raf);
+    this.setRunning(false);
     window.removeEventListener("resize", this.onResize);
+    document.removeEventListener("visibilitychange", this.onVisibilityChange);
     this.renderer.dispose();
   }
 }

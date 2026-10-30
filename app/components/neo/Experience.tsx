@@ -148,7 +148,7 @@ export default function Experience() {
       </svg>
 
       {/* Header */}
-      <div className="text-center mb-20">
+      <div data-reveal className="text-center mb-20">
         <p className="text-xs font-mono tracking-[0.25em] uppercase mb-3" style={{ color: "#4488ff" }}>
           Career
         </p>

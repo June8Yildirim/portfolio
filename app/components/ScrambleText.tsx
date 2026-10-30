@@ -79,6 +79,19 @@ export default function ScrambleText({
   useGSAP(
     () => {
       const pool = CHAR_POOLS[chars] ?? chars;
+
+      // Reduced motion: show the final text straight away, no scramble.
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        lineRefs.current.forEach((element, index) => {
+          const target = element.dataset.text ?? "";
+          const settledClass =
+            variant === "blocks" && index % 2 !== 0 ? "sc-old" : "sc-new";
+          element.innerHTML = frameHTML(target, pool, target.length, settledClass);
+          element.style.opacity = "1";
+        });
+        return;
+      }
+
       const steps = Math.max(1, Math.round(rotations));
       const master = gsap.timeline({ id: "ScrambleText", delay });
 

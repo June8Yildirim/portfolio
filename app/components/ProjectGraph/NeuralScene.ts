@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import gsap from "gsap";
 import type { GraphNode, GraphEdge } from "./graphUtils";
 
 interface NodeObject {
@@ -7,7 +8,15 @@ interface NodeObject {
   glow: THREE.Mesh;
   data: GraphNode;
   pulsePhase: number;
-  screenPos: { x: number; y: number; visible: boolean };
+  /** 0 → hidden, 1 → fully grown. Driven by the intro animation. */
+  reveal: number;
+}
+
+export interface ScreenPosition {
+  x: number;
+  y: number;
+  visible: boolean;
+  reveal: number;
 }
 
 interface EdgeObject {
@@ -27,11 +36,17 @@ export class NeuralScene {
   private raycaster = new THREE.Raycaster();
   private mouse = new THREE.Vector2();
   private raf = 0;
+  private running = false;
   private hoveredId: string | null = null;
   private selectedId: string | null = null;
+  private cameraTween: gsap.core.Tween | null = null;
+  private introTween: gsap.core.Timeline | null = null;
+  private edgeReveal = { value: 1 };
+  private projected = new THREE.Vector3();
+  private readonly reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   public onNodeClick: ((id: string) => void) | null = null;
-  public onScreenPositionsUpdate: ((positions: Map<string, { x: number; y: number; visible: boolean }>) => void) | null = null;
+  public onScreenPositionsUpdate: ((positions: Map<string, ScreenPosition>) => void) | null = null;
 
   constructor(
     private canvas: HTMLCanvasElement,
@@ -60,7 +75,7 @@ export class NeuralScene {
     this.controls.dampingFactor = 0.05;
     this.controls.minDistance = 8;
     this.controls.maxDistance = 40;
-    this.controls.autoRotate = true;
+    this.controls.autoRotate = !this.reducedMotion;
     this.controls.autoRotateSpeed = 0.4;
 
     this.setupLights();
@@ -68,7 +83,34 @@ export class NeuralScene {
     this.buildNodes(nodes);
     this.buildEdges(nodes, edges);
     this.setupEvents();
-    this.animate();
+    // The render loop is started by setActive(), so it only runs while visible.
+  }
+
+  /** Start or pause the render loop (e.g. when scrolled off screen or the tab is hidden). */
+  setActive(active: boolean) {
+    if (active === this.running) return;
+    this.running = active;
+    if (active) {
+      this.raf = requestAnimationFrame(this.animate);
+    } else {
+      cancelAnimationFrame(this.raf);
+    }
+  }
+
+  /** Grow the nodes out from the center and fade the edges in. */
+  playIntro() {
+    if (this.reducedMotion) return;
+    this.introTween?.kill();
+    const nodes = [...this.nodeMap.values()].sort(
+      (a, b) => a.mesh.position.length() - b.mesh.position.length()
+    );
+    nodes.forEach((n) => (n.reveal = 0));
+    this.edgeReveal.value = 0;
+
+    this.introTween = gsap
+      .timeline()
+      .to(nodes, { reveal: 1, duration: 0.9, ease: "back.out(1.7)", stagger: 0.06 })
+      .to(this.edgeReveal, { value: 1, duration: 1.2, ease: "power2.out" }, 0.4);
   }
 
   private setupLights() {
@@ -168,7 +210,7 @@ export class NeuralScene {
         glow,
         data: node,
         pulsePhase: Math.random() * Math.PI * 2,
-        screenPos: { x: 0, y: 0, visible: false },
+        reveal: 1,
       });
     });
   }
@@ -257,62 +299,52 @@ export class NeuralScene {
     const target = node.mesh.position.clone();
     const offset = target.clone().normalize().multiplyScalar(6).add(target);
     offset.y += 1.5;
-
-    const startPos = this.camera.position.clone();
-    const startTarget = this.controls.target.clone();
-    let t = 0;
-
-    const fly = () => {
-      t = Math.min(t + 0.025, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      this.camera.position.lerpVectors(startPos, offset, ease);
-      this.controls.target.lerpVectors(startTarget, target, ease);
-      this.controls.update();
-      if (t < 1) requestAnimationFrame(fly);
-    };
-    fly();
+    this.tweenCamera(offset, target, 0.9);
   }
 
   resetView() {
     this.selectedId = null;
-    this.controls.autoRotate = true;
-
-    const startPos = this.camera.position.clone();
-    const startTarget = this.controls.target.clone();
-    const endPos = new THREE.Vector3(0, 4, 22);
-    const endTarget = new THREE.Vector3(0, 0, 0);
-    let t = 0;
-
-    const reset = () => {
-      t = Math.min(t + 0.02, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      this.camera.position.lerpVectors(startPos, endPos, ease);
-      this.controls.target.lerpVectors(startTarget, endTarget, ease);
-      this.controls.update();
-      if (t < 1) requestAnimationFrame(reset);
-    };
-    reset();
+    this.controls.autoRotate = !this.reducedMotion;
+    this.tweenCamera(new THREE.Vector3(0, 4, 22), new THREE.Vector3(0, 0, 0), 1.1);
   }
 
-  private computeScreenPositions(): Map<string, { x: number; y: number; visible: boolean }> {
-    const result = new Map<string, { x: number; y: number; visible: boolean }>();
+  /** Time-based camera move; cancels any move already in flight. */
+  private tweenCamera(endPos: THREE.Vector3, endTarget: THREE.Vector3, duration: number) {
+    this.cameraTween?.kill();
+    const startPos = this.camera.position.clone();
+    const startTarget = this.controls.target.clone();
+    const progress = { t: 0 };
+
+    this.cameraTween = gsap.to(progress, {
+      t: 1,
+      duration: this.reducedMotion ? 0 : duration,
+      ease: "power3.out",
+      onUpdate: () => {
+        this.camera.position.lerpVectors(startPos, endPos, progress.t);
+        this.controls.target.lerpVectors(startTarget, endTarget, progress.t);
+      },
+    });
+  }
+
+  private computeScreenPositions(): Map<string, ScreenPosition> {
+    const result = new Map<string, ScreenPosition>();
     const w = this.canvas.clientWidth;
     const h = this.canvas.clientHeight;
 
     this.nodeMap.forEach((node, id) => {
-      const vec = node.mesh.position.clone();
-      vec.project(this.camera);
+      const vec = this.projected.copy(node.mesh.position).project(this.camera);
       const x = ((vec.x + 1) / 2) * w;
       const y = ((-vec.y + 1) / 2) * h;
       const visible = vec.z < 1;
-      result.set(id, { x, y, visible });
+      result.set(id, { x, y, visible, reveal: node.reveal });
     });
     return result;
   }
 
   private animate = () => {
+    if (!this.running) return;
     this.raf = requestAnimationFrame(this.animate);
-    const t = this.clock.getElapsedTime();
+    const t = this.reducedMotion ? 0 : this.clock.getElapsedTime();
 
     this.controls.update();
 
@@ -320,6 +352,7 @@ export class NeuralScene {
     this.nodeMap.forEach((node) => {
       const mat = node.mesh.material as THREE.MeshStandardMaterial;
       const isActive = node.data.id === this.hoveredId || node.data.id === this.selectedId;
+      node.mesh.scale.setScalar(node.reveal);
 
       mat.emissiveIntensity = isActive
         ? 1.4
@@ -329,19 +362,19 @@ export class NeuralScene {
       if (isActive) {
         glowMat.opacity = 0.22;
         glowMat.color.set(0x2288ff);
-        node.glow.scale.setScalar(1.4 + Math.sin(t * 3) * 0.06);
+        node.glow.scale.setScalar((1.4 + Math.sin(t * 3) * 0.06) * node.reveal);
       } else {
         glowMat.opacity = 0.07;
         glowMat.color.set(0x0055ff);
-        node.glow.scale.setScalar(1);
+        node.glow.scale.setScalar(node.reveal);
       }
     });
 
     // Animate edges (synapse pulse)
     this.edgeObjects.forEach((edge) => {
-      edge.pulseProgress = (edge.pulseProgress + edge.speed) % 1;
+      if (!this.reducedMotion) edge.pulseProgress = (edge.pulseProgress + edge.speed) % 1;
       const mat = edge.mesh.material as THREE.MeshBasicMaterial;
-      mat.opacity = 0.12 + Math.sin(edge.pulseProgress * Math.PI * 2) * 0.18;
+      mat.opacity = (0.12 + Math.sin(edge.pulseProgress * Math.PI * 2) * 0.18) * this.edgeReveal.value;
     });
 
     this.renderer.render(this.scene, this.camera);
@@ -351,7 +384,9 @@ export class NeuralScene {
   };
 
   dispose() {
-    cancelAnimationFrame(this.raf);
+    this.setActive(false);
+    this.cameraTween?.kill();
+    this.introTween?.kill();
     this.canvas.removeEventListener("click", this.onClick);
     this.canvas.removeEventListener("mousemove", this.onMouseMove);
     window.removeEventListener("resize", this.onResize);

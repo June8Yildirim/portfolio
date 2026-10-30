@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import ScrambleText from "../ScrambleText";
+
+gsap.registerPlugin(useGSAP);
 const roles = [
   "FullStack Developer",
   "iOS Developer",
@@ -7,6 +11,8 @@ const roles = [
   "Spring Boot/Java Developer",
   "Junior DevOps Engineer",
 ];
+
+const NAME_LINES = ["Cuneyt", "Yildirim"];
 
 const stats = [
   { value: "10+", label: "Projects" },
@@ -20,40 +26,75 @@ export default function Hero({
 }: {
   onProjectsClick: () => void;
 }) {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [typing, setTyping] = useState(true);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const current = roles[roleIndex];
-    if (typing) {
-      if (displayed.length < current.length) {
-        timeoutRef.current = setTimeout(
-          () => setDisplayed(current.slice(0, displayed.length + 1)),
-          60,
-        );
-      } else {
-        timeoutRef.current = setTimeout(() => setTyping(false), 1800);
-      }
-    } else {
-      if (displayed.length > 0) {
-        timeoutRef.current = setTimeout(
-          () => setDisplayed(displayed.slice(0, -1)),
-          35,
-        );
-      } else {
-        setRoleIndex((i) => (i + 1) % roles.length);
-        setTyping(true);
-      }
-    }
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [displayed, typing, roleIndex]);
+  // Intro: eyebrow draws out, name scrambles in, then the rest rises in order.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const q = gsap.utils.selector(sectionRef);
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        tl.fromTo(q("[data-hero-intro='eyebrow']"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0)
+          .from(q(".hero-line-l"), { scaleX: 0, transformOrigin: "right center", duration: 0.8 }, 0)
+          .from(q(".hero-line-r"), { scaleX: 0, transformOrigin: "left center", duration: 0.8 }, 0)
+          .fromTo(
+            q("[data-hero-intro='step']"),
+            { autoAlpha: 0, y: 24 },
+            { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.12 },
+            0.9,
+          )
+          .fromTo(
+            q("[data-hero-intro='stat']"),
+            { autoAlpha: 0, y: 16 },
+            { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 },
+            1.25,
+          )
+          .fromTo(
+            q("[data-hero-intro='card']"),
+            { autoAlpha: 0, y: 32 },
+            { autoAlpha: 1, y: 0, duration: 0.9 },
+            1.5,
+          )
+          .fromTo(q("[data-hero-intro='cue']"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 2);
+
+        // Count the stats up from zero as they appear.
+        const counters = q("[data-count]") as HTMLElement[];
+        counters.forEach((el) => {
+          const end = Number(el.dataset.count);
+          const suffix = el.dataset.suffix ?? "";
+          const value = { n: 0 };
+          el.textContent = `0${suffix}`;
+          tl.to(
+            value,
+            {
+              n: end,
+              duration: 1.2,
+              ease: "power2.out",
+              onUpdate: () => {
+                el.textContent = `${Math.round(value.n)}${suffix}`;
+              },
+            },
+            1.3,
+          );
+        });
+
+        return () => {
+          counters.forEach((el) => {
+            el.textContent = `${el.dataset.count}${el.dataset.suffix ?? ""}`;
+          });
+        };
+      });
+      return () => mm.revert();
+    },
+    { scope: sectionRef },
+  );
+
 
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="min-h-screen flex flex-col items-center justify-center relative px-6 md:px-12"
     >
@@ -74,9 +115,12 @@ export default function Hero({
 
       <div className="max-w-4xl w-full text-center relative z-10">
         {/* Eyebrow */}
-        <div className="flex items-center justify-center gap-3 mb-8">
+        <div
+          data-hero-intro="eyebrow"
+          className="flex items-center justify-center gap-3 mb-8"
+        >
           <div
-            className="h-px w-12 shrink-0"
+            className="hero-line-l h-px w-12 shrink-0"
             style={{
               background: "linear-gradient(to right, transparent, #4488ff)",
             }}
@@ -88,7 +132,7 @@ export default function Hero({
             Software Developer
           </span>
           <div
-            className="h-px w-12 shrink-0"
+            className="hero-line-r h-px w-12 shrink-0"
             style={{
               background: "linear-gradient(to left, transparent, #4488ff)",
             }}
@@ -112,17 +156,15 @@ export default function Hero({
             textShadow: "0 0 24px rgba(0, 90, 255, 0.28)",
           }}
         >
-          <ScrambleText lines={["Cuneyt", "Yildirim"]} />
+          <ScrambleText lines={NAME_LINES} delay={0.25} />
         </div>
 
         {/* Typewriter role */}
-        <div className="flex items-center justify-center gap-2 mb-8 h-10">
-          <span
-            className="text-xl md:text-2xl font-light"
-            style={{ color: "#8899bb" }}
-          >
-            {displayed}
-          </span>
+        <div
+          data-hero-intro="step"
+          className="flex items-center justify-center gap-2 mb-8 h-10"
+        >
+          <RoleTypewriter />
           <span
             className="w-0.5 h-6 rounded-full animate-pulse"
             style={{ background: "#4488ff" }}
@@ -131,6 +173,7 @@ export default function Hero({
 
         {/* Bio */}
         <p
+          data-hero-intro="step"
           className="max-w-xl mx-auto text-base md:text-lg leading-relaxed mb-12"
           style={{ color: "#556688" }}
         >
@@ -140,7 +183,10 @@ export default function Hero({
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap gap-4 justify-center mb-16">
+        <div
+          data-hero-intro="step"
+          className="flex flex-wrap gap-4 justify-center mb-16"
+        >
           <button
             onClick={onProjectsClick}
             className="flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all"
@@ -182,6 +228,7 @@ export default function Hero({
           {stats.map((s) => (
             <div
               key={s.label}
+              data-hero-intro="stat"
               className="flex flex-col items-center gap-1 py-4 rounded-xl"
               style={{
                 background: "rgba(0, 20, 60, 0.4)",
@@ -191,6 +238,8 @@ export default function Hero({
               <span
                 className="text-2xl font-bold text-white"
                 style={{ fontVariantNumeric: "tabular-nums" }}
+                data-count={parseInt(s.value, 10)}
+                data-suffix={s.value.replace(/^\d+/, "")}
               >
                 {s.value}
               </span>
@@ -203,6 +252,7 @@ export default function Hero({
 
         {/* ── Summary card ── */}
         <div
+          data-hero-intro="card"
           className="max-w-2xl mx-auto rounded-2xl p-6 text-left relative overflow-hidden"
           style={{
             background: "rgba(4, 10, 26, 0.75)",
@@ -298,7 +348,10 @@ export default function Hero({
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div
+        data-hero-intro="cue"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce"
+      >
         <span className="text-xs font-mono" style={{ color: "#223355" }}>
           scroll
         </span>
@@ -310,5 +363,49 @@ export default function Hero({
         />
       </div>
     </section>
+  );
+}
+
+/** Kept separate so its per-character updates don't re-render the whole hero. */
+function RoleTypewriter() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [typing, setTyping] = useState(true);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const current = roles[roleIndex];
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeoutRef.current = setTimeout(
+          () => setDisplayed(current.slice(0, displayed.length + 1)),
+          60,
+        );
+      } else {
+        timeoutRef.current = setTimeout(() => setTyping(false), 1800);
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeoutRef.current = setTimeout(
+          () => setDisplayed(displayed.slice(0, -1)),
+          35,
+        );
+      } else {
+        setRoleIndex((i) => (i + 1) % roles.length);
+        setTyping(true);
+      }
+    }
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [displayed, typing, roleIndex]);
+
+  return (
+    <span
+      className="text-xl md:text-2xl font-light"
+      style={{ color: "#8899bb" }}
+    >
+      {displayed}
+    </span>
   );
 }

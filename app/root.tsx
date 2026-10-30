@@ -47,6 +47,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
+      // The inline script below adds a "js" class before hydration.
+      suppressHydrationWarning
       style={
         {
           // Public images referenced from CSS, prefixed with the deploy base URL.
@@ -58,6 +60,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Lets CSS hide intro elements until GSAP animates them in (no flash on SSR). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <Meta />
         <Links />
       </head>

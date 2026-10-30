@@ -350,3 +350,11 @@ body {
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
 }
+
+/* Hero intro: hidden until GSAP reveals them. Only when JS is running and
+   the visitor hasn't asked for reduced motion, so content never gets stuck hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-hero-intro] {
+    visibility: hidden;
+  }
+}

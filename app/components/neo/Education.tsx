@@ -54,7 +54,7 @@ export default function Education() {
       />
 
       {/* Header */}
-      <div className="pt-16 pb-4 text-center relative z-10">
+      <div data-reveal className="pt-16 pb-4 text-center relative z-10">
         <p
           className="text-xs font-mono tracking-[0.25em] uppercase mb-2"
           style={{ color: "#4488ff" }}
